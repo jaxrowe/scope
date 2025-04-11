@@ -8,7 +8,7 @@ opcf obj
 
 # Node geo1 (Object/geo)
 opadd -e -n geo geo1
-oplocate -x -2.5 -y 1.8499999940395355 geo1
+oplocate -x -2.5 -y 1.8500000000000001 geo1
 opspareds '    group {         name    "stdswitcher4"         label   "Transform"         grouptag { "sidefx::switcher" "stdswitcher" }          parm {             name    "xOrd"             baseparm             label   "Transform Order"             joinnext             export  none         }         parm {             name    "rOrd"             baseparm             label   "Rotate Order"             nolabel             export  none         }         parm {             name    "t"             baseparm             label   "Translate"             export  all         }         parm {             name    "r"             baseparm             label   "Rotate"             export  all         }         parm {             name    "s"             baseparm             label   "Scale"             export  none         }         parm {             name    "p"             baseparm             label   "Pivot Translate"             export  none         }         parm {             name    "pr"             baseparm             label   "Pivot Rotate"             export  none         }         parm {             name    "scale"             baseparm             label   "Uniform Scale"             export  none         }         parm {             name    "pre_xform"             baseparm             label   "Modify Pre-Transform"             export  none         }         parm {             name    "keeppos"             baseparm             label   "Keep Position When Parenting"             export  none         }         parm {             name    "childcomp"             baseparm             label   "Child Compensation"             export  none         }         parm {             name    "constraints_on"             baseparm             label   "Enable Constraints"             export  none         }         parm {             name    "constraints_path"             baseparm             label   "Constraints"             export  none         }         parm {             name    "lookatpath"             baseparm             label   "Look At"             invisible             export  none         }         parm {             name    "lookupobjpath"             baseparm             label   "Look Up Object"             invisible             export  none         }         parm {             name    "lookup"             baseparm             label   "Look At Up Vector"             invisible             export  none         }         parm {             name    "pathobjpath"             baseparm             label   "Path Object"             invisible             export  none         }         parm {             name    "roll"             baseparm             label   "Roll"             invisible             export  none         }         parm {             name    "pos"             baseparm             label   "Position"             invisible             export  none         }         parm {             name    "uparmtype"             baseparm             label   "Parameterization"             invisible             export  none         }         parm {             name    "pathorient"             baseparm             label   "Orient Along Path"             invisible             export  none         }         parm {             name    "up"             baseparm             label   "Orient Up Vector"             invisible             export  none         }         parm {             name    "bank"             baseparm             label   "Auto-Bank factor"             invisible             export  none         }     }      group {         name    "stdswitcher4_1"         label   "Render"          parm {             name    "shop_materialpath"             baseparm             label   "Material"             export  none         }         parm {             name    "shop_materialopts"             baseparm             label   "Options"             invisible             export  none         }         parm {             name    "tdisplay"             baseparm             label   "Display"             joinnext             export  none         }         parm {             name    "display"             baseparm             label   "Display"             export  none         }         parm {             name    "viewportlod"             label   "Display As"             type    ordinal             default { "full" }             help    "Choose how the object\'s geometry should be rendered in the viewport"             menu {                 "full"      "Full Geometry"                 "points"    "Point Cloud"                 "box"       "Bounding Box"                 "centroid"  "Centroid"                 "hidden"    "Hidden"                 "subd"      "Subdivision Surface / Curves"             }             parmtag { "spare_category" "Render" }         }         parm {             name    "vm_rendervisibility"             label   "Render Visibility"             type    string             default { "*" }             menureplace {                 "*"                             "Visible to all"                 "primary"                       "Visible only to primary rays"                 "primary|shadow"                "Visible only to primary and shadow rays"                 "-primary"                      "Invisible to primary rays (Phantom)"                 "-diffuse"                      "Invisible to diffuse rays"                 "-diffuse&-reflect&-refract"    "Invisible to secondary rays"                 ""                              "Invisible (Unrenderable)"             }             parmtag { "mantra_class" "object" }             parmtag { "mantra_name" "rendervisibility" }             parmtag { "spare_category" "Render" }         }         parm {             name    "vm_rendersubd"             label   "Render Polygons As Subdivision (Mantra)"             type    toggle             default { "0" }             parmtag { "mantra_class" "object" }             parmtag { "mantra_name" "rendersubd" }             parmtag { "spare_category" "Geometry" }         }         parm {             name    "vm_subdstyle"             label   "Subdivision Style"             type    string             default { "mantra_catclark" }             hidewhen "{ vm_rendersubd == 0 }"             menu {                 "mantra_catclark"   "Mantra Catmull-Clark"                 "osd_catclark"      "OpenSubdiv Catmull-Clark"             }             parmtag { "mantra_class" "object" }             parmtag { "mantra_name" "subdstyle" }             parmtag { "spare_category" "Geometry" }         }         parm {             name    "vm_subdgroup"             label   "Subdivision Group"             type    string             default { "" }             hidewhen "{ vm_rendersubd == 0 }"             parmtag { "mantra_class" "object" }             parmtag { "mantra_name" "subdgroup" }             parmtag { "spare_category" "Geometry" }         }         parm {             name    "vm_osd_quality"             label   "Open Subdiv Quality"             type    float             default { "1" }             hidewhen "{ vm_rendersubd == 0 vm_subdstyle != osd_catclark }"             range   { 0 10 }             parmtag { "mantra_class" "object" }             parmtag { "mantra_name" "osd_quality" }             parmtag { "spare_category" "Geometry" }         }         parm {             name    "vm_osd_vtxinterp"             label   "OSD Vtx Interp"             type    integer             default { "2" }             hidewhen "{ vm_rendersubd == 0 vm_subdstyle != osd_catclark }"             menu {                 "0" "No vertex interpolation"                 "1" "Edges only"                 "2" "Edges and Corners"             }             range   { 0 10 }             parmtag { "mantra_class" "object" }             parmtag { "mantra_name" "osd_vtxinterp" }             parmtag { "spare_category" "Geometry" }         }         parm {             name    "vm_osd_fvarinterp"             label   "OSD FVar Interp"             type    integer             default { "4" }             hidewhen "{ vm_rendersubd == 0 vm_subdstyle != osd_catclark }"             menu {                 "0" "Smooth everywhere"                 "1" "Sharpen corners only"                 "2" "Sharpen edges and corners"                 "3" "Sharpen edges and propagated corners"                 "4" "Sharpen all boundaries"                 "5" "Bilinear interpolation"             }             range   { 0 10 }             parmtag { "mantra_class" "object" }             parmtag { "mantra_name" "osd_fvarinterp" }             parmtag { "spare_category" "Geometry" }         }         group {             name    "folder0"             label   "Shading"              parm {                 name    "categories"                 label   "Categories"                 type    string                 default { "" }                 help    "A list of tags which can be used to select the object"                 parmtag { "spare_category" "Shading" }             }             parm {                 name    "reflectmask"                 label   "Reflection Mask"                 type    oplist                 default { "*" }                 help    "Objects that will be reflected on this object."                 parmtag { "opexpand" "1" }                 parmtag { "opfilter" "!!OBJ/GEOMETRY!!" }                 parmtag { "oprelative" "/obj" }                 parmtag { "spare_category" "Shading" }             }             parm {                 name    "refractmask"                 label   "Refraction Mask"                 type    oplist                 default { "*" }                 help    "Objects that will be refracted on this object."                 parmtag { "opexpand" "1" }                 parmtag { "opfilter" "!!OBJ/GEOMETRY!!" }                 parmtag { "oprelative" "/obj" }                 parmtag { "spare_category" "Shading" }             }             parm {                 name    "lightmask"                 label   "Light Mask"                 type    oplist                 default { "*" }                 help    "Lights that illuminate this object."                 parmtag { "opexpand" "1" }                 parmtag { "opfilter" "!!OBJ/LIGHT!!" }                 parmtag { "oprelative" "/obj" }                 parmtag { "spare_category" "Shading" }             }             parm {                 name    "lightcategories"                 label   "Light Selection"                 type    string                 default { "*" }                 parmtag { "spare_category" "Shading" }             }             parm {                 name    "vm_lpetag"                 label   "LPE Tag"                 type    string                 default { "" }                 parmtag { "mantra_class" "object" }                 parmtag { "mantra_name" "lpetag" }                 parmtag { "spare_category" "Shading" }             }             parm {                 name    "vm_volumefilter"                 label   "Volume Filter"                 type    string                 default { "box" }                 menu {                     "box"       "Box Filter"                     "gaussian"  "Gaussian"                     "bartlett"  "Bartlett (triangle)"                     "catrom"    "Catmull-Rom"                     "hanning"   "Hanning"                     "blackman"  "Blackman"                     "sinc"      "Sinc (sharpening)"                 }                 parmtag { "mantra_class" "object" }                 parmtag { "mantra_name" "filter" }                 parmtag { "spare_category" "Shading" }             }             parm {                 name    "vm_volumefilterwidth"                 label   "Volume Filter Width"                 type    float                 default { "1" }                 range   { 0.001 5 }                 parmtag { "mantra_class" "object" }                 parmtag { "mantra_name" "filterwidth" }                 parmtag { "spare_category" "Shading" }             }             parm {                 name    "vm_matte"                 label   "Matte shading"                 type    toggle                 default { "0" }                 parmtag { "mantra_class" "object" }                 parmtag { "mantra_name" "matte" }                 parmtag { "spare_category" "Shading" }             }             parm {                 name    "vm_rayshade"                 label   "Raytrace Shading"                 type    toggle                 default { "0" }                 parmtag { "mantra_class" "object" }                 parmtag { "mantra_name" "rayshade" }                 parmtag { "spare_category" "Shading" }             }         }          group {             name    "folder0_1"             label   "Sampling"              parm {                 name    "geo_velocityblur"                 label   "Geometry Velocity Blur"                 type    ordinal                 default { "off" }                 disablewhen "{ allowmotionblur == 0 }"                 menu {                     "off"       "No Velocity Blur"                     "on"        "Velocity Blur"                     "accelblur" "Acceleration Blur"                 }             }             parm {                 name    "geo_accelattribute"                 label   "Acceleration Attribute"                 type    string                 default { "accel" }                 hidewhen "{ geo_velocityblur != accelblur }"                 parmtag { "spare_category" "Sampling" }             }         }          group {             name    "folder0_2"             label   "Dicing"              parm {                 name    "vm_shadingquality"                 label   "Shading Quality"                 type    float                 default { "1" }                 range   { 0 10 }                 parmtag { "mantra_class" "object" }                 parmtag { "mantra_name" "shadingquality" }                 parmtag { "spare_category" "Dicing" }             }             parm {                 name    "vm_flatness"                 label   "Dicing Flatness"                 type    float                 default { "0.05" }                 range   { 0 1 }                 parmtag { "mantra_class" "object" }                 parmtag { "mantra_name" "flatness" }                 parmtag { "spare_category" "Dicing" }             }             parm {                 name    "vm_raypredice"                 label   "Ray Predicing"                 type    integer                 default { "0" }                 menu {                     "0" "Disable Predicing"                     "1" "Full Predicing"                     "2" "Precompute Bounds"                 }                 range   { 0 10 }                 parmtag { "mantra_class" "object" }                 parmtag { "mantra_name" "raypredice" }                 parmtag { "spare_category" "Dicing" }             }             parm {                 name    "vm_curvesurface"                 label   "Shade Curves As Surfaces"                 type    toggle                 default { "0" }                 parmtag { "mantra_class" "object" }                 parmtag { "mantra_name" "curvesurface" }                 parmtag { "spare_category" "Dicing" }             }         }          group {             name    "folder0_3"             label   "Geometry"              parm {                 name    "vm_rmbackface"                 label   "Backface Removal"                 type    toggle                 default { "0" }                 parmtag { "mantra_class" "object" }                 parmtag { "mantra_name" "rmbackface" }                 parmtag { "spare_category" "Geometry" }             }             parm {                 name    "shop_geometrypath"                 label   "Procedural Shader"                 type    oppath                 default { "" }                 parmtag { "opfilter" "!!SHOP/GEOMETRY!!" }                 parmtag { "oprelative" "." }                 parmtag { "spare_category" "Geometry" }             }             parm {                 name    "vm_forcegeometry"                 label   "Force Procedural Geometry Output"                 type    toggle                 default { "1" }                 parmtag { "spare_category" "Geometry" }             }             parm {                 name    "vm_rendersubdcurves"                 label   "Render Polygon Curves As Subdivision (Mantra)"                 type    toggle                 default { "0" }                 parmtag { "mantra_class" "object" }                 parmtag { "mantra_name" "rendersubdcurves" }                 parmtag { "spare_category" "Geometry" }             }             parm {                 name    "vm_renderpoints"                 label   "Render As Points (Mantra)"                 type    integer                 default { "2" }                 menu {                     "0" "No Point Rendering"                     "1" "Render Only Points"                     "2" "Render Unconnected Points"                 }                 range   { 0 10 }                 parmtag { "mantra_class" "object" }                 parmtag { "mantra_name" "renderpoints" }                 parmtag { "spare_category" "Geometry" }             }             parm {                 name    "vm_renderpointsas"                 label   "Render Points As (Mantra)"                 type    integer                 default { "0" }                 disablewhen "{ vm_renderpoints == 0 }"                 menu {                     "0" "Spheres"                     "1" "Circles"                 }                 range   { 0 10 }                 parmtag { "mantra_class" "object" }                 parmtag { "mantra_name" "renderpointsas" }                 parmtag { "spare_category" "Geometry" }             }             parm {                 name    "vm_usenforpoints"                 label   "Use N For Point Rendering"                 type    toggle                 default { "0" }                 disablewhen "{ vm_renderpoints == 0 }"                 parmtag { "mantra_class" "object" }                 parmtag { "mantra_name" "usenforpoints" }                 parmtag { "spare_category" "Geometry" }             }             parm {                 name    "vm_pointscale"                 label   "Point Scale"                 type    float                 default { "1" }                 disablewhen "{ vm_renderpoints == 0 }"                 range   { 0! 10 }                 parmtag { "mantra_class" "object" }                 parmtag { "mantra_name" "pointscale" }                 parmtag { "spare_category" "Geometry" }             }             parm {                 name    "vm_pscalediameter"                 label   "Treat Point Scale as Diameter Instead of Radius"                 type    toggle                 default { "0" }                 parmtag { "mantra_class" "object" }                 parmtag { "mantra_name" "pscalediameter" }                 parmtag { "spare_category" "Geometry" }             }             parm {                 name    "vm_metavolume"                 label   "Metaballs as Volume"                 type    toggle                 default { "0" }                 parmtag { "mantra_class" "object" }                 parmtag { "mantra_name" "metavolume" }                 parmtag { "spare_category" "Geometry" }             }             parm {                 name    "vm_coving"                 label   "Coving"                 type    integer                 default { "1" }                 menu {                     "0" "Disable Coving"                     "1" "Coving for displacement/sub-d"                     "2" "Coving for all primitives"                 }                 range   { 0 10 }                 parmtag { "mantra_class" "object" }                 parmtag { "mantra_name" "coving" }                 parmtag { "spare_category" "Geometry" }             }             parm {                 name    "vm_materialoverride"                 label   "Material Override"                 type    string                 default { "compact" }                 menu {                     "none"      "Disabled"                     "full"      "Evaluate for Each Primitve/Point"                     "compact"   "Evaluate Once"                 }                 parmtag { "spare_category" "Geometry" }             }             parm {                 name    "vm_overridedetail"                 label   "Ignore Geometry Attribute Shaders"                 type    toggle                 default { "0" }                 parmtag { "mantra_class" "object" }                 parmtag { "mantra_name" "overridedetail" }                 parmtag { "spare_category" "Geometry" }             }             parm {                 name    "vm_procuseroottransform"                 label   "Proc Use Root Transform"                 type    toggle                 default { "1" }                 parmtag { "mantra_class" "object" }                 parmtag { "mantra_name" "procuseroottransform" }                 parmtag { "spare_category" "Geometry" }             }         }      }      group {         name    "stdswitcher4_2"         label   "Misc"          parm {             name    "use_dcolor"             baseparm             label   "Set Wireframe Color"             export  none         }         parm {             name    "dcolor"             baseparm             label   "Wireframe Color"             export  none         }         parm {             name    "picking"             baseparm             label   "Viewport Selecting Enabled"             export  none         }         parm {             name    "pickscript"             baseparm             label   "Select Script"             export  none         }         parm {             name    "caching"             baseparm             label   "Cache Object Transform"             export  none         }         parm {             name    "vport_shadeopen"             baseparm             label   "Shade Open Curves In Viewport"             export  none         }         parm {             name    "vport_displayassubdiv"             baseparm             label   "Display as Subdivision in Viewport"             invisible             export  none         }         parm {             name    "vport_onionskin"             baseparm             label   "Onion Skinning"             export  none         }     }  ' geo1
 opset -S on geo1
 opparm -V 20.5.522 geo1 stdswitcher ( 0 0 0 ) xOrd ( srt ) rOrd ( xyz ) t ( 0 0 0 ) r ( 0 0 0 ) s ( 1 1 1 ) p ( 0 0 0 ) pr ( 0 0 0 ) scale ( 1 ) pre_xform ( clean ) keeppos ( off ) childcomp ( off ) constraints_on ( off ) constraints_path ( "" ) lookatpath ( "" ) lookupobjpath ( "" ) lookup ( on ) pathobjpath ( "" ) roll ( 0 ) pos ( 0 ) uparmtype ( arc ) pathorient ( 1 ) up ( 0 1 0 ) bank ( 0 ) shop_materialpath ( "" ) shop_materialopts ( override ) tdisplay ( off ) display ( 1 ) use_dcolor ( off ) dcolor ( 1 1 1 ) picking ( on ) pickscript ( "" ) caching ( on ) vport_shadeopen ( off ) vport_displayassubdiv ( off ) vport_onionskin ( off ) stdswitcher4 ( 0 0 0 ) viewportlod ( full ) vm_rendervisibility ( * ) vm_rendersubd ( off ) vm_subdstyle ( mantra_catclark ) vm_subdgroup ( "" ) vm_osd_quality ( 1 ) vm_osd_vtxinterp ( 2 ) vm_osd_fvarinterp ( 4 ) folder0 ( 0 0 0 0 ) categories ( "" ) reflectmask ( * ) refractmask ( * ) lightmask ( * ) lightcategories ( * ) vm_lpetag ( "" ) vm_volumefilter ( box ) vm_volumefilterwidth ( 1 ) vm_matte ( off ) vm_rayshade ( off ) geo_velocityblur ( off ) geo_accelattribute ( accel ) vm_shadingquality ( 1 ) vm_flatness ( 0.05 ) vm_raypredice ( 0 ) vm_curvesurface ( off ) vm_rmbackface ( off ) shop_geometrypath ( "" ) vm_forcegeometry ( on ) vm_rendersubdcurves ( off ) vm_renderpoints ( 2 ) vm_renderpointsas ( 0 ) vm_usenforpoints ( off ) vm_pointscale ( 1 ) vm_pscalediameter ( off ) vm_metavolume ( off ) vm_coving ( 1 ) vm_materialoverride ( compact ) vm_overridedetail ( off ) vm_procuseroottransform ( on )
@@ -21,7 +21,7 @@ opcf geo1
 
 # Node noisepower (Sop/subnet)
 opadd -e -n subnet noisepower
-oplocate -x 9.5 -y -1.1500000059604645 noisepower
+oplocate -x 9.5 -y -1.1499999999999999 noisepower
 opspareds '    groupsimple {         name    "noisepower"         label   "Noise Power"          parm {             name    "typemenu"             label   "Type"             type    ordinal             joinnext             default { "2" }             menu {                 "0" "Mesh"                 "1" "Curve"                 "2" "Point Cloud"             }             parmtag { "script_callback" "hou.phm().preset()" }             parmtag { "script_callback_language" "python" }         }         parm {             name    "noisemenu"             label   "Noise"             type    ordinal             joinnext             default { "13" }             menu {                 "0"     "Turbulent - Perlin Noise"                 "1"     "Turbulent - Original Perlin Noise"                 "2"     "Turbulent - Sparse Convolution Noise"                 "3"     "Turbulent - Alligator Noise"                 "4"     "Turbulent - Simplex Noise"                 "5"     "Turbulent - Zero Centered Perlin Noise"                 "6"     "Anti Alias - Perlin"                 "7"     "Anti Alias - Simplex"                 "8"     "Anti Alias - Flow"                 "9"     "Curl - Perlin Noise"                 "10"    "Curl - Original Perlin"                 "11"    "Curl - Sparse Convolution"                 "12"    "Curl - Alligator"                 "13"    "Curl - Simplex"                 "14"    "Curl - Analytic Perlin"                 "15"    "Curl - Analytic Simplex"             }             parmtag { "script_callback_language" "python" }         }         parm {             name    "signature"             label   "Signature"             type    ordinal             default { "0" }             hidewhen "{ typemenu == 1 }"             menu {                 "0" "Vector"                 "1" "Scalar"             }             parmtag { "script_callback_language" "python" }         }         parm {             name    "sepparm"             label   "Separator"             type    separator             default { "" }         }         parm {             name    "iterations"             label   "Iterations"             type    integer             default { "50" }             help    "If you set iterations to 1, you can see the lowest frequency contributing to the sum."             range   { 0 10 }         }         parm {             name    "sepparm3"             label   "Separator"             type    separator             default { "" }         }         parm {             name    "frequency"             label   "Frequency"             type    float             default { "0.1" }             help    "The frequency step size. This value is added to 1 before going into the power function."             range   { 0 1 }         }         parm {             name    "amplitude"             label   "Amplitude"             type    float             default { "0.01" }             help    "The amplitude step size. This value is subtracted from 1 before going into the power function."             range   { 0 1 }         }         parm {             name    "balance"             label   "Balance"             type    float             default { "1" }             help    "The frequency is divided and amplitude multipled by this value before going into the noise. A value of 10 means during the first interation, the frequency is 0.1 and the amplitude is 10. If you use a higher value, you will need more iterations for the amplitude to converge to 0. If you use a value of 1, the summed noise will not include frequencies less then 1."             range   { 0 10 }         }         parm {             name    "sepparm2"             label   "Separator"             type    separator             default { "" }         }         parm {             name    "offset"             label   "Offset"             type    float             default { "0" }             range   { 0 100 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "timeoffsetrate"             label   "Time Offset Rate"             type    float             joinnext             default { "1" }             disablewhen "{ animate != 1 }"             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "animate"             label   "Animate"             type    toggle             default { "off" }             parmtag { "script_callback_language" "python" }         }         parm {             name    "offsetvector"             label   "Offset Vector"             type    vector             size    3             default { "0" "1" "0" }             help    "If the input has a vector @offset, this vector will be overruled."             range   { 0 1 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "sepparm4"             label   "Separator"             type    separator             default { "" }         }         parm {             name    "paint"             label   "Paint"             type    toggle             default { "on" }             parmtag { "script_callback_language" "python" }         }     }      parm {         name    "label1"         baseparm         label   "Input #1 Label"         invisible         export  all     }     parm {         name    "label2"         baseparm         label   "Input #2 Label"         invisible         export  all     }     parm {         name    "label3"         baseparm         label   "Input #3 Label"         invisible         export  all     }     parm {         name    "label4"         baseparm         label   "Input #4 Label"         invisible         export  all     } ' noisepower
 opparm -V 20.5.522 noisepower label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) noisepower ( 0 ) typemenu ( 2 ) noisemenu ( 13 ) signature ( 0 ) sepparm ( ) iterations ( 50 ) sepparm3 ( ) frequency ( 0.1 ) amplitude ( 0.01 ) balance ( 1 ) sepparm2 ( ) offset ( 0 ) timeoffsetrate ( 1 ) animate ( off ) offsetvector ( 0 1 0 ) sepparm4 ( ) paint ( on )
 chlock noisepower -*
@@ -33,7 +33,7 @@ opcf noisepower
 
 # Node powernoise (Sop/attribvop)
 opadd -e -n attribvop powernoise
-oplocate -x 5.1306250012301842 -y 1.5994500008523449 powernoise
+oplocate -x 5.13063 -y 1.59945 powernoise
 opspareds '    parm {         name    "bindgroup"         baseparm         label   "Group"         export  none         bindselector uvselect "Modify Points"             "Select the points to affect and press Enter to complete."             0 1 0xffffffff 0 bindgrouptype 0     }     parm {         name    "bindgrouptype"         baseparm         label   "Group Type"         export  none     }     parm {         name    "bindclass"         baseparm         label   "Run Over"         export  none     }     parm {         name    "vex_numcount"         baseparm         label   "Number Count"         export  none     }     parm {         name    "vex_threadjobsize"         baseparm         label   "Thread Job Size"         export  none     }     group {         name    "stdswitcher3"         label   "Vex Setup"          parm {             name    "vexsrc"             baseparm             label   "Vex Source"             export  all         }         parm {             name    "shoppath"             baseparm             label   "Shop Path"             export  all         }         parm {             name    "script"             baseparm             label   "Script"             export  all         }         parm {             name    "clear"             baseparm             label   "Re-load VEX Functions"             export  all         }         parm {             name    "vop_compiler"             baseparm             label   "Compiler"             export  none         }         parm {             name    "vop_forcecompile"             baseparm             label   "Force Compile"             export  none         }         parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_multithread"             baseparm             label   "Enable Multithreading"             export  none         }     }      group {         name    "stdswitcher3_1"         label   "Attribute Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }     }      parm {         name    "ptnum"         label   "Point Number"         type    integer         invisible         default { "0" }         range   { 0 10 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "vtxnum"         label   "Vertex Number"         type    integer         invisible         default { "0" }         range   { 0 10 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "primnum"         label   "Primitive Number"         type    integer         invisible         default { "0" }         range   { 0 10 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "id"         label   "Id"         type    integer         invisible         default { "-1" }         range   { 0 10 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "numpt"         label   "Number of Points"         type    integer         invisible         default { "0" }         range   { 0 10 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "numvtx"         label   "Number of Vertices"         type    integer         invisible         default { "0" }         range   { 0 10 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "numprim"         label   "Number of Prims"         type    integer         invisible         default { "0" }         range   { 0 10 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "Time"         label   "Time"         type    float         invisible         default { "0" }         range   { 0 1 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "TimeInc"         label   "Time Inc"         type    float         invisible         default { "0" }         range   { 0 1 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "Frame"         label   "Frame"         type    float         invisible         default { "0" }         range   { 0 1 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "life"         label   "Life"         type    float         invisible         default { "0" }         range   { 0 1 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "age"         label   "Age"         type    float         invisible         default { "0" }         range   { 0 1 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "OpInput2"         label   "Second Input"         type    string         invisible         default { "" }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "OpInput3"         label   "Third Input"         type    string         invisible         default { "" }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "OpInput4"         label   "Fourth Input"         type    string         invisible         default { "" }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "OpInput1"         label   "First Input"         type    string         invisible         default { "" }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "uv"         label   "UV"         type    float         invisible         size    3         default { "0" "0" "0" }         range   { 0 10 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "P"         label   "P"         type    float         invisible         size    3         default { "0" "0" "0" }         range   { 0 10 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "v"         label   "Velocity"         type    float         invisible         size    3         default { "0" "0" "0" }         range   { 0 10 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "force"         label   "Force"         type    float         invisible         size    3         default { "0" "0" "0" }         range   { 0 10 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "Cd"         label   "Cd"         type    float         invisible         size    3         default { "1" "1" "1" }         range   { 0 10 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "N"         label   "N"         type    float         invisible         size    3         default { "0" "0" "0" }         range   { 0 10 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "vex_precision"         baseparm         label   "VEX Precision"         export  none     }     parm {         name    "freq_step"         label   "FreqStepSize"         type    float         default { "0" }         range   { 0 1 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "amp_step"         label   "AmpStepSize"         type    float         default { "0" }         range   { 0 1 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "Balance"         label   "Balance"         type    float         default { "0" }         range   { 0 1 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "Offset"         label   "Offset"         type    float         default { "0" }         range   { 0 1 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "vexsnippet"         baseparm         label   "Snippet"         export  none     }     parm {         name    "vex_strict"         baseparm         label   "Enforce Prototypes"         export  none     }     parm {         name    "vex_exportlist"         baseparm         label   "Attributes to Create"         export  none     }     parm {         name    "timeoffsettoggle"         label   "timeoffsettoggle"         type    float         default { "0" }         range   { 0 1 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "timeoffsetrate"         label   "timeoffsetrate"         type    float         default { "0" }         range   { 0 1 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "noisemenu"         label   "noisemenu"         type    integer         default { "0" }         range   { 0 10 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     }     parm {         name    "offsetvector"         label   "offsetvector"         type    float         size    3         default { "0" "0" "0" }         range   { 0 10 }         parmtag { "parmvop" "1" }         parmtag { "shaderparmcontexts" "cvex" }     } ' powernoise
 opparm powernoise  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -903,7 +903,7 @@ opcf geo1
 
 # Node curvature (Sop/subnet)
 opadd -e -n subnet curvature
-oplocate -x 1.4999999999999998 -y 2.8499999940395355 curvature
+oplocate -x 1.5 -y 2.8500000000000001 curvature
 opspareds '    groupsimple {         name    "Main"         label   "Curvature"          parm {             name    "distance"             label   "Distance"             type    float             default { "0.1" }             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "max"             label   "Max"             type    integer             default { "10" }             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }     }      parm {         name    "label1"         baseparm         label   "Input #1 Label"         invisible         export  all     }     parm {         name    "label2"         baseparm         label   "Input #2 Label"         invisible         export  all     }     parm {         name    "label3"         baseparm         label   "Input #3 Label"         invisible         export  all     }     parm {         name    "label4"         baseparm         label   "Input #4 Label"         invisible         export  all     } ' curvature
 opparm -V 20.5.522 curvature label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) Main ( 0 ) distance ( 0.1 ) max ( 10 )
 chlock curvature -*
@@ -915,7 +915,7 @@ opcf curvature
 
 # Node output0 (Sop/output)
 opadd -e -n output output0
-oplocate -x 1.5764338170501069 -y 1.2847941309686961 output0
+oplocate -x 1.57643 -y 1.2847900000000001 output0
 opspareds "" output0
 opparm -V 20.5.522 output0 outputidx ( 0 )
 chlock output0 -*
@@ -926,7 +926,7 @@ opuserdata -n '___Version___' -v '20.5.522' output0
 
 # Node curvature (Sop/attribwrangle)
 opadd -e -n attribwrangle curvature
-oplocate -x -0.682766182949893 -y 4.2967941758509944 curvature
+oplocate -x -0.68276599999999998 -y 4.2967899999999997 curvature
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "sidefx::look" "blank" }              parm {                 name    "Distance"                 label   "Distance"                 type    float                 default { "0" }                 range   { 0 1 }             }             parm {                 name    "Max"                 label   "Max"                 type    integer                 default { "0" }                 range   { 0 10 }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' curvature
 opparm curvature  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -944,7 +944,7 @@ opuserdata -n '___Version___' -v '' curvature
 
 # Node N (Sop/attribwrangle)
 opadd -e -n attribwrangle N
-oplocate -x -0.682766182949893 -y 5.4262941758509946 N
+oplocate -x -0.68276599999999998 -y 5.4262899999999998 N
 opspareds "" N
 opparm N  bindings ( 0 ) groupbindings ( 0 )
 opparm N folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '@N = @N;' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -956,7 +956,7 @@ opuserdata -n '___Version___' -v '' N
 
 # Node fit (Sop/attribwrangle)
 opadd -e -n attribwrangle fit
-oplocate -x 1.5764338170501069 -y 2.4142941309686963 fit
+oplocate -x 1.57643 -y 2.4142899999999998 fit
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "sidefx::look" "blank" }          }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' fit
 opparm fit  bindings ( 0 ) groupbindings ( 0 )
 opparm fit folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'float min = detail(1, \'curvature\', 0); float max = detail(2, \'curvature\', 0);\n\n@curvature = fit(@curvature, min, max, 0, 1);' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 )
@@ -968,7 +968,7 @@ opuserdata -n '___Version___' -v '' fit
 
 # Node min (Sop/attribpromote)
 opadd -e -n attribpromote min
-oplocate -x 1.5764338170501069 -y 3.8449941578980744 min
+oplocate -x 1.57643 -y 3.8449900000000001 min
 opspareds "" min
 opparm -V 20.5.522 min inname ( curvature ) inclass ( point ) outclass ( detail ) usepieceattrib ( off ) pieceattrib ( name ) method ( min ) useoutname ( off ) outname ( "" ) deletein ( on )
 chlock min -*
@@ -979,7 +979,7 @@ opuserdata -n '___Version___' -v '20.5.522' min
 
 # Node max (Sop/attribpromote)
 opadd -e -n attribpromote max
-oplocate -x 3.8356338170501068 -y 3.3931941399451557 max
+oplocate -x 3.8356300000000001 -y 3.3931900000000002 max
 opspareds "" max
 opparm -V 20.5.522 max inname ( curvature ) inclass ( point ) outclass ( detail ) usepieceattrib ( off ) pieceattrib ( name ) method ( max ) useoutname ( off ) outname ( "" ) deletein ( on )
 chlock max -*
@@ -992,7 +992,7 @@ opcf ..
 
 # Node gradient (Sop/subnet)
 opadd -e -n subnet gradient
-oplocate -x 1.5 -y 1.8499999940395355 gradient
+oplocate -x 1.5 -y 1.8500000000000001 gradient
 opspareds '    groupsimple {         name    "gradient"         label   "Gradient"          parm {             name    "gradient_scalar"             label   "Scalar"             type    string             default { "value" }             parmtag { "script_callback_language" "python" }         }         parm {             name    "sepparm2"             label   "Separator"             type    separator             default { "" }         }         parm {             name    "gradient_distance"             label   "Distance"             type    float             default { "1" }             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "gradient_max"             label   "Max"             type    integer             default { "100" }             range   { 0 500 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "sepparm3"             label   "Separator"             type    separator             default { "" }         }         parm {             name    "gradient_direction"             label   "Direction"             type    ordinal             joinnext             default { "0" }             menu {                 "0" "Ascent"                 "1" "Descent"             }             parmtag { "script_callback_language" "python" }         }         parm {             name    "gradient_project"             label   "Project To Normal Plane"             type    toggle             joinnext             default { "on" }             parmtag { "script_callback_language" "python" }         }         parm {             name    "gradient_mask"             label   "Mask By Scalar"             type    toggle             default { "off" }             parmtag { "script_callback_language" "python" }         }     }      parm {         name    "label1"         baseparm         label   "Input #1 Label"         invisible         export  all     }     parm {         name    "label2"         baseparm         label   "Input #2 Label"         invisible         export  all     }     parm {         name    "label3"         baseparm         label   "Input #3 Label"         invisible         export  all     }     parm {         name    "label4"         baseparm         label   "Input #4 Label"         invisible         export  all     } ' gradient
 opparm -V 20.5.522 gradient label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) gradient ( 0 ) gradient_scalar ( value ) sepparm2 ( ) gradient_distance ( 1 ) gradient_max ( 100 ) sepparm3 ( ) gradient_direction ( 0 ) gradient_project ( on ) gradient_mask ( off )
 chlock gradient -*
@@ -1004,7 +1004,7 @@ opcf gradient
 
 # Node output0 (Sop/output)
 opadd -e -n output output0
-oplocate -x 1.8285529327421337 -y 3.8083235427334015 output0
+oplocate -x 1.8285499999999999 -y 3.8083200000000001 output0
 opspareds "" output0
 opparm -V 20.5.522 output0 outputidx ( 0 )
 chlock output0 -*
@@ -1015,7 +1015,7 @@ opuserdata -n '___Version___' -v '20.5.522' output0
 
 # Node gradient (Sop/attribwrangle)
 opadd -e -n attribwrangle gradient
-oplocate -x 1.8285529327421337 -y 4.9378235427334021 gradient
+oplocate -x 1.8285499999999999 -y 4.9378200000000003 gradient
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }      parm {         name    "Distance"         label   "Distance"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "Max"         label   "Max"         type    integer         default { "0" }         range   { 0 10 }     }     parm {         name    "Directionmode"         label   "Directionmode"         type    integer         default { "0" }         range   { 0 10 }     }     parm {         name    "Scalar"         label   "Scalar"         type    string         default { "" }     }     parm {         name    "Vector"         label   "Vector"         type    string         default { "" }     }     parm {         name    "ProjectMode"         label   "Projectmode"         type    integer         default { "0" }         range   { 0 10 }     }     parm {         name    "MultiplyByScalar"         label   "Multiplybyscalar"         type    integer         default { "0" }         range   { 0 10 }     } ' gradient
 opparm gradient  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -1041,7 +1041,7 @@ opcf ..
 
 # Node attributefunction (Sop/subnet)
 opadd -e -n subnet attributefunction
-oplocate -x 1.5 -y -0.15000000596046448 attributefunction
+oplocate -x 1.5 -y -0.14999999999999999 attributefunction
 opspareds '    groupsimple {         name    "IO"         label   "IO"          parm {             name    "Input"             label   "Input"             type    string             default { "x" }             parmtag { "autoscope" "0000000000000000" }             parmtag { "script_callback_language" "python" }         }         parm {             name    "Output"             label   "Output"             type    string             default { "" }             parmtag { "autoscope" "0000000000000000" }             parmtag { "script_callback_language" "python" }         }     }      groupsimple {         name    "functions"         label   "Functions"          parm {             name    "preset"             label   "Preset"             type    ordinal             default { "0" }             menu {                 "0" "Sine"             }             parmtag { "script_callback_language" "python" }         }         parm {             name    "sepparm"             label   "Separator"             type    separator             default { "" }         }         groupsimple {             name    "sine"             label   "Sine"              parm {                 name    "amp"                 label   "Amp"                 type    float                 default { "1" }                 range   { 0 1 }                 parmtag { "autoscope" "0000000000000000" }                 parmtag { "script_callback_language" "python" }             }             parm {                 name    "period"                 label   "Period"                 type    float                 default { "1" }                 range   { 0 1 }                 parmtag { "autoscope" "0000000000000000" }                 parmtag { "script_callback_language" "python" }             }             parm {                 name    "phase"                 label   "Phase"                 type    integer                 default { "0" }                 range   { 0 360 }                 parmtag { "autoscope" "1000000000000000" }                 parmtag { "script_callback_language" "python" }             }         }      }      parm {         name    "label1"         baseparm         label   "Input #1 Label"         invisible         export  all     }     parm {         name    "label2"         baseparm         label   "Input #2 Label"         invisible         export  all     }     parm {         name    "label3"         baseparm         label   "Input #3 Label"         invisible         export  all     }     parm {         name    "label4"         baseparm         label   "Input #4 Label"         invisible         export  all     } ' attributefunction
 opparm -V 20.5.522 attributefunction label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) IO ( 0 ) Input ( x ) Output ( "" ) functions ( 0 ) preset ( 0 ) sepparm ( ) sine ( 0 ) amp ( 1 ) period ( 1 ) phase ( 0 )
 chlock attributefunction -*
@@ -1053,7 +1053,7 @@ opcf attributefunction
 
 # Node output0 (Sop/output)
 opadd -e -n output output0
-oplocate -x 1.9155058839741876 -y 3.8888264786706235 output0
+oplocate -x 1.91551 -y 3.88883 output0
 opspareds "" output0
 opparm -V 20.5.522 output0 outputidx ( 0 )
 chlock output0 -*
@@ -1064,7 +1064,7 @@ opuserdata -n '___Version___' -v '20.5.522' output0
 
 # Node sine (Sop/attribwrangle)
 opadd -e -n attribwrangle sine
-oplocate -x 1.9155058839741876 -y 5.0183264786706241 sine
+oplocate -x 1.91551 -y 5.0183299999999997 sine
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }      parm {         name    "Input"         label   "Input"         type    string         default { "" }     }     parm {         name    "Output"         label   "Output"         type    string         default { "" }     }     parm {         name    "amp"         label   "Amp"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "period"         label   "Period"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "phase"         label   "Phase"         type    integer         default { "0" }         range   { 0 360 }     } ' sine
 opparm sine  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -1089,68 +1089,9 @@ opuserdata -n 'nodeshape' -v 'chevron_down' sine
 oporder -e output0 sine 
 opcf ..
 
-# Node attributenormalize (Sop/subnet)
-opadd -e -n subnet attributenormalize
-oplocate -x 1.5000000000000002 -y -1.1500000059604645 attributenormalize
-opspareds '    groupsimple {         name    "Main"         label   "Attribute Normalize"          parm {             name    "input"             label   "Input"             type    string             default { "" }             parmtag { "script_callback_language" "python" }         }         parm {             name    "output"             label   "Output"             type    string             default { "" }             parmtag { "script_callback_language" "python" }         }     }      parm {         name    "label1"         baseparm         label   "Input #1 Label"         invisible         export  all     }     parm {         name    "label2"         baseparm         label   "Input #2 Label"         invisible         export  all     }     parm {         name    "label3"         baseparm         label   "Input #3 Label"         invisible         export  all     }     parm {         name    "label4"         baseparm         label   "Input #4 Label"         invisible         export  all     } ' attributenormalize
-opparm -V 20.5.522 attributenormalize label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) Main ( 0 ) input ( "" ) output ( "" )
-chlock attributenormalize -*
-chautoscope attributenormalize -*
-opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off attributenormalize
-opexprlanguage -s hscript attributenormalize
-opuserdata -n '___Version___' -v '20.5.522' attributenormalize
-opcf attributenormalize
-
-# Node output0 (Sop/output)
-opadd -e -n output output0
-oplocate -x 0.91761028763834274 -y 2.9983617655582289 output0
-opspareds "" output0
-opparm -V 20.5.522 output0 outputidx ( 0 )
-chlock output0 -*
-chautoscope output0 -*
-opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off output0
-opexprlanguage -s hscript output0
-opuserdata -n '___Version___' -v '20.5.522' output0
-
-# Node fit (Sop/attribwrangle)
-opadd -e -n attribwrangle fit
-oplocate -x 0.91761028763834274 -y 4.1278617655582295 fit
-opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "Attribute"                 label   "Attribute"                 type    string                 default { "" }             }             parm {                 name    "Output"                 label   "Output"                 type    string                 default { "" }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' fit
-opparm fit  bindings ( 0 ) groupbindings ( 0 )
-opparm fit folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'string handle = chs(\'Attribute\'); string output = chs(\'Output\');\nfloat attribute = point(0, handle, @ptnum);\n\nfloat min = detail(1, handle, 0); float max = detail(2, handle, 0);\n\nfloat fit = fit(attribute, min, max, 0, 1); setpointattrib(0, output, @ptnum, fit, \'set\');' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 ) Attribute ( '`chs("../input")`' ) Output ( '`chs("../output")`' )
-chlock fit -*
-chautoscope fit -*
-opset -d on -r on -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off fit
-opexprlanguage -s hscript fit
-opuserdata -n '___Version___' -v '' fit
-
-# Node min (Sop/attribpromote)
-opadd -e -n attribpromote min
-oplocate -x 0.6978769543050094 -y 5.5585617924876072 min
-opspareds "" min
-opparm -V 20.5.522 min inname ( '`chs("../input")`' ) inclass ( point ) outclass ( detail ) usepieceattrib ( off ) pieceattrib ( name ) method ( min ) useoutname ( off ) outname ( "" ) deletein ( on )
-chlock min -*
-chautoscope min -*
-opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off min
-opexprlanguage -s hscript min
-opuserdata -n '___Version___' -v '20.5.522' min
-
-# Node max (Sop/attribpromote)
-opadd -e -n attribpromote max
-oplocate -x 2.9570769543050091 -y 5.1067617745346885 max
-opspareds "" max
-opparm -V 20.5.522 max inname ( '`chs("../input")`' ) inclass ( point ) outclass ( detail ) usepieceattrib ( off ) pieceattrib ( name ) method ( max ) useoutname ( off ) outname ( "" ) deletein ( on )
-chlock max -*
-chautoscope max -*
-opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off max
-opexprlanguage -s hscript max
-opuserdata -n '___Version___' -v '20.5.522' max
-oporder -e output0 fit min max 
-opcf ..
-
 # Node cluster (Sop/subnet)
 opadd -e -n subnet cluster
-oplocate -x 5.5 -y 2.8499999940395355 cluster
+oplocate -x 5.5 -y 2.8500000000000001 cluster
 opspareds '    groupsimple {         name    "Main"         label   "Cluster"          parm {             name    "clusters"             label   "Clusters"             type    integer             default { "10" }             range   { 1 20 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "iterations"             label   "Iterations"             type    integer             default { "50" }             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }     }      parm {         name    "label5"         label   "label5"         type    string         invisible         default { "Sub-Network Input #1" }         export  all     }     parm {         name    "label1"         baseparm         label   "Input #1 Label"         invisible         export  all     }     parm {         name    "label2"         baseparm         label   "Input #2 Label"         invisible         export  all     }     parm {         name    "label3"         baseparm         label   "Input #3 Label"         invisible         export  all     }     parm {         name    "label4"         baseparm         label   "Input #4 Label"         invisible         export  all     } ' cluster
 opparm -V 20.5.522 cluster label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) Main ( 0 ) clusters ( 10 ) iterations ( 50 ) label5 ( 'Sub-Network Input #1' )
 chlock cluster -*
@@ -1162,7 +1103,7 @@ opcf cluster
 
 # Node output0 (Sop/output)
 opadd -e -n output output0
-oplocate -x -1.2491999848365793 -y -0.80588235294117638 output0
+oplocate -x -1.2492000000000001 -y -0.80588199999999999 output0
 opspareds "" output0
 opparm -V 20.5.522 output0 outputidx ( 0 )
 chlock output0 -*
@@ -1173,7 +1114,7 @@ opuserdata -n '___Version___' -v '20.5.522' output0
 
 # Node attribwrangle9 (Sop/attribwrangle)
 opadd -e -n attribwrangle attribwrangle9
-oplocate -x 5.1462000016414553 -y 14.854904420294133 attribwrangle9
+oplocate -x 5.1462000000000003 -y 14.854900000000001 attribwrangle9
 opspareds "" attribwrangle9
 opparm attribwrangle9  bindings ( 0 ) groupbindings ( 0 )
 opparm attribwrangle9 folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( detail ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'addpoint(0,vector(point(1,\'P\',detail(2,\'iteration\',0))));' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -1185,7 +1126,7 @@ opuserdata -n '___Version___' -v '' attribwrangle9
 
 # Node attribwrangle14 (Sop/attribwrangle)
 opadd -e -n attribwrangle attribwrangle14
-oplocate -x 2.7462000016414554 -y 9.4422044202941322 attribwrangle14
+oplocate -x 2.7462 -y 9.4421999999999997 attribwrangle14
 opspareds "" attribwrangle14
 opparm attribwrangle14  bindings ( 0 ) groupbindings ( 0 )
 opparm attribwrangle14 folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'i@cluster = point(1,\'cluster\',nearpoint(1,@P));' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -1197,7 +1138,7 @@ opuserdata -n '___Version___' -v '' attribwrangle14
 
 # Node init_clusters1 (Sop/attribwrangle)
 opadd -e -n attribwrangle init_clusters1
-oplocate -x 5.1462000016414553 -y 11.605704420294131 init_clusters1
+oplocate -x 5.1462000000000003 -y 11.605700000000001 init_clusters1
 opspareds "" init_clusters1
 opparm init_clusters1  bindings ( 0 ) groupbindings ( 0 )
 opparm init_clusters1 folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'i@cluster = @ptnum;' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -1209,7 +1150,7 @@ opuserdata -n '___Version___' -v '' init_clusters1
 
 # Node tag_cluster1 (Sop/attribwrangle)
 opadd -e -n attribwrangle tag_cluster1
-oplocate -x 2.7462000016414554 -y 3.0216044202941319 tag_cluster1
+oplocate -x 2.7462 -y 3.0215999999999998 tag_cluster1
 opspareds "" tag_cluster1
 opparm tag_cluster1  bindings ( 0 ) groupbindings ( 0 )
 opparm tag_cluster1 folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'i@cluster = @ptnum;' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -1221,7 +1162,7 @@ opuserdata -n '___Version___' -v '' tag_cluster1
 
 # Node foreach_end4 (Sop/block_end)
 opadd -e -n block_end foreach_end4
-oplocate -x 5.1508000016414552 -y 13.770604420294132 foreach_end4
+oplocate -x 5.1508000000000003 -y 13.7706 foreach_end4
 opspareds "" foreach_end4
 chblockbegin
 chadd -t 41.666666666666664 41.666666666666664 foreach_end4 iterations
@@ -1237,7 +1178,7 @@ opuserdata -n '___Version___' -v '20.5.522' foreach_end4
 
 # Node foreach_begin5 (Sop/block_begin)
 opadd -e -n block_begin foreach_begin5
-oplocate -x 5.1508000016414552 -y 15.934804420294132 foreach_begin5
+oplocate -x 5.1508000000000003 -y 15.934799999999999 foreach_begin5
 opspareds "" foreach_begin5
 opparm -V 20.5.522 foreach_begin5 method ( input ) blockpath ( ../foreach_end4 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
 chlock foreach_begin5 -*
@@ -1249,7 +1190,7 @@ opuserdata -n '___Version___' -v '20.5.522' foreach_begin5
 
 # Node foreach_count3 (Sop/block_begin)
 opadd -e -n block_begin foreach_count3
-oplocate -x 7.5508000016414556 -y 15.934804420294132 foreach_count3
+oplocate -x 7.5507999999999997 -y 15.934799999999999 foreach_count3
 opspareds "" foreach_count3
 opparm -V 20.5.522 foreach_count3 method ( metadata ) blockpath ( ../foreach_end4 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
 chlock foreach_count3 -*
@@ -1261,7 +1202,7 @@ opuserdata -n '___Version___' -v '20.5.522' foreach_count3
 
 # Node compile_end3 (Sop/compile_end)
 opadd -e -n compile_end compile_end3
-oplocate -x 5.1508000016414552 -y 12.684904420294131 compile_end3
+oplocate -x 5.1508000000000003 -y 12.684900000000001 compile_end3
 opspareds "" compile_end3
 opparm -V 20.5.522 compile_end3 docompile ( on ) unload ( always ) primarypath ( "" ) forcerecompile ( 0 ) delayillegal ( off ) fallback ( off )
 chlock compile_end3 -*
@@ -1273,7 +1214,7 @@ opuserdata -n '___Version___' -v '20.5.522' compile_end3
 
 # Node compile_begin3 (Sop/compile_begin)
 opadd -e -n compile_begin compile_begin3
-oplocate -x 5.1508000016414552 -y 17.020504420294131 compile_begin3
+oplocate -x 5.1508000000000003 -y 17.020499999999998 compile_begin3
 opspareds "" compile_begin3
 opparm -V 20.5.522 compile_begin3 blockpath ( ../compile_end3 ) name ( "" ) optional ( off ) createbeginblock ( 0 )
 chlock compile_begin3 -*
@@ -1285,7 +1226,7 @@ opuserdata -n '___Version___' -v '20.5.522' compile_begin3
 
 # Node foreach_end5 (Sop/block_end)
 opadd -e -n block_end foreach_end5
-oplocate -x 2.7508000016414558 -y 5.1865044202941322 foreach_end5
+oplocate -x 2.7507999999999999 -y 5.1864999999999997 foreach_end5
 opspareds "" foreach_end5
 opparm -V 20.5.522 foreach_end5 itermethod ( pieces ) method ( merge ) iterations ( 10 ) startvalue ( 1 ) increment ( 1 ) class ( point ) useattrib ( on ) attrib ( cluster ) usemaxiter ( off ) maxiter ( 10 ) blockpath ( ../foreach_begin6 ) templatepath ( ../foreach_begin6 ) resetcookpass ( 0 ) dosinglepass ( off ) singlepass ( 0 ) stopcondition ( 0 ) multithread ( on )
 chlock foreach_end5 -*
@@ -1297,7 +1238,7 @@ opuserdata -n '___Version___' -v '20.5.522' foreach_end5
 
 # Node foreach_begin6 (Sop/block_begin)
 opadd -e -n block_begin foreach_begin6
-oplocate -x 2.7508000016414558 -y 7.2729044202941324 foreach_begin6
+oplocate -x 2.7507999999999999 -y 7.2728999999999999 foreach_begin6
 opspareds "" foreach_begin6
 opparm -V 20.5.522 foreach_begin6 method ( piece ) blockpath ( ../foreach_end5 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
 chlock foreach_begin6 -*
@@ -1309,7 +1250,7 @@ opuserdata -n '___Version___' -v '20.5.522' foreach_begin6
 
 # Node extractcentroid2 (Sop/extractcentroid)
 opadd -e -n extractcentroid extractcentroid2
-oplocate -x 2.7492000016414555 -y 6.2329044202941324 extractcentroid2
+oplocate -x 2.7492000000000001 -y 6.2328999999999999 extractcentroid2
 opspareds "" extractcentroid2
 opparm -V 20.5.522 extractcentroid2 partitiontype ( detail ) pieceattrib ( "" ) class ( prim ) method ( com ) output ( points ) centroidattrib ( centroid ) transferattributes ( "" ) transfergroups ( "" )
 chlock extractcentroid2 -*
@@ -1320,7 +1261,7 @@ opuserdata -n '___Version___' -v '20.5.522' extractcentroid2
 
 # Node compile_end4 (Sop/compile_end)
 opadd -e -n compile_end compile_end4
-oplocate -x 2.7508000016414558 -y 4.1008044202941321 compile_end4
+oplocate -x 2.7507999999999999 -y 4.1007999999999996 compile_end4
 opspareds "" compile_end4
 opparm -V 20.5.522 compile_end4 docompile ( on ) unload ( always ) primarypath ( "" ) forcerecompile ( 0 ) delayillegal ( off ) fallback ( off )
 chlock compile_end4 -*
@@ -1332,7 +1273,7 @@ opuserdata -n '___Version___' -v '20.5.522' compile_end4
 
 # Node compile_begin4 (Sop/compile_begin)
 opadd -e -n compile_begin compile_begin4
-oplocate -x 2.7508000016414558 -y 8.3586044202941316 compile_begin4
+oplocate -x 2.7507999999999999 -y 8.3585999999999991 compile_begin4
 opspareds "" compile_begin4
 opparm -V 20.5.522 compile_begin4 blockpath ( ../compile_end4 ) name ( "" ) optional ( off ) createbeginblock ( 0 )
 chlock compile_begin4 -*
@@ -1344,7 +1285,7 @@ opuserdata -n '___Version___' -v '20.5.522' compile_begin4
 
 # Node foreach_end6 (Sop/block_end)
 opadd -e -n block_end foreach_end6
-oplocate -x 2.7508000016414558 -y 1.937304420294133 foreach_end6
+oplocate -x 2.7507999999999999 -y 1.9373 foreach_end6
 opspareds "" foreach_end6
 chblockbegin
 chadd -t 41.666666666666664 41.666666666666664 foreach_end6 iterations
@@ -1360,7 +1301,7 @@ opuserdata -n '___Version___' -v '20.5.522' foreach_end6
 
 # Node foreach_begin7 (Sop/block_begin)
 opadd -e -n block_begin foreach_begin7
-oplocate -x 2.7508000016414558 -y 10.522104420294133 foreach_begin7
+oplocate -x 2.7507999999999999 -y 10.5221 foreach_begin7
 opspareds "" foreach_begin7
 opparm -V 20.5.522 foreach_begin7 method ( input ) blockpath ( ../foreach_end6 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
 chlock foreach_begin7 -*
@@ -1372,7 +1313,7 @@ opuserdata -n '___Version___' -v '20.5.522' foreach_begin7
 
 # Node foreach_begin8 (Sop/block_begin)
 opadd -e -n block_begin foreach_begin8
-oplocate -x 5.1508000016414552 -y 10.522104420294133 foreach_begin8
+oplocate -x 5.1508000000000003 -y 10.5221 foreach_begin8
 opspareds "" foreach_begin8
 opparm -V 20.5.522 foreach_begin8 method ( feedback ) blockpath ( ../foreach_end6 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
 chlock foreach_begin8 -*
@@ -1384,7 +1325,7 @@ opuserdata -n '___Version___' -v '20.5.522' foreach_begin8
 
 # Node attribwrangle1 (Sop/attribwrangle)
 opadd -e -n attribwrangle attribwrangle1
-oplocate -x -1.2537999983585451 -y 0.93985442029413235 attribwrangle1
+oplocate -x -1.2538 -y 0.93985399999999997 attribwrangle1
 opspareds "" attribwrangle1
 opparm attribwrangle1  bindings ( 0 ) groupbindings ( 0 )
 opparm attribwrangle1 folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'int t = nearpoint(1, @P); i@cluster = point(1, \'cluster\', t);' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -1398,7 +1339,7 @@ opuserdata -n '___toolid___' -v 'generic_delete' attribwrangle1
 
 # Node color1 (Sop/color)
 opadd -e -n color color1
-oplocate -x -1.2507999983585449 -y -0.059145579705868201 color1
+oplocate -x -1.2507999999999999 -y -0.0591456 color1
 opspareds "" color1
 opparm color1  ramp ( 2 )
 opparm color1 group ( "" ) grouptype ( guess ) deleteallcolorattribs ( off ) enable ( on ) class ( 2 ) colortype ( 4 ) color ( 1 1 1 ) seed ( 0 ) rampattribute ( cluster ) ramprange ( 0 1 ) ramp ( 2 ) ramp1pos ( 0 ) ramp1c ( 0 0 0 ) ramp1interp ( linear ) ramp2pos ( 1 ) ramp2c ( 1 1 1 ) ramp2interp ( linear )
@@ -1412,7 +1353,7 @@ opuserdata -n '___toolid___' -v 'sop_color' color1
 
 # Node output1 (Sop/output)
 opadd -e -n output output1
-oplocate -x 2.7508000016414558 -y -0.80588235294117627 output1
+oplocate -x 2.7507999999999999 -y -0.80588199999999999 output1
 opspareds "" output1
 opparm -V 20.5.522 output1 outputidx ( 1 )
 chlock output1 -*
@@ -1425,7 +1366,7 @@ opcf ..
 
 # Node curvefromanim (Sop/subnet)
 opadd -e -n subnet curvefromanim
-oplocate -x 5.5 -y 0.84999999403953552 curvefromanim
+oplocate -x 5.5 -y 0.84999999999999998 curvefromanim
 opspareds '    groupsimple {         name    "main"         label   "Animation Curve"          parm {             name    "start"             label   "Start"             type    integer             joinnext             default { "1" }             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "end"             label   "End"             type    integer             default { "120" }             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "segments"             label   "Segments"             type    float             default { "100" }             range   { 0 1 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "blast"             label   "Blast Out Of Bound"             type    toggle             joinnext             default { "on" }             parmtag { "script_callback_language" "python" }         }         parm {             name    "boundpad"             label   "Bound Pad"             type    float             default { "0.02" }             disablewhen "{ blast == 0 }"             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "snap"             label   "Snap To Object"             type    toggle             default { "on" }             parmtag { "script_callback_language" "python" }         }     }      parm {         name    "label1"         baseparm         label   "Input #1 Label"         invisible         export  all     }     parm {         name    "label2"         baseparm         label   "Input #2 Label"         invisible         export  all     }     parm {         name    "label3"         baseparm         label   "Input #3 Label"         invisible         export  all     }     parm {         name    "label4"         baseparm         label   "Input #4 Label"         invisible         export  all     } ' curvefromanim
 opparm -V 20.5.522 curvefromanim label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) main ( 0 ) start ( 1 ) end ( 120 ) segments ( 100 ) blast ( on ) boundpad ( 0.02 ) snap ( on )
 chlock curvefromanim -*
@@ -1437,7 +1378,7 @@ opcf curvefromanim
 
 # Node output0 (Sop/output)
 opadd -e -n output output0
-oplocate -x 6.3010646972598892 -y -0.96440299418288156 output0
+oplocate -x 6.3010599999999997 -y -0.96440300000000001 output0
 opspareds "" output0
 opparm -V 20.5.522 output0 outputidx ( 0 )
 chlock output0 -*
@@ -1448,7 +1389,7 @@ opuserdata -n '___Version___' -v '20.5.522' output0
 
 # Node extractcentroid2 (Sop/extractcentroid)
 opadd -e -n extractcentroid extractcentroid2
-oplocate -x 3.0534646972598898 -y 7.5444970596758765 extractcentroid2
+oplocate -x 3.0534599999999998 -y 7.5445000000000002 extractcentroid2
 opspareds "" extractcentroid2
 opparm -V 20.5.522 extractcentroid2 partitiontype ( pieces ) pieceattrib ( class ) class ( prim ) method ( com ) output ( points ) centroidattrib ( centroid ) transferattributes ( class ) transfergroups ( "" )
 chlock extractcentroid2 -*
@@ -1459,7 +1400,7 @@ opuserdata -n '___Version___' -v '20.5.522' extractcentroid2
 
 # Node solver1 (Sop/solver)
 opadd -e -n solver solver1
-oplocate -x 3.0534646972598898 -y 6.4149970596758763 solver1
+oplocate -x 3.0534599999999998 -y 6.415 solver1
 opspareds "" solver1
 chblockbegin
 chadd -t 0 0 solver1 startframe
@@ -1666,7 +1607,7 @@ opcf ../..
 
 # Node add1 (Sop/add)
 opadd -e -n add add1
-oplocate -x 3.0534646972598898 -y 4.155997059675876 add1
+oplocate -x 3.0534599999999998 -y 4.1559999999999997 add1
 opspareds "" add1
 opparm add1  points ( 0 ) prims ( 1 )
 opparm -V 20.5.522 add1 stdswitcher ( 1 1 1 ) keep ( off ) points ( 0 ) remove ( off ) switcher ( 1 1 ) prims ( 1 ) group ( "" ) add ( attribute ) inc ( 2 ) attrname ( class ) closedall ( off ) addparticlesystem ( off ) particlegroup ( "" ) appendunusedtoparticlesystem ( off ) prim0 ( "" ) closed0 ( off )
@@ -1678,7 +1619,7 @@ opuserdata -n '___Version___' -v '20.5.522' add1
 
 # Node resample1 (Sop/resample)
 opadd -e -n resample resample1
-oplocate -x 3.0534646972598898 -y 3.0264970596758758 resample1
+oplocate -x 3.0534599999999998 -y 3.0265 resample1
 opspareds "" resample1
 chblockbegin
 chadd -t 0 0 resample1 length
@@ -1695,7 +1636,7 @@ opuserdata -n '___Version___' -v '20.5.522' resample1
 
 # Node bound1 (Sop/bound)
 opadd -e -n bound bound1
-oplocate -x 5.8774646972598896 -y 7.3938970686523344 bound1
+oplocate -x 5.8774600000000001 -y 7.3939000000000004 bound1
 opspareds "" bound1
 opparm -V 20.5.522 bound1 group ( "" ) grouptype ( guess ) keepOriginal ( off ) createboundinggeo ( on ) createempty ( on ) separator ( ) boundtype ( off ) orientedbbox ( on ) refinementiterations ( 6 ) dodivs ( off ) divs ( 3 3 3 ) rebar ( off ) minsize ( 0 0 0 ) orient ( y ) accurate ( off ) minradius ( 0 ) orientedbrect ( off ) origin ( 0 0 0 ) dist ( 0 ) dir ( 0 1 0 ) minpad ( 0 0 0 ) maxpad ( 0 0 0 ) addboundsgroup ( off ) boundsgroup ( bounds ) addxformattrib ( off ) xformattrib ( xform ) addradiiattrib ( off ) radiiattrib ( radii )
 chlock bound1 -*
@@ -1706,7 +1647,7 @@ opuserdata -n '___Version___' -v '20.5.522' bound1
 
 # Node group1 (Sop/groupcreate)
 opadd -e -n groupcreate group1
-oplocate -x 5.8774646972598896 -y 4.8336970417229566 group1
+oplocate -x 5.8774600000000001 -y 4.8337000000000003 group1
 opspareds "" group1
 opparm -V 20.5.522 group1 groupname ( blast ) grouptype ( point ) mergeop ( replace ) folder0 ( 0 ) groupbase ( off ) basegroup ( "" ) ordered ( off ) geotype ( all ) switcher3 ( 0 ) groupbounding ( on ) boundtype ( usebobject ) size ( 1 1 1 ) t ( 0 0 0 ) initbounds ( 0 ) includenotwhollycontained ( off ) iso ( 0 ) invertvolume ( off ) switcher4 ( 0 ) groupnormal ( off ) camerapath ( "" ) nonplanar ( off ) nonplanartol ( 0.001 ) dir ( 0 0 1 ) angle ( 180 ) oppositenormals ( off ) switcher5 ( 0 ) groupedges ( off ) dominedgeangle ( off ) minedgeangle ( 20 ) domaxedgeangle ( off ) maxedgeangle ( 20 ) edgeanglebetweenedges ( off ) dominedgelen ( off ) minedgelen ( 0 ) domaxedgelen ( off ) maxedgelen ( 0 ) dodepth ( off ) edgestep ( 0 ) edgeptgrp ( 0 ) unshared ( off ) boundarygroups ( off ) switcher6 ( 0 ) grouprandom ( off ) globalseed ( 1 ) useseedattrib ( off ) seedattrib ( id ) percent ( 50 )
 chlock group1 -*
@@ -1717,7 +1658,7 @@ opuserdata -n '___Version___' -v '20.5.522' group1
 
 # Node blast1 (Sop/blast)
 opadd -e -n blast blast1
-oplocate -x 5.8774646972598896 -y 3.7041970417229559 blast1
+oplocate -x 5.8774600000000001 -y 3.7042000000000002 blast1
 opspareds "" blast1
 opparm -V 20.5.522 blast1 group ( blast ) grouptype ( guess ) computenorms ( off ) negate ( on ) fillhole ( off ) removegrp ( off )
 chlock blast1 -*
@@ -1728,7 +1669,7 @@ opuserdata -n '___Version___' -v '20.5.522' blast1
 
 # Node padding (Sop/attribwrangle)
 opadd -e -n attribwrangle padding
-oplocate -x 5.8774646972598896 -y 6.264397068652336 padding
+oplocate -x 5.8774600000000001 -y 6.2644000000000002 padding
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "sidefx::look" "blank" }              parm {                 name    "Padding"                 label   "Padding"                 type    float                 default { "0" }                 range   { 0 1 }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' padding
 opparm padding  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -1744,7 +1685,7 @@ opuserdata -n '___Version___' -v '' padding
 
 # Node snap (Sop/attribwrangle)
 opadd -e -n attribwrangle snap
-oplocate -x 6.3010646972598892 -y 0.16509700581711834 snap
+oplocate -x 6.3010599999999997 -y 0.16509699999999999 snap
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "sidefx::look" "blank" }              parm {                 name    "Mode"                 label   "Mode"                 type    integer                 default { "0" }                 range   { 0 10 }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' snap
 opparm snap  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -1760,7 +1701,7 @@ opuserdata -n '___Version___' -v '' snap
 
 # Node timeshift (Sop/timeshift)
 opadd -e -n timeshift timeshift
-oplocate -x 3.0534646972598898 -y 5.2854970596758761 timeshift
+oplocate -x 3.0534599999999998 -y 5.2854999999999999 timeshift
 opspareds "" timeshift
 chblockbegin
 chadd -t 0 0 timeshift frame
@@ -1785,7 +1726,7 @@ opuserdata -n '___Version___' -v '20.5.522' timeshift
 
 # Node groupdelete1 (Sop/groupdelete)
 opadd -e -n groupdelete groupdelete1
-oplocate -x 5.8774646972598896 -y 2.5746970417229567 groupdelete1
+oplocate -x 5.8774600000000001 -y 2.5747 groupdelete1
 opspareds "" groupdelete1
 opparm groupdelete1  deletions ( 1 )
 opparm -V 20.5.522 groupdelete1 deletions ( 1 ) removegrp ( off ) selection_folder ( 0 ) selectiongroup ( "" ) selectiongrouptype ( guess ) enable1 ( on ) grouptype1 ( any ) group1 ( blast )
@@ -1797,7 +1738,7 @@ opuserdata -n '___Version___' -v '20.5.522' groupdelete1
 
 # Node switch1 (Sop/switch)
 opadd -e -n switch switch1
-oplocate -x 4.4654646972598897 -y 1.5957970327464972 switch1
+oplocate -x 4.4654600000000002 -y 1.5958000000000001 switch1
 opspareds "" switch1
 chblockbegin
 chadd -t 0 0 switch1 input
@@ -1814,7 +1755,7 @@ opuserdata -n 'nodeshape' -v 'circle' switch1
 
 # Node connectivity1 (Sop/connectivity)
 opadd -e -n connectivity connectivity1
-oplocate -x 3.0534646972598898 -y 8.6739970596758749 connectivity1
+oplocate -x 3.0534599999999998 -y 8.6739999999999995 connectivity1
 opspareds "" connectivity1
 opparm -V 20.5.522 connectivity1 connecttype ( prim ) primincgroup ( "" ) pointincgroup ( "" ) attribname ( class ) attribtype ( int ) prefix ( piece ) createvarmap ( off ) varname ( "" ) seamgroup ( "" ) byuv ( off ) uvattrib ( uv )
 chlock connectivity1 -*
@@ -1827,7 +1768,7 @@ opcf ..
 
 # Node matrixcurve (Sop/subnet)
 opadd -e -n subnet matrixcurve
-oplocate -x 9.5 -y 2.8499999940395355 matrixcurve
+oplocate -x 9.5 -y 2.8500000000000001 matrixcurve
 opspareds '    groupsimple {         name    "main"         label   "Scope Curve Matrix"          parm {             name    "mode"             label   "Mode"             type    ordinal             default { "0" }             menu {                 "0" "Orthogonal"                 "1" "Parallel Transport"             }             parmtag { "script_callback_language" "python" }         }         parm {             name    "up"             label   "Up"             type    vector             size    3             default { "0" "1" "0" }             range   { -1 1 }             parmtag { "script_callback_language" "python" }         }     }      parm {         name    "label1"         baseparm         label   "Input #1 Label"         invisible         export  all     }     parm {         name    "label2"         baseparm         label   "Input #2 Label"         invisible         export  all     }     parm {         name    "label3"         baseparm         label   "Input #3 Label"         invisible         export  all     }     parm {         name    "label4"         baseparm         label   "Input #4 Label"         invisible         export  all     } ' matrixcurve
 opparm -V 20.5.522 matrixcurve label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) main ( 0 ) mode ( 0 ) up ( 0 1 0 )
 chlock matrixcurve -*
@@ -1839,7 +1780,7 @@ opcf matrixcurve
 
 # Node output0 (Sop/output)
 opadd -e -n output output0
-oplocate -x 2.3541999915656628 -y 1.8324058928850815 output0
+oplocate -x 2.3542000000000001 -y 1.8324100000000001 output0
 opspareds "" output0
 opparm -V 20.5.522 output0 outputidx ( 0 )
 chlock output0 -*
@@ -1850,7 +1791,7 @@ opuserdata -n '___Version___' -v '20.5.522' output0
 
 # Node init_z (Sop/attribwrangle)
 opadd -e -n attribwrangle init_z
-oplocate -x 0.94219999156566292 -y 5.5221059198144609 init_z
+oplocate -x 0.94220000000000004 -y 5.5221099999999996 init_z
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "sidefx::look" "blank" }          }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' init_z
 opparm init_z  bindings ( 0 ) groupbindings ( 0 )
 opparm init_z folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'int set = npoints(0); int next = @ptnum + 1;\n\n//\nv@z;\nif ( @ptnum != set - 1 ) @z = normalize(point(0, \'P\', next) - @P);\nelse @z = normalize(@P - point(0, \'P\', @ptnum -1));' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 )
@@ -1862,7 +1803,7 @@ opuserdata -n '___Version___' -v '' init_z
 
 # Node init_x (Sop/attribwrangle)
 opadd -e -n attribwrangle init_x
-oplocate -x 3.7661999915656628 -y 5.0703059018615413 init_x
+oplocate -x 3.7662 -y 5.0703100000000001 init_x
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "sidefx::look" "blank" }              parm {                 name    "World"                 label   "World"                 type    vector                 size    3                 default { "0" "0" "0" }                 range   { 0 1 }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' init_x
 opparm init_x  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -1882,7 +1823,7 @@ opuserdata -n '___Version___' -v '' init_x
 
 # Node parallel_transport (Sop/attribwrangle)
 opadd -e -n attribwrangle parallel_transport
-oplocate -x 3.7661999915656628 -y 3.9408059018615416 parallel_transport
+oplocate -x 3.7662 -y 3.9408099999999999 parallel_transport
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "sidefx::look" "blank" }          }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' parallel_transport
 opparm parallel_transport  bindings ( 0 ) groupbindings ( 0 )
 opparm parallel_transport folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( detail ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'for ( int i = 0; i < npoints(0) - 1; i ++ ) {\n\n    vector x  = point(0, \'x\', i);\n    vector z0 = point(0, \'z\', i);\n    vector z1 = point(0, \'z\', i+ 1);\n\n    // rotation axis\n    vector b = cross(z0, z1);\n\n    // if my and the next points z are the same, our x is also the same\n    if ( length(b) == 0 ) setpointattrib(0, \'x\', i + 1, x, \'set\');\n    //\n    else {\n    b = normalize(b);\n    float theta = acos(dot(z0, z1));\n    matrix3 R = ident(); rotate(R, theta, b);\n    vector newx = R * x; setpointattrib(0, \'x\', i + 1, newx, \'set\');\n    \n    // find y, make matrix\n    vector y = cross(x, z0) ; setpointattrib(0, \'y\', i, y, \'set\');\n    matrix3 T = set(x, y, z0); setpointattrib(0, \'xform\', i, T, \'set\');\n        }\n                                        }\n        \n\n\n\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 )
@@ -1894,7 +1835,7 @@ opuserdata -n '___Version___' -v '' parallel_transport
 
 # Node orthogonal (Sop/attribwrangle)
 opadd -e -n attribwrangle orthogonal
-oplocate -x 0.94219999156566292 -y 4.3926059198144607 orthogonal
+oplocate -x 0.94220000000000004 -y 4.3926100000000003 orthogonal
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "sidefx::look" "blank" }              parm {                 name    "World"                 label   "World"                 type    vector                 size    3                 default { "0" "0" "0" }                 range   { 0 1 }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' orthogonal
 opparm orthogonal  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -1914,7 +1855,7 @@ opuserdata -n '___Version___' -v '' orthogonal
 
 # Node switch1 (Sop/switch)
 opadd -e -n switch switch1
-oplocate -x 2.3541999915656628 -y 2.9619058928850817 switch1
+oplocate -x 2.3542000000000001 -y 2.96191 switch1
 opspareds "" switch1
 chblockbegin
 chadd -t 0 0 switch1 input
@@ -1933,7 +1874,7 @@ opcf ..
 
 # Node solvercurveadvect (Sop/subnet)
 opadd -e -n subnet solvercurveadvect
-oplocate -x 1.4999999999999998 -y -4.1500000059604645 solvercurveadvect
+oplocate -x 1.5 -y -4.1500000000000004 solvercurveadvect
 opspareds '    groupsimple {         name    "main"         label   "Curve Solver"          parm {             name    "mode"             label   "Mode"             type    ordinal             default { "0" }             menu {                 "0" "Vector Field"                 "1" "Space Colony"             }             parmtag { "script_callback_language" "python" }         }         parm {             name    "sepparm4"             label   "Spacer"             type    separator             default { "" }             parmtag { "sidefx::layout_height" "small" }             parmtag { "sidefx::look" "blank" }         }         groupsimple {             name    "vectorfield"             label   "Vector Field"             hidewhen "{ mode != 0 }"              parm {                 name    "sepparm3"                 label   "Separator"                 type    separator                 default { "" }             }             parm {                 name    "amp"                 label   "Amplitude"                 type    float                 default { "0.001" }                 range   { 0 10 }                 parmtag { "script_callback_language" "python" }             }             parm {                 name    "distance"                 label   "Distance"                 type    float                 default { "1" }                 range   { 0 10 }                 parmtag { "script_callback_language" "python" }             }             parm {                 name    "max"                 label   "Max"                 type    integer                 default { "10" }                 range   { 0 100 }                 parmtag { "script_callback_language" "python" }             }             parm {                 name    "sepparm"                 label   "Separator"                 type    separator                 default { "" }             }             parm {                 name    "normfield"                 label   "Normalize Field"                 type    toggle                 joinnext                 default { "on" }                 parmtag { "script_callback_language" "python" }             }             parm {                 name    "snapmode"                 label   "Snap To Surface"                 type    toggle                 default { "off" }                 parmtag { "script_callback_language" "python" }             }         }          groupsimple {             name    "spacecolony"             label   "Space Colony"             hidewhen "{ mode != 1 }"              parm {                 name    "searchradius"                 label   "Search Radius"                 type    float                 default { "0.1" }                 range   { 0 10 }                 parmtag { "script_callback_language" "python" }             }             parm {                 name    "seeddiameter"                 label   "Seed Diameter"                 type    float                 default { "0.001" }                 range   { 0 10 }                 parmtag { "script_callback_language" "python" }             }             parm {                 name    "killradius"                 label   "Kill Radius"                 type    float                 default { "0.01" }                 range   { 0 10 }                 parmtag { "script_callback_language" "python" }             }         }      }      groupsimple {         name    "framehold2"         label   "Frame Hold"          parm {             name    "framehold"             label   "Hold"             type    toggle             default { "off" }             parmtag { "script_callback_language" "python" }         }         parm {             name    "frame"             label   "Frame"             type    integer             default { "120" }             hidewhen "{ framehold != 1 }"             range   { 1 120 }             parmtag { "script_callback_language" "python" }         }     }      parm {         name    "label1"         baseparm         label   "Input #1 Label"         invisible         export  all     }     parm {         name    "label2"         baseparm         label   "Input #2 Label"         invisible         export  all     }     parm {         name    "label3"         baseparm         label   "Input #3 Label"         invisible         export  all     }     parm {         name    "label4"         baseparm         label   "Input #4 Label"         invisible         export  all     } ' solvercurveadvect
 opparm -V 20.5.522 solvercurveadvect label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) main ( 0 ) mode ( 0 ) sepparm4 ( ) vectorfield ( 0 ) sepparm3 ( ) amp ( 0.001 ) distance ( 1 ) max ( 10 ) sepparm ( ) normfield ( on ) snapmode ( off ) spacecolony ( 0 ) searchradius ( 0.1 ) seeddiameter ( 0.001 ) killradius ( 0.01 ) framehold2 ( 0 ) framehold ( off ) frame ( 120 )
 chlock solvercurveadvect -*
@@ -1945,7 +1886,7 @@ opcf solvercurveadvect
 
 # Node output0 (Sop/output)
 opadd -e -n output output0
-oplocate -x 2.986094119268305 -y 1.1470588235294117 output0
+oplocate -x 2.9860899999999999 -y 1.1470599999999997 output0
 opspareds "" output0
 opparm -V 20.5.522 output0 outputidx ( 0 )
 chlock output0 -*
@@ -1956,7 +1897,7 @@ opuserdata -n '___Version___' -v '20.5.522' output0
 
 # Node init (Sop/attribwrangle)
 opadd -e -n attribwrangle init
-oplocate -x -1.0185058942536607 -y 7.1478853070339721 init
+oplocate -x -2.5029999965336174 -y 7.8490000069141397 init
 opspareds "" init
 opparm init  bindings ( 0 ) groupbindings ( 0 )
 opparm init folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'int hasfield = haspointattrib(1, \'field\');\nif ( hasfield == 0 ) error(\'Second input does not have a field attribute.\');\n\ni@id = @ptnum; i@leader = 1;' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -1968,7 +1909,7 @@ opuserdata -n '___Version___' -v '' init
 
 # Node vectorfield (Sop/solver)
 opadd -e -n solver vectorfield
-oplocate -x -1.0155058942536606 -y 5.1488853070339724 vectorfield
+oplocate -x -2.3795099999999998 -y 6.2674600538587582 vectorfield
 opspareds "" vectorfield
 opparm vectorfield resimulate ( 0 ) useinitialsop ( off ) initialsop ( "" ) startframe ( 1 ) substep ( 1 ) cacheenabled ( on ) cachetodisk ( off ) cachemaxsize ( 5000 )
 chlock vectorfield -*
@@ -2045,7 +1986,7 @@ opuserdata -n '___Version___' -v '20.5.522' Input_8
 
 # Node Prev_Frame1 (Sop/dopimport::2.0)
 opadd -e -n dopimport::2.0 Prev_Frame1
-oplocate -x 0 -y 0 Prev_Frame1
+oplocate -x 0.0012500286102295408 -y -2.447058823529412 Prev_Frame1
 opspareds "" Prev_Frame1
 chblockbegin
 chadd -t 0 0 Prev_Frame1 integrateovertime
@@ -2060,7 +2001,7 @@ opuserdata -n '___Version___' -v '20.5.522' Prev_Frame1
 
 # Node OUT1 (Sop/output)
 opadd -e -n output OUT1
-oplocate -x 0 -y 0 OUT1
+oplocate -x -1.7294117647058826 -y -1.0117647058823531 OUT1
 opspareds "" OUT1
 chblockbegin
 chadd -t 0 0 OUT1 outputidx
@@ -2189,7 +2130,7 @@ opuserdata -n '___Version___' -v '20.5.522' merge1
 
 # Node null_leader (Sop/attribwrangle)
 opadd -e -n attribwrangle null_leader
-oplocate -x 3.4969999999999999 -y -5.1509999999999998 null_leader
+oplocate -x 2.485235294117647 -y -4.1509999930858612 null_leader
 opspareds "" null_leader
 opparm null_leader  bindings ( 0 ) groupbindings ( 0 )
 opparm null_leader folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'i@leader = 0;' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -2219,7 +2160,7 @@ opcf ../..
 
 # Node line (Sop/add)
 opadd -e -n add line
-oplocate -x -1.0155058942536606 -y 4.1488853070339724 line
+oplocate -x -2.3795099999999998 -y 5.137960053858758 line
 opspareds "" line
 opparm line  points ( 0 ) prims ( 1 )
 opparm -V 20.5.522 line stdswitcher ( 1 1 1 ) keep ( off ) points ( 0 ) remove ( off ) switcher ( 1 1 ) prims ( 1 ) group ( "" ) add ( attribute ) inc ( 2 ) attrname ( id ) closedall ( off ) addparticlesystem ( off ) particlegroup ( "" ) appendunusedtoparticlesystem ( off ) prim0 ( "" ) closed0 ( off )
@@ -2231,7 +2172,7 @@ opuserdata -n '___Version___' -v '20.5.522' line
 
 # Node switch1 (Sop/switch)
 opadd -e -n switch switch1
-oplocate -x -1.0155058942536606 -y 3.1486853070339724 switch1
+oplocate -x -0.68510999999999989 -y 3.7072600269293789 switch1
 opspareds "" switch1
 chblockbegin
 chadd -t 0 0 switch1 input
@@ -2247,7 +2188,7 @@ opuserdata -n '___Version___' -v '20.5.522' switch1
 
 # Node timeshift1 (Sop/timeshift)
 opadd -e -n timeshift timeshift1
-oplocate -x 0.98449410574633944 -y 3.1488853070339724 timeshift1
+oplocate -x 1.00929 -y 4.6861600359058384 timeshift1
 opspareds "" timeshift1
 chblockbegin
 chadd -t 0 0 timeshift1 frame
@@ -2272,7 +2213,7 @@ opuserdata -n '___Version___' -v '20.5.522' timeshift1
 
 # Node switch2 (Sop/switch)
 opadd -e -n switch switch2
-oplocate -x 2.9844941057463394 -y 2.1486853070339724 switch2
+oplocate -x 2.9860899999999999 -y 2.2765599999999999 switch2
 opspareds "" switch2
 chblockbegin
 chadd -t 0 0 switch2 input
@@ -2288,7 +2229,7 @@ opuserdata -n '___Version___' -v '20.5.522' switch2
 
 # Node initfood (Sop/attribwrangle)
 opadd -e -n attribwrangle initfood
-oplocate -x 4.9814941057463393 -y 7.1478853070339721 initfood
+oplocate -x 7.4970000034663826 -y 7.8490000069141397 initfood
 opspareds "" initfood
 opparm initfood  bindings ( 0 ) groupbindings ( 0 )
 opparm initfood folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'int t = npoints(1);\nfor ( int i; i < t; i++ ) {\n    vector p = point(1, \'P\', i);\n    if ( @P == p ) removepoint(0, @ptnum);\n                     }\n\ni@group_food = 1; i@food = 1;                    ' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -2300,7 +2241,7 @@ opuserdata -n '___Version___' -v '' initfood
 
 # Node spacecolony (Sop/solver)
 opadd -e -n solver spacecolony
-oplocate -x 4.9844941057463394 -y 5.1488853070339724 spacecolony
+oplocate -x 4.9628899999999989 -y 5.8156600359058386 spacecolony
 opspareds "" spacecolony
 opparm spacecolony resimulate ( 0 ) useinitialsop ( off ) initialsop ( "" ) startframe ( 1 ) substep ( 1 ) cacheenabled ( on ) cachetodisk ( off ) cachemaxsize ( 5000 )
 chlock spacecolony -*
@@ -2540,7 +2481,7 @@ opcf ../..
 
 # Node initseed (Sop/attribwrangle)
 opadd -e -n attribwrangle initseed
-oplocate -x 2.9814941057463393 -y 7.1478853070339721 initseed
+oplocate -x 3.4970000034663822 -y 7.8490000069141388 initseed
 opspareds "" initseed
 opparm initseed  bindings ( 0 ) groupbindings ( 0 )
 opparm initseed folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'i@group_seed = 1; i@seed = 1;' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -2552,7 +2493,7 @@ opuserdata -n '___Version___' -v '' initseed
 
 # Node merge1 (Sop/merge)
 opadd -e -n merge merge1
-oplocate -x 4.9833441057463395 -y 6.1520353070339722 merge1
+oplocate -x 4.9628899999999989 -y 6.9451600359058387 merge1
 opspareds "" merge1
 opparm -V 20.5.522 merge1
 chlock merge1 -*
@@ -2563,7 +2504,7 @@ opuserdata -n '___Version___' -v '20.5.522' merge1
 
 # Node blastfood (Sop/attribwrangle)
 opadd -e -n attribwrangle blastfood
-oplocate -x 4.9814941057463393 -y 4.1478853070339721 blastfood
+oplocate -x 4.9628899999999989 -y 4.6861600359058384 blastfood
 opspareds "" blastfood
 opparm blastfood  bindings ( 0 ) groupbindings ( 0 )
 opparm blastfood folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'removepoint(0, i@seed != 1 ? @ptnum : -1);' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -2575,7 +2516,7 @@ opuserdata -n '___Version___' -v '' blastfood
 
 # Node switch3 (Sop/switch)
 opadd -e -n switch switch3
-oplocate -x 4.9844941057463394 -y 3.1486853070339724 switch3
+oplocate -x 6.6572899999999988 -y 3.2554600089764594 switch3
 opspareds "" switch3
 chblockbegin
 chadd -t 0 0 switch3 input
@@ -2591,7 +2532,7 @@ opuserdata -n '___Version___' -v '20.5.522' switch3
 
 # Node timeshift2 (Sop/timeshift)
 opadd -e -n timeshift timeshift2
-oplocate -x 6.9844941057463394 -y 3.1488853070339724 timeshift2
+oplocate -x 8.3516899999999978 -y 4.2343600179529197 timeshift2
 opspareds "" timeshift2
 chblockbegin
 chadd -t 0 0 timeshift2 frame
@@ -2618,7 +2559,7 @@ opcf ..
 
 # Node deformerripple (Sop/subnet)
 opadd -e -n subnet deformerripple
-oplocate -x 1.5 -y -7.1500000059604645 deformerripple
+oplocate -x 1.5 -y -7.1500000000000004 deformerripple
 opspareds '    groupsimple {         name    "Main"         label   "Ripple Deformer"          parm {             name    "amp"             label   "Amplitude"             type    float             default { "0.1" }             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "speed"             label   "Speed"             type    float             default { "1" }             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "freq"             label   "Frequency"             type    float             default { "10" }             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "distance"             label   "Distance"             type    vector2             size    2             default { "0" "1" }             range   { -1 1 }             parmtag { "script_callback_language" "python" }         }         groupsimple {             name    "curvature"             label   "Curvature"              parm {                 name    "range"                 label   "Range"                 type    vector2                 size    2                 default { "0.7" "1" }                 range   { -1 1 }                 parmtag { "script_callback_language" "python" }             }         }      }      parm {         name    "label1"         baseparm         label   "Input #1 Label"         invisible         export  all     }     parm {         name    "label2"         baseparm         label   "Input #2 Label"         invisible         export  all     }     parm {         name    "label3"         baseparm         label   "Input #3 Label"         invisible         export  all     }     parm {         name    "label4"         baseparm         label   "Input #4 Label"         invisible         export  all     } ' deformerripple
 opparm -V 20.5.522 deformerripple label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) Main ( 0 ) amp ( 0.1 ) speed ( 1 ) freq ( 10 ) distance ( 0 1 ) curvature ( 0 ) range ( 0.7 1 )
 chlock deformerripple -*
@@ -2630,7 +2571,7 @@ opcf deformerripple
 
 # Node output0 (Sop/output)
 opadd -e -n output output0
-oplocate -x 3.0802117663271282 -y 2.276470588235294 output0
+oplocate -x 3.0802100000000001 -y 2.2764700000000002 output0
 opspareds "" output0
 opparm -V 20.5.522 output0 outputidx ( 0 )
 chlock output0 -*
@@ -2641,7 +2582,7 @@ opuserdata -n '___Version___' -v '20.5.522' output0
 
 # Node attribwrangle1 (Sop/attribwrangle)
 opadd -e -n attribwrangle attribwrangle1
-oplocate -x 3.0756117562715453 -y 4.1437058956745787 attribwrangle1
+oplocate -x 3.0756100000000002 -y 4.1437099999999996 attribwrangle1
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }     }      parm {         name    "Amplitude"         label   "Amplitude"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "Speed"         label   "Speed"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "Minrange"         label   "Minrange"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "Maxrange"         label   "Maxrange"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "Frequency"         label   "Frequency"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "vex_precision"         baseparm         label   "VEX Precision"         export  none     } ' attribwrangle1
 opparm attribwrangle1  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -2665,7 +2606,7 @@ opuserdata -n '___Version___' -v '' attribwrangle1
 
 # Node attribwrangle2 (Sop/attribwrangle)
 opadd -e -n attribwrangle attribwrangle2
-oplocate -x 3.0756117562715453 -y 3.1437058956745787 attribwrangle2
+oplocate -x 3.0756100000000002 -y 3.14371 attribwrangle2
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }     }      parm {         name    "Min"         label   "Min"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "Max"         label   "Max"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "vex_precision"         baseparm         label   "VEX Precision"         export  none     } ' attribwrangle2
 opparm attribwrangle2  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -2685,7 +2626,7 @@ opcf ..
 
 # Node solverdecay (Sop/subnet)
 opadd -e -n subnet solverdecay
-oplocate -x 1.5000000000000002 -y -5.1500000059604645 solverdecay
+oplocate -x 1.5 -y -5.1500000000000004 solverdecay
 opspareds '    groupsimple {         name    "Main"         label   "Decay Solver"          parm {             name    "attribute"             label   "Attribute"             type    string             default { "" }             parmtag { "editor" "0" }             parmtag { "script_callback_language" "python" }         }         parm {             name    "sepparm"             label   "Separator"             type    separator             default { "" }         }         parm {             name    "startframe"             label   "Start Frame"             type    integer             default { "1" }             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "percent"             label   "Percent"             type    float             default { "0.9" }             range   { 0 2 }         }     }      parm {         name    "label1"         baseparm         label   "Input #1 Label"         invisible         export  all     }     parm {         name    "label2"         baseparm         label   "Input #2 Label"         invisible         export  all     }     parm {         name    "label3"         baseparm         label   "Input #3 Label"         invisible         export  all     }     parm {         name    "label4"         baseparm         label   "Input #4 Label"         invisible         export  all     } ' solverdecay
 opparm -V 20.5.522 solverdecay label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) Main ( 0 ) attribute ( "" ) sepparm ( ) startframe ( 1 ) percent ( 0.9 )
 chlock solverdecay -*
@@ -2708,7 +2649,7 @@ opuserdata -n '___Version___' -v '20.5.522' output0
 
 # Node solver1 (Sop/solver)
 opadd -e -n solver solver1
-oplocate -x 1.7256705763345748 -y 4.7270588239764457 solver1
+oplocate -x 1.72567 -y 4.7270599999999998 solver1
 opspareds "" solver1
 chblockbegin
 chadd -t 0 0 solver1 startframe
@@ -2921,7 +2862,7 @@ opcf ..
 
 # Node isolatecorners (Sop/subnet)
 opadd -e -n subnet isolatecorners
-oplocate -x 9.5 -y -3.1500000059604645 isolatecorners
+oplocate -x 9.5 -y -3.1499999999999999 isolatecorners
 opspareds '    groupsimple {         name    "Main"         label   "Isolate Corners"          parm {             name    "counts"             label   "Count"             type    integer             default { "4" }             help    "Corners can not be connected to more then or equal to this many other points."             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "degrees"             label   "Degrees"             type    float             default { "179" }             help    "The angle between any pair of edge vectors can not be equal to or greater then this amount."             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }     }      parm {         name    "label1"         baseparm         label   "Input #1 Label"         invisible         export  all     }     parm {         name    "label2"         baseparm         label   "Input #2 Label"         invisible         export  all     }     parm {         name    "label3"         baseparm         label   "Input #3 Label"         invisible         export  all     }     parm {         name    "label4"         baseparm         label   "Input #4 Label"         invisible         export  all     } ' isolatecorners
 opparm -V 20.5.522 isolatecorners label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) Main ( 0 ) counts ( 4 ) degrees ( 179 )
 chlock isolatecorners -*
@@ -2944,7 +2885,7 @@ opuserdata -n '___Version___' -v '20.5.522' output0
 
 # Node isolate_corners (Sop/attribwrangle)
 opadd -e -n attribwrangle isolate_corners
-oplocate -x 1.5814941092127217 -y 4.9142941309686963 isolate_corners
+oplocate -x 1.5814900000000001 -y 4.9142900000000003 isolate_corners
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "sidefx::look" "blank" }              parm {                 name    "CountThreshold"                 label   "Countthreshold"                 type    integer                 default { "0" }                 range   { 0 10 }             }             parm {                 name    "Degrees"                 label   "Degrees"                 type    float                 default { "0" }                 range   { 0 1 }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' isolate_corners
 opparm isolate_corners  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -2964,7 +2905,7 @@ opcf ..
 
 # Node matrixconstruct (Sop/subnet)
 opadd -e -n subnet matrixconstruct
-oplocate -x 9.5 -y 1.8499999940395355 matrixconstruct
+oplocate -x 9.5 -y 1.8500000000000001 matrixconstruct
 opspareds '    groupsimple {         name    "Main"         label   "Matrix Construct"          parm {             name    "type"             label   "Geometry Type"             type    ordinal             default { "2" }             menu {                 "0" "Curve"                 "1" "Plane"                 "2" "Object"             }             parmtag { "script_callback_language" "python" }         }         parm {             name    "sepparm"             label   "Separator"             type    separator             default { "" }         }         groupsimple {             name    "curvefolder"             label   "Curve"             hidewhen "{ type != 0 }"              parm {                 name    "curvemode"                 label   "Mode"                 type    ordinal                 joinnext                 default { "0" }                 menu {                     "0" "Orthogonal"                     "1" "Parallel Transport"                 }                 parmtag { "script_callback_language" "python" }             }             parm {                 name    "curveup"                 label   "Up"                 type    vector                 size    3                 default { "0" "1" "0" }                 range   { -1 1 }                 parmtag { "script_callback_language" "python" }             }         }          groupsimple {             name    "plane"             label   "Plane"             hidewhen "{ type != 1 }"          }          groupsimple {             name    "object"             label   "Object"             hidewhen "{ type != 2 }"              parm {                 name    "holdframe"                 label   "Hold Frame"                 type    integer                 default { "1" }                 range   { 1 10 }                 parmtag { "script_callback_language" "python" }             }             parm {                 name    "sepparm2"                 label   "Separator"                 type    separator                 default { "" }             }             parm {                 name    "x"                 label   "X"                 type    integer                 joinnext                 default { "2" }                 range   { 0 2 }                 parmtag { "script_callback_language" "python" }             }             parm {                 name    "newparameter4"                 label   "Invert X"                 type    toggle                 nolabel                 default { "off" }                 parmtag { "script_callback_language" "python" }             }             parm {                 name    "y"                 label   "Y"                 type    integer                 joinnext                 default { "1" }                 range   { 0 2 }                 parmtag { "script_callback_language" "python" }             }             parm {                 name    "newparameter5"                 label   "Invert Y"                 type    toggle                 nolabel                 default { "on" }                 parmtag { "script_callback_language" "python" }             }             parm {                 name    "z"                 label   "Z"                 type    integer                 joinnext                 default { "0" }                 range   { 0 2 }                 parmtag { "script_callback_language" "python" }             }             parm {                 name    "newparameter6"                 label   "Invert Z"                 type    toggle                 nolabel                 default { "off" }                 parmtag { "script_callback_language" "python" }             }             parm {                 name    "sepparm3"                 label   "Separator"                 type    separator                 default { "" }             }             parm {                 name    "hold"                 label   "Hold"                 type    toggle                 joinnext                 default { "on" }                 parmtag { "script_callback_language" "python" }             }             parm {                 name    "invert_hold"                 label   "Invert Hold"                 type    toggle                 joinnext                 default { "on" }                 parmtag { "script_callback_language" "python" }             }             parm {                 name    "newparameter"                 label   "Visualize"                 type    toggle                 default { "off" }                 parmtag { "script_callback_language" "python" }             }         }      }      parm {         name    "label1"         baseparm         label   "Input #1 Label"         invisible         export  all     }     parm {         name    "label2"         baseparm         label   "Input #2 Label"         invisible         export  all     }     parm {         name    "label3"         baseparm         label   "Input #3 Label"         invisible         export  all     }     parm {         name    "label4"         baseparm         label   "Input #4 Label"         invisible         export  all     } ' matrixconstruct
 opparm -V 20.5.522 matrixconstruct label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) Main ( 0 ) type ( 2 ) sepparm ( ) curvefolder ( 0 ) curvemode ( 0 ) curveup ( 0 1 0 ) plane ( 0 ) object ( 0 ) holdframe ( 1 ) sepparm2 ( ) x ( 2 ) newparameter4 ( off ) y ( 1 ) newparameter5 ( on ) z ( 0 ) newparameter6 ( off ) sepparm3 ( ) hold ( on ) invert_hold ( on ) newparameter ( off )
 chlock matrixconstruct -*
@@ -2976,7 +2917,7 @@ opcf matrixconstruct
 
 # Node output0 (Sop/output)
 opadd -e -n output output0
-oplocate -x 3.5016000135219656 -y 3.1588235294117646 output0
+oplocate -x 3.5015999999999998 -y 3.15882 output0
 opspareds "" output0
 opparm -V 20.5.522 output0 outputidx ( 0 )
 chlock output0 -*
@@ -2987,7 +2928,7 @@ opuserdata -n '___Version___' -v '20.5.522' output0
 
 # Node plane (Sop/subnet)
 opadd -e -n subnet plane
-oplocate -x 3.4080235175110456 -y 5.1180882333569659 plane
+oplocate -x 3.40802 -y 5.1180899999999996 plane
 opspareds "" plane
 opparm -V 20.5.522 plane label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' )
 chlock plane -*
@@ -3095,7 +3036,7 @@ opcf ..
 
 # Node object (Sop/subnet)
 opadd -e -n subnet object
-oplocate -x 5.4080235175110456 -y 5.1180882333569659 object
+oplocate -x 5.4080199999999996 -y 5.1180899999999996 object
 opspareds "" object
 opparm -V 20.5.522 object label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' )
 chlock object -*
@@ -3252,7 +3193,7 @@ opcf ..
 
 # Node switch1 (Sop/switch)
 opadd -e -n switch switch1
-oplocate -x 3.4130235175110455 -y 4.1130882333569661 switch1
+oplocate -x 3.4130199999999999 -y 4.1130899999999997 switch1
 opspareds "" switch1
 chblockbegin
 chadd -t 0 0 switch1 input
@@ -3271,7 +3212,7 @@ opcf ..
 
 # Node matrixtangentspace (Sop/subnet)
 opadd -e -n subnet matrixtangentspace
-oplocate -x 9.5 -y 0.84999999403953563 matrixtangentspace
+oplocate -x 9.5 -y 0.84999999999999998 matrixtangentspace
 opspareds '    groupsimple {         name    "Main"         label   "Matrix Tangent Space"          parm {             name    "mode"             label   "Tangent Mode"             type    ordinal             default { "0" }             menu {                 "0" "Center Of Mass"                 "1" "Centered Position"             }             parmtag { "script_callback_language" "python" }         }         groupsimple {             name    "inv"             label   "Inversion"              parm {                 name    "newparameter"                 label   "Normal"                 type    toggle                 joinnext                 default { "0" }                 parmtag { "script_callback_language" "python" }             }             parm {                 name    "newparameter2"                 label   "Tangent"                 type    toggle                 joinnext                 default { "0" }                 parmtag { "script_callback_language" "python" }             }             parm {                 name    "newparameter3"                 label   "Bitangent"                 type    toggle                 default { "0" }                 parmtag { "script_callback_language" "python" }             }         }      }      parm {         name    "label1"         baseparm         label   "Input #1 Label"         invisible         export  all     }     parm {         name    "label2"         baseparm         label   "Input #2 Label"         invisible         export  all     }     parm {         name    "label3"         baseparm         label   "Input #3 Label"         invisible         export  all     }     parm {         name    "label4"         baseparm         label   "Input #4 Label"         invisible         export  all     } ' matrixtangentspace
 opparm -V 20.5.522 matrixtangentspace label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) Main ( 0 ) mode ( 0 ) inv ( 0 ) newparameter ( off ) newparameter2 ( off ) newparameter3 ( off )
 chlock matrixtangentspace -*
@@ -3283,7 +3224,7 @@ opcf matrixtangentspace
 
 # Node output0 (Sop/output)
 opadd -e -n output output0
-oplocate -x 2.7625647040372163 -y 2.6764705882352939 output0
+oplocate -x 2.7625600000000001 -y 2.6764700000000001 output0
 opspareds "" output0
 opparm -V 20.5.522 output0 outputidx ( 0 )
 chlock output0 -*
@@ -3294,7 +3235,7 @@ opuserdata -n '___Version___' -v '20.5.522' output0
 
 # Node tangent_space (Sop/attribwrangle)
 opadd -e -n attribwrangle tangent_space
-oplocate -x 2.7579646939816334 -y 3.6437058956745787 tangent_space
+oplocate -x 2.7579600000000002 -y 3.64371 tangent_space
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "TangentMode"                 label   "Tangentmode"                 type    integer                 default { "0" }                 range   { 0 10 }             }             parm {                 name    "InvertN"                 label   "Invertn"                 type    integer                 default { "0" }                 range   { 0 10 }             }             parm {                 name    "InvertT"                 label   "Invertt"                 type    integer                 default { "0" }                 range   { 0 10 }             }             parm {                 name    "InvertB"                 label   "Invertb"                 type    integer                 default { "0" }                 range   { 0 10 }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' tangent_space
 opparm tangent_space  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -3316,7 +3257,7 @@ opuserdata -n '___Version___' -v '' tangent_space
 
 # Node extractcentroid1 (Sop/extractcentroid)
 opadd -e -n extractcentroid extractcentroid1
-oplocate -x 2.7609646939816335 -y 4.6447058956745781 extractcentroid1
+oplocate -x 2.7609599999999999 -y 4.6447099999999999 extractcentroid1
 opspareds "" extractcentroid1
 opparm -V 20.5.522 extractcentroid1 partitiontype ( detail ) pieceattrib ( name ) class ( prim ) method ( com ) output ( attrib ) centroidattrib ( com ) transferattributes ( "" ) transfergroups ( "" )
 chlock extractcentroid1 -*
@@ -3327,7 +3268,7 @@ opuserdata -n '___Version___' -v '20.5.522' extractcentroid1
 
 # Node attribwrangle1 (Sop/attribwrangle)
 opadd -e -n attribwrangle attribwrangle1
-oplocate -x 2.7579646939816334 -y 5.6437058956745787 attribwrangle1
+oplocate -x 2.7579600000000002 -y 5.6437099999999996 attribwrangle1
 opspareds "" attribwrangle1
 opparm attribwrangle1  bindings ( 0 ) groupbindings ( 0 )
 opparm attribwrangle1 folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'int has = haspointattrib(0, \'N\');\nif ( has == 0 ) error(\'Input does not have a @N attribute.\');' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -3341,7 +3282,7 @@ opcf ..
 
 # Node meshcage (Sop/subnet)
 opadd -e -n subnet meshcage
-oplocate -x 9.5 -y -4.1500000059604645 meshcage
+oplocate -x 9.5 -y -4.1500000000000004 meshcage
 opspareds '    groupsimple {         name    "Main"         label   "Mesh Cage"          parm {             name    "percent"             label   "Percent"             type    float             default { "10" }             help    "Reduction percent."             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "degrees"             label   "Degrees"             type    float             default { "22.5" }             help    "Primitive partitioning threshold."             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }     }      parm {         name    "label1"         baseparm         label   "Input #1 Label"         invisible         export  all     }     parm {         name    "label2"         baseparm         label   "Input #2 Label"         invisible         export  all     }     parm {         name    "label3"         baseparm         label   "Input #3 Label"         invisible         export  all     }     parm {         name    "label4"         baseparm         label   "Input #4 Label"         invisible         export  all     } ' meshcage
 opparm -V 20.5.522 meshcage label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) Main ( 0 ) percent ( 10 ) degrees ( 22.5 )
 chlock meshcage -*
@@ -3353,7 +3294,7 @@ opcf meshcage
 
 # Node output0 (Sop/output)
 opadd -e -n output output0
-oplocate -x 3.4443426366637726 -y -4.5470588235294116 output0
+oplocate -x 3.44434 -y -4.5470600000000001 output0
 opspareds "" output0
 opparm -V 20.5.522 output0 outputidx ( 0 )
 chlock output0 -*
@@ -3364,7 +3305,7 @@ opuserdata -n '___Version___' -v '20.5.522' output0
 
 # Node N (Sop/attribwrangle)
 opadd -e -n attribwrangle N
-oplocate -x 3.4397426231418078 -y 5.379000000447034 N
+oplocate -x 3.43974 -y 5.3789999999999996 N
 opspareds "" N
 opparm N  bindings ( 0 ) groupbindings ( 0 )
 opparm N folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( primitive ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '@N = @N;' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -3376,7 +3317,7 @@ opuserdata -n '___Version___' -v '' N
 
 # Node prim_partition (Sop/attribwrangle)
 opadd -e -n attribwrangle prim_partition
-oplocate -x 3.4397426231418078 -y 4.379000000447034 prim_partition
+oplocate -x 3.43974 -y 4.3789999999999996 prim_partition
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "sidefx::look" "blank" }              parm {                 name    "Threshold"                 label   "Threshold"                 type    float                 default { "0" }                 range   { 0 1 }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' prim_partition
 opparm prim_partition  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -3392,7 +3333,7 @@ opuserdata -n '___Version___' -v '' prim_partition
 
 # Node foreach_end3 (Sop/block_end)
 opadd -e -n block_end foreach_end3
-oplocate -x 1.4443426231418077 -y -0.62354999955296586 foreach_end3
+oplocate -x 1.44434 -y -0.62355000000000005 foreach_end3
 opspareds "" foreach_end3
 opparm -V 20.5.522 foreach_end3 itermethod ( pieces ) method ( merge ) iterations ( 10 ) startvalue ( 1 ) increment ( 1 ) class ( primitive ) useattrib ( on ) attrib ( _id ) usemaxiter ( off ) maxiter ( 10 ) blockpath ( ../foreach_begin3 ) templatepath ( ../foreach_begin3 ) resetcookpass ( 0 ) dosinglepass ( off ) singlepass ( 6 ) stopcondition ( 0 ) multithread ( off )
 chlock foreach_end3 -*
@@ -3404,7 +3345,7 @@ opuserdata -n '___Version___' -v '20.5.522' foreach_end3
 
 # Node foreach_begin3 (Sop/block_begin)
 opadd -e -n block_begin foreach_begin3
-oplocate -x 1.4443426231418077 -y 1.3771500004470343 foreach_begin3
+oplocate -x 1.44434 -y 1.3771500000000001 foreach_begin3
 opspareds "" foreach_begin3
 opparm -V 20.5.522 foreach_begin3 method ( piece ) blockpath ( ../foreach_end3 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
 chlock foreach_begin3 -*
@@ -3416,7 +3357,7 @@ opuserdata -n '___Version___' -v '20.5.522' foreach_begin3
 
 # Node prim_reconstruct1 (Sop/subnet)
 opadd -e -n subnet prim_reconstruct1
-oplocate -x 1.4427426231418079 -y 0.3800000004470343 prim_reconstruct1
+oplocate -x 1.4427399999999999 -y 0.38 prim_reconstruct1
 opspareds "" prim_reconstruct1
 opparm -V 20.5.522 prim_reconstruct1 label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' )
 chlock prim_reconstruct1 -*
@@ -3558,7 +3499,7 @@ opcf ..
 
 # Node polyreduce2 (Sop/polyreduce::2.0)
 opadd -e -n polyreduce::2.0 polyreduce2
-oplocate -x 3.4427426231418079 -y 6.3800000004470343 polyreduce2
+oplocate -x 3.4427400000000001 -y 6.3799999999999999 polyreduce2
 opspareds "" polyreduce2
 opparm polyreduce2  controlattribs ( 0 )
 chblockbegin
@@ -3574,7 +3515,7 @@ opuserdata -n '___Version___' -v '20.5.522' polyreduce2
 
 # Node convexdecomposition2 (Sop/convexdecomposition)
 opadd -e -n convexdecomposition convexdecomposition2
-oplocate -x 3.4427426231418079 -y 7.3800000004470343 convexdecomposition2
+oplocate -x 3.4427400000000001 -y 7.3799999999999999 convexdecomposition2
 opspareds "" convexdecomposition2
 opparm -V 20.5.522 convexdecomposition2 group ( "" ) usepieceattrib ( off ) pieceattrib ( name ) maxconcavity ( 1 ) treatassolid ( on ) mergesegments ( off ) separator ( ) geometryoutput ( hulls ) outputsegmentattrib ( on ) segmentattrib ( segment ) outputinteriorgroup ( on ) interiorgroupname ( convex_decomposition_interior )
 chlock convexdecomposition2 -*
@@ -3585,7 +3526,7 @@ opuserdata -n '___Version___' -v '20.5.522' convexdecomposition2
 
 # Node fuse2 (Sop/fuse::2.0)
 opadd -e -n fuse::2.0 fuse2
-oplocate -x 3.4427426231418079 -y -3.6199999995529657 fuse2
+oplocate -x 3.4427400000000001 -y -3.6200000000000001 fuse2
 opspareds "" fuse2
 opparm fuse2  numpointattribs ( 0 ) numgroups ( 0 )
 opparm -V 20.5.522 fuse2 querygroup ( "" ) usetargetgroup ( off ) targetgroup ( "" ) modifyboth ( off ) posattrib ( P ) snapgroup ( 0 ) snaptype ( distancesnap ) algorithm ( lowest ) usetol3d ( on ) tol3d ( 0.001 ) targetptattrib ( snap_to ) targetclass ( point ) usepositionsnapmethod ( on ) positionsnapmethod ( average ) positionsnapweightname ( weight ) useradiusattrib ( off ) radiusattrib ( pscale ) usematchattrib ( off ) matchattrib ( name ) matchtype ( match ) matchtol ( 0 ) gridtype ( spacing ) gridspacing ( 0.1 0.1 0.1 ) gridlines ( 10 10 10 ) gridpow2 ( 3 3 3 ) gridoffset ( 0 0 0 ) gridround ( nearest ) usegridtol ( on ) gridtol ( 10 ) consolidategroup ( 0 ) consolidatesnappedpoints ( on ) keepconsolidatedpoints ( off ) deldegen ( on ) deldegenpoints ( on ) delunusedpoints ( off ) outputgroup ( 0 ) recomputenml ( on ) createsnappedgroup ( off ) snappedgroupname ( snapped_points ) createsnappedattrib ( off ) snappedattribname ( snapped_to ) numpointattribs ( 0 ) numgroups ( 0 )
@@ -3597,7 +3538,7 @@ opuserdata -n '___Version___' -v '20.5.522' fuse2
 
 # Node group_partitioned (Sop/attribwrangle)
 opadd -e -n attribwrangle group_partitioned
-oplocate -x 3.4397426231418078 -y 3.379000000447034 group_partitioned
+oplocate -x 3.43974 -y 3.379 group_partitioned
 opspareds "" group_partitioned
 opparm group_partitioned  bindings ( 0 ) groupbindings ( 0 )
 opparm group_partitioned folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( primitive ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'len(i[]@partition) != 1 ? setprimgroup(0, \'partition\', @primnum, 1, \'set\') : -1;' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -3609,7 +3550,7 @@ opuserdata -n '___Version___' -v '' group_partitioned
 
 # Node split1 (Sop/split)
 opadd -e -n split split1
-oplocate -x 3.4427426231418079 -y 2.3800000004470343 split1
+oplocate -x 3.4427400000000001 -y 2.3799999999999999 split1
 opspareds "" split1
 opparm split1 group ( partition ) grouptype ( guess ) negate ( off ) removegrp ( off )
 chlock split1 -*
@@ -3620,7 +3561,7 @@ opuserdata -n '___Version___' -v '' split1
 
 # Node merge1 (Sop/merge)
 opadd -e -n merge merge1
-oplocate -x 3.4415926231418079 -y -1.6168499995529659 merge1
+oplocate -x 3.4415900000000001 -y -1.6168499999999999 merge1
 opspareds "" merge1
 opparm -V 20.5.522 merge1
 chlock merge1 -*
@@ -3631,7 +3572,7 @@ opuserdata -n '___Version___' -v '20.5.522' merge1
 
 # Node attribwrangle1 (Sop/attribwrangle)
 opadd -e -n attribwrangle attribwrangle1
-oplocate -x 3.4397426231418078 -y -2.6209999995529651 attribwrangle1
+oplocate -x 3.43974 -y -2.621 attribwrangle1
 opspareds "" attribwrangle1
 opparm attribwrangle1  bindings ( 0 ) groupbindings ( 0 )
 opparm attribwrangle1 folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( primitive ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'removeprimgroup(0, \'partition\');' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -3646,7 +3587,7 @@ opcf noisepower
 
 # Node output0 (Sop/output)
 opadd -e -n output output0
-oplocate -x 5.135675011285767 -y -10.362261763030991 output0
+oplocate -x 5.1356799999999998 -y -10.362299999999999 output0
 opspareds "" output0
 opparm -V 20.5.522 output0 outputidx ( 0 )
 chlock output0 -*
@@ -3672,7 +3613,7 @@ opcf ..
 
 # Node iteration (Sop/attribwrangle)
 opadd -e -n attribwrangle iteration
-oplocate -x 5.131075001230184 -y 2.5984500008523455 iteration
+oplocate -x 5.1310799999999999 -y 2.5984500000000001 iteration
 opspareds "" iteration
 opparm iteration  bindings ( 0 ) groupbindings ( 0 )
 opparm iteration folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'i@iteration = detail(1,\'iteration\',0);' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -3684,7 +3625,7 @@ opuserdata -n '___Version___' -v '' iteration
 
 # Node foreach_end3 (Sop/block_end)
 opadd -e -n block_end foreach_end3
-oplocate -x 5.1356750012301839 -y 0.59590000085234518 foreach_end3
+oplocate -x 5.1356799999999998 -y 0.59589999999999999 foreach_end3
 opspareds "" foreach_end3
 chblockbegin
 chadd -t 0 0 foreach_end3 iterations
@@ -3700,7 +3641,7 @@ opuserdata -n '___Version___' -v '20.5.522' foreach_end3
 
 # Node foreach_begin3 (Sop/block_begin)
 opadd -e -n block_begin foreach_begin3
-oplocate -x 5.1356750012301839 -y 3.5966000008523444 foreach_begin3
+oplocate -x 5.1356799999999998 -y 3.5966 foreach_begin3
 opspareds "" foreach_begin3
 opparm -V 20.5.522 foreach_begin3 method ( feedback ) blockpath ( ../foreach_end3 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
 chlock foreach_begin3 -*
@@ -3712,7 +3653,7 @@ opuserdata -n '___Version___' -v '20.5.522' foreach_begin3
 
 # Node foreach_count2 (Sop/block_begin)
 opadd -e -n block_begin foreach_count2
-oplocate -x 7.5961750012301845 -y 3.5966000008523444 foreach_count2
+oplocate -x 7.5961800000000004 -y 3.5966 foreach_count2
 opspareds "" foreach_count2
 opparm -V 20.5.522 foreach_count2 method ( metadata ) blockpath ( ../foreach_end3 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
 chlock foreach_count2 -*
@@ -3724,7 +3665,7 @@ opuserdata -n '___Version___' -v '20.5.522' foreach_count2
 
 # Node attribdelete (Sop/attribdelete)
 opadd -e -n attribdelete attribdelete
-oplocate -x 5.1306250012301842 -y -7.4005499991476551 attribdelete
+oplocate -x 5.13063 -y -7.40055 attribdelete
 opspareds "" attribdelete
 opparm attribdelete usereference ( off ) negate ( off ) doptdel ( on ) ptdel ( '__* iteration' ) dovtxdel ( on ) vtxdel ( "" ) doprimdel ( on ) primdel ( "" ) dodtldel ( on ) dtldel ( "" ) updatevar ( on )
 chlock attribdelete -*
@@ -3735,7 +3676,7 @@ opuserdata -n '___Version___' -v '' attribdelete
 
 # Node init (Sop/attribwrangle)
 opadd -e -n attribwrangle init
-oplocate -x 5.131075001230184 -y 5.5984500008523455 init
+oplocate -x 5.1310799999999999 -y 5.5984499999999997 init
 opspareds "" init
 opparm init  bindings ( 0 ) groupbindings ( 0 )
 opparm init folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'v@powernoise = @P; i@__hasoffset = haspointattrib(0,\'offset\');\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -3747,7 +3688,7 @@ opuserdata -n '___Version___' -v '' init
 
 # Node length (Sop/attribwrangle)
 opadd -e -n attribwrangle length
-oplocate -x 5.131075001230184 -y -0.40154999914765455 length
+oplocate -x 5.1310799999999999 -y -0.40155000000000002 length
 opspareds "" length
 opparm length  bindings ( 0 ) groupbindings ( 0 )
 opparm length folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '@__length = length(v@powernoise);' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -3759,7 +3700,7 @@ opuserdata -n '___Version___' -v '' length
 
 # Node attribpromote1 (Sop/attribpromote)
 opadd -e -n attribpromote attribpromote1
-oplocate -x 5.1306250012301842 -y -1.4005499991476551 attribpromote1
+oplocate -x 5.13063 -y -1.40055 attribpromote1
 opspareds "" attribpromote1
 opparm -V 20.5.522 attribpromote1 inname ( __length ) inclass ( point ) outclass ( detail ) usepieceattrib ( off ) pieceattrib ( name ) method ( max ) useoutname ( on ) outname ( max ) deletein ( off )
 chlock attribpromote1 -*
@@ -3770,7 +3711,7 @@ opuserdata -n '___Version___' -v '20.5.522' attribpromote1
 
 # Node attribpromote2 (Sop/attribpromote)
 opadd -e -n attribpromote attribpromote2
-oplocate -x 5.1306250012301842 -y -2.4005499991476551 attribpromote2
+oplocate -x 5.13063 -y -2.40055 attribpromote2
 opspareds "" attribpromote2
 opparm -V 20.5.522 attribpromote2 inname ( __length ) inclass ( point ) outclass ( detail ) usepieceattrib ( off ) pieceattrib ( name ) method ( min ) useoutname ( on ) outname ( min ) deletein ( off )
 chlock attribpromote2 -*
@@ -3781,7 +3722,7 @@ opuserdata -n '___Version___' -v '20.5.522' attribpromote2
 
 # Node attribpromote3 (Sop/attribpromote)
 opadd -e -n attribpromote attribpromote3
-oplocate -x 5.1306250012301842 -y -3.4005499991476551 attribpromote3
+oplocate -x 5.13063 -y -3.40055 attribpromote3
 opspareds "" attribpromote3
 opparm -V 20.5.522 attribpromote3 inname ( max ) inclass ( detail ) outclass ( point ) usepieceattrib ( off ) pieceattrib ( name ) method ( max ) useoutname ( on ) outname ( __max ) deletein ( on )
 chlock attribpromote3 -*
@@ -3792,7 +3733,7 @@ opuserdata -n '___Version___' -v '20.5.522' attribpromote3
 
 # Node attribpromote4 (Sop/attribpromote)
 opadd -e -n attribpromote attribpromote4
-oplocate -x 5.1306250012301842 -y -4.4005499991476551 attribpromote4
+oplocate -x 5.13063 -y -4.40055 attribpromote4
 opspareds "" attribpromote4
 opparm -V 20.5.522 attribpromote4 inname ( min ) inclass ( detail ) outclass ( point ) usepieceattrib ( off ) pieceattrib ( name ) method ( max ) useoutname ( on ) outname ( __min ) deletein ( on )
 chlock attribpromote4 -*
@@ -3803,7 +3744,7 @@ opuserdata -n '___Version___' -v '20.5.522' attribpromote4
 
 # Node objectpost (Sop/attribwrangle)
 opadd -e -n attribwrangle objectpost
-oplocate -x 5.131075001230184 -y -5.4015499991476545 objectpost
+oplocate -x 5.1310799999999999 -y -5.4015500000000003 objectpost
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }      parm {         name    "Mode"         label   "Mode"         type    integer         default { "0" }         range   { 0 10 }     } ' objectpost
 opparm objectpost  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -3819,7 +3760,7 @@ opuserdata -n '___Version___' -v '' objectpost
 
 # Node objectinfo (Sop/attribwrangle)
 opadd -e -n attribwrangle objectinfo
-oplocate -x 5.131075001230184 -y 11.598450000852345 objectinfo
+oplocate -x 5.1310799999999999 -y 11.5985 objectinfo
 opspareds "" objectinfo
 opparm objectinfo  bindings ( 0 ) groupbindings ( 0 )
 opparm objectinfo folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'vector size = getbbox_size(0); v@__translate = getbbox_center(0);\n\n// sum size of each axis and divide by 3 to find average. divide by two to get radius.\n@__scale  = ((size.x + size.y + size.z) / 3) / 2; \n\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -3831,7 +3772,7 @@ opuserdata -n '___Version___' -v '' objectinfo
 
 # Node objectxform (Sop/attribwrangle)
 opadd -e -n attribwrangle objectxform
-oplocate -x 5.131075001230184 -y 10.598450000852345 objectxform
+oplocate -x 5.1310799999999999 -y 10.5985 objectxform
 opspareds "" objectxform
 opparm objectxform  bindings ( 0 ) groupbindings ( 0 )
 opparm objectxform folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '@P -= v@__translate; @P /= @__scale;' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -3843,7 +3784,7 @@ opuserdata -n '___Version___' -v '' objectxform
 
 # Node switch1 (Sop/switch)
 opadd -e -n switch switch1
-oplocate -x 5.1340750012301841 -y 9.5992500008523454 switch1
+oplocate -x 5.13408 -y 9.5992499999999996 switch1
 opspareds "" switch1
 chblockbegin
 chadd -t 0 0 switch1 input
@@ -3859,7 +3800,7 @@ opuserdata -n '___Version___' -v '20.5.522' switch1
 
 # Node curvexform (Sop/attribwrangle)
 opadd -e -n attribwrangle curvexform
-oplocate -x 7.131075001230184 -y 10.598450000852345 curvexform
+oplocate -x 7.1310799999999999 -y 10.5985 curvexform
 opspareds "" curvexform
 opparm curvexform  bindings ( 0 ) groupbindings ( 0 )
 opparm curvexform folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'int t = npoints(0) - 1; float u = fit(@ptnum, 0, t, 0, 1); v@xform = set(0,0,u);\n\n@P = v@xform;' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -3871,7 +3812,7 @@ opuserdata -n '___Version___' -v '' curvexform
 
 # Node perimeter (Sop/measure::2.0)
 opadd -e -n measure::2.0 perimeter
-oplocate -x 7.1340750012301841 -y 13.599450000852347 perimeter
+oplocate -x 7.13408 -y 13.599500000000001 perimeter
 opspareds "" perimeter
 opparm perimeter  colorramp ( 3 )
 opparm -V 20.5.522 perimeter group ( "" ) grouptype ( prims ) measurement ( 0 ) measure ( perimeter ) curvaturetype ( curvedness ) principaltype ( min ) principalsign ( signed ) principalreportas ( scalar ) umbiliccutoff ( 0 ) integrationmode ( componentwise ) srcattrib ( P ) srccomp ( x ) scalenormalize ( on ) sepparm ( ) integrationdomain ( element ) refinetomanifold ( on ) pieceattrib ( class ) usecustompos ( off ) posattrib ( P ) visrange ( 0 ) userangemin ( off ) rangemin ( -1 ) userangemax ( off ) rangemax ( 1 ) usecenterwidth ( off ) width ( 6 ) widthscale ( mad ) centertype ( median ) fixedcenter ( 0 ) colorramp ( 3 ) vectorscale ( 1 ) output ( 0 ) attribname ( perimeter ) usetotalattrib ( off ) totalattribname ( totalperimeter ) userangegroup ( off ) rangegroup ( inrange ) bakeintooutput ( off ) useremaprange ( off ) remaprange ( 0 1 ) colorramp1pos ( 0 ) colorramp1c ( 0 0 1 ) colorramp1interp ( linear ) colorramp2pos ( 0.5 ) colorramp2c ( 1 1 1 ) colorramp2interp ( linear ) colorramp3pos ( 1 ) colorramp3c ( 1 0 0 ) colorramp3interp ( linear )
@@ -3883,7 +3824,7 @@ opuserdata -n '___Version___' -v '20.5.522' perimeter
 
 # Node attribpromote5 (Sop/attribpromote)
 opadd -e -n attribpromote attribpromote5
-oplocate -x 7.1306250012301842 -y 12.599450000852347 attribpromote5
+oplocate -x 7.13063 -y 12.599500000000001 attribpromote5
 opspareds "" attribpromote5
 opparm -V 20.5.522 attribpromote5 inname ( perimeter ) inclass ( primitive ) outclass ( point ) usepieceattrib ( off ) pieceattrib ( name ) method ( mean ) useoutname ( on ) outname ( __perimeter ) deletein ( on )
 chlock attribpromote5 -*
@@ -3894,7 +3835,7 @@ opuserdata -n '___Version___' -v '20.5.522' attribpromote5
 
 # Node curveinfo (Sop/attribwrangle)
 opadd -e -n attribwrangle curveinfo
-oplocate -x 7.131075001230184 -y 11.598450000852345 curveinfo
+oplocate -x 7.1310799999999999 -y 11.5985 curveinfo
 opspareds "" curveinfo
 opparm curveinfo  bindings ( 0 ) groupbindings ( 0 )
 opparm curveinfo folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'v@rest = @P; @__scale = @__perimeter / ($PI*2);' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -3906,7 +3847,7 @@ opuserdata -n '___Version___' -v '' curveinfo
 
 # Node curvepost (Sop/attribwrangle)
 opadd -e -n attribwrangle curvepost
-oplocate -x 7.131075001230184 -y -5.4015499991476545 curvepost
+oplocate -x 7.1310799999999999 -y -5.4015500000000003 curvepost
 opspareds "" curvepost
 opparm curvepost  bindings ( 0 ) groupbindings ( 0 )
 opparm curvepost folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '// fit powernoise 0-1\nfloat h = fit(@__length,@__min,@__max,0,1);\n\n// normalize and apply fit, scale to size of input object\nv@powernoise = (normalize(v@powernoise) * h) * @__scale;\nv@powernoise.z = 0; \nv@powervector = v@powernoise; @Cd = abs(v@powernoise);\nremovepointattrib(0, \'powernoise\');\n\n// bring object back to scale and space\n@P -= v@xform;\n@P += v@rest;' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -3918,7 +3859,7 @@ opuserdata -n '___Version___' -v '' curvepost
 
 # Node switch2 (Sop/switch)
 opadd -e -n switch switch2
-oplocate -x 5.1340750012301841 -y -6.4007499991476546 switch2
+oplocate -x 5.13408 -y -6.4007500000000004 switch2
 opspareds "" switch2
 chblockbegin
 chadd -t 0 0 switch2 input
@@ -3934,7 +3875,7 @@ opuserdata -n '___Version___' -v '20.5.522' switch2
 
 # Node connectivity1 (Sop/connectivity)
 opadd -e -n connectivity connectivity1
-oplocate -x 5.1340750012301841 -y 15.599450000852347 connectivity1
+oplocate -x 5.13408 -y 15.599500000000001 connectivity1
 opspareds "" connectivity1
 opparm -V 20.5.522 connectivity1 connecttype ( prim ) primincgroup ( "" ) pointincgroup ( "" ) attribname ( __piece ) attribtype ( int ) prefix ( piece ) createvarmap ( off ) varname ( "" ) seamgroup ( "" ) byuv ( off ) uvattrib ( uv )
 chlock connectivity1 -*
@@ -3945,7 +3886,7 @@ opuserdata -n '___Version___' -v '20.5.522' connectivity1
 
 # Node foreach_end1 (Sop/block_end)
 opadd -e -n block_end foreach_end1
-oplocate -x 5.1356750012301839 -y 7.595950000852346 foreach_end1
+oplocate -x 5.1356799999999998 -y 7.5959500000000002 foreach_end1
 opspareds "" foreach_end1
 opparm -V 20.5.522 foreach_end1 itermethod ( pieces ) method ( merge ) iterations ( 10 ) startvalue ( 1 ) increment ( 1 ) class ( primitive ) useattrib ( on ) attrib ( __piece ) usemaxiter ( off ) maxiter ( 10 ) blockpath ( ../foreach_begin1 ) templatepath ( ../foreach_begin1 ) resetcookpass ( 0 ) dosinglepass ( off ) singlepass ( 0 ) stopcondition ( 0 ) multithread ( on )
 chlock foreach_end1 -*
@@ -3957,7 +3898,7 @@ opuserdata -n '___Version___' -v '20.5.522' foreach_end1
 
 # Node foreach_begin1 (Sop/block_begin)
 opadd -e -n block_begin foreach_begin1
-oplocate -x 5.1356750012301839 -y 13.596650000852346 foreach_begin1
+oplocate -x 5.1356799999999998 -y 13.5967 foreach_begin1
 opspareds "" foreach_begin1
 opparm -V 20.5.522 foreach_begin1 method ( piece ) blockpath ( ../foreach_end1 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
 chlock foreach_begin1 -*
@@ -3969,7 +3910,7 @@ opuserdata -n '___Version___' -v '20.5.522' foreach_begin1
 
 # Node pieceoffset (Sop/attribwrangle)
 opadd -e -n attribwrangle pieceoffset
-oplocate -x 5.131075001230184 -y 12.598450000852345 pieceoffset
+oplocate -x 5.1310799999999999 -y 12.5985 pieceoffset
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }      parm {         name    "Offset"         label   "Offset"         type    float         default { "0" }         range   { 0 1 }     } ' pieceoffset
 opparm pieceoffset  bindings ( 0 ) groupbindings ( 0 )
 opparm pieceoffset folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( primitive ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '@pieceoffset = ch(\'Offset\') * @__piece;' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) Offset ( 10 )
@@ -3981,7 +3922,7 @@ opuserdata -n '___Version___' -v '' pieceoffset
 
 # Node compile_end1 (Sop/compile_end)
 opadd -e -n compile_end compile_end1
-oplocate -x 5.1356750012301839 -y 6.595950000852346 compile_end1
+oplocate -x 5.1356799999999998 -y 6.5959500000000002 compile_end1
 opspareds "" compile_end1
 opparm -V 20.5.522 compile_end1 docompile ( on ) unload ( always ) primarypath ( "" ) forcerecompile ( 0 ) delayillegal ( off ) fallback ( off )
 chlock compile_end1 -*
@@ -3993,7 +3934,7 @@ opuserdata -n '___Version___' -v '20.5.522' compile_end1
 
 # Node compile_begin1 (Sop/compile_begin)
 opadd -e -n compile_begin compile_begin1
-oplocate -x 5.1356750012301839 -y 14.596650000852346 compile_begin1
+oplocate -x 5.1356799999999998 -y 14.5967 compile_begin1
 opspareds "" compile_begin1
 opparm -V 20.5.522 compile_begin1 blockpath ( ../compile_end1 ) name ( "" ) optional ( off ) createbeginblock ( 0 )
 chlock compile_begin1 -*
@@ -4005,7 +3946,7 @@ opuserdata -n '___Version___' -v '20.5.522' compile_begin1
 
 # Node attribpromote6 (Sop/attribpromote)
 opadd -e -n attribpromote attribpromote6
-oplocate -x 5.1306250012301842 -y 8.5994500008523449 attribpromote6
+oplocate -x 5.13063 -y 8.5994499999999992 attribpromote6
 opspareds "" attribpromote6
 opparm -V 20.5.522 attribpromote6 inname ( pieceoffset ) inclass ( primitive ) outclass ( point ) usepieceattrib ( off ) pieceattrib ( name ) method ( mean ) useoutname ( off ) outname ( "" ) deletein ( on )
 chlock attribpromote6 -*
@@ -4016,7 +3957,7 @@ opuserdata -n '___Version___' -v '20.5.522' attribpromote6
 
 # Node foreach_end2 (Sop/block_end)
 opadd -e -n block_end foreach_end2
-oplocate -x 5.1356750012301839 -y -8.4040999991476539 foreach_end2
+oplocate -x 5.1356799999999998 -y -8.4040999999999997 foreach_end2
 opspareds "" foreach_end2
 opparm -V 20.5.522 foreach_end2 itermethod ( pieces ) method ( merge ) iterations ( 10 ) startvalue ( 1 ) increment ( 1 ) class ( primitive ) useattrib ( on ) attrib ( __piece ) usemaxiter ( off ) maxiter ( 10 ) blockpath ( ../foreach_begin2 ) templatepath ( ../foreach_begin2 ) resetcookpass ( 0 ) dosinglepass ( off ) singlepass ( 0 ) stopcondition ( 0 ) multithread ( off )
 chlock foreach_end2 -*
@@ -4028,7 +3969,7 @@ opuserdata -n '___Version___' -v '20.5.522' foreach_end2
 
 # Node foreach_begin2 (Sop/block_begin)
 opadd -e -n block_begin foreach_begin2
-oplocate -x 5.1356750012301839 -y 4.5966000008523444 foreach_begin2
+oplocate -x 5.1356799999999998 -y 4.5965999999999996 foreach_begin2
 opspareds "" foreach_begin2
 opparm -V 20.5.522 foreach_begin2 method ( piece ) blockpath ( ../foreach_end2 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
 chlock foreach_begin2 -*
@@ -4040,7 +3981,7 @@ opuserdata -n '___Version___' -v '20.5.522' foreach_begin2
 
 # Node paint (Sop/attribwrangle)
 opadd -e -n attribwrangle paint
-oplocate -x 5.131075001230184 -y -9.4015499991476545 paint
+oplocate -x 5.1310799999999999 -y -9.4015500000000003 paint
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }      parm {         name    "Mode"         label   "Mode"         type    integer         default { "0" }         range   { 0 10 }     } ' paint
 opparm paint  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -4058,7 +3999,7 @@ opcf ..
 
 # Node prim_angle_partition (Sop/subnet)
 opadd -e -n subnet prim_angle_partition
-oplocate -x 9.5 -y -5.1500000059604645 prim_angle_partition
+oplocate -x 9.5 -y -5.1500000000000004 prim_angle_partition
 opspareds '    groupsimple {         name    "Main"         label   "Primitive Angle Partition"          parm {             name    "degree"             label   "Degree"             type    float             default { "22.5" }             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }     }      parm {         name    "label1"         baseparm         label   "Input #1 Label"         invisible         export  all     }     parm {         name    "label2"         baseparm         label   "Input #2 Label"         invisible         export  all     }     parm {         name    "label3"         baseparm         label   "Input #3 Label"         invisible         export  all     }     parm {         name    "label4"         baseparm         label   "Input #4 Label"         invisible         export  all     } ' prim_angle_partition
 opparm -V 20.5.522 prim_angle_partition label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) Main ( 0 ) degree ( 22.5 )
 chlock prim_angle_partition -*
@@ -4070,7 +4011,7 @@ opcf prim_angle_partition
 
 # Node output0 (Sop/output)
 opadd -e -n output output0
-oplocate -x 2.7814941092127219 -y 2.1200882486157546 output0
+oplocate -x 2.7814899999999998 -y 2.1200899999999998 output0
 opspareds "" output0
 opparm -V 20.5.522 output0 outputidx ( 0 )
 chlock output0 -*
@@ -4081,7 +4022,7 @@ opuserdata -n '___Version___' -v '20.5.522' output0
 
 # Node N1 (Sop/attribwrangle)
 opadd -e -n attribwrangle N1
-oplocate -x 2.7814941092127219 -y 4.379088248615755 N1
+oplocate -x 2.7814899999999998 -y 4.3790899999999997 N1
 opspareds "" N1
 opparm N1  bindings ( 0 ) groupbindings ( 0 )
 opparm N1 folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( primitive ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '@N = @N;' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -4093,7 +4034,7 @@ opuserdata -n '___Version___' -v '' N1
 
 # Node prim_partition (Sop/attribwrangle)
 opadd -e -n attribwrangle prim_partition
-oplocate -x 2.7814941092127219 -y 3.2495882486157548 prim_partition
+oplocate -x 2.7814899999999998 -y 3.24959 prim_partition
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "sidefx::look" "blank" }              parm {                 name    "Threshold"                 label   "Threshold"                 type    float                 default { "0" }                 range   { 0 1 }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' prim_partition
 opparm prim_partition  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -4111,7 +4052,7 @@ opcf ..
 
 # Node prim_reconstruct (Sop/subnet)
 opadd -e -n subnet prim_reconstruct
-oplocate -x 9.5 -y -6.1500000059604645 prim_reconstruct
+oplocate -x 9.5 -y -6.1500000000000004 prim_reconstruct
 opspareds "" prim_reconstruct
 opparm -V 20.5.522 prim_reconstruct label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' )
 chlock prim_reconstruct -*
@@ -4123,7 +4064,7 @@ opcf prim_reconstruct
 
 # Node output0 (Sop/output)
 opadd -e -n output output0
-oplocate -x 5.7944985314442832 -y -0.80588235294117649 output0
+oplocate -x 5.7945000000000002 -y -0.80588199999999999 output0
 opspareds "" output0
 opparm -V 20.5.522 output0 outputidx ( 0 )
 chlock output0 -*
@@ -4134,7 +4075,7 @@ opuserdata -n '___Version___' -v '20.5.522' output0
 
 # Node wind_and_edgevectors (Sop/attribwrangle)
 opadd -e -n attribwrangle wind_and_edgevectors
-oplocate -x 3.789898522851622 -y 6.630138248210443 wind_and_edgevectors
+oplocate -x 3.7898999999999998 -y 6.6301399999999999 wind_and_edgevectors
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "sidefx::look" "blank" }          }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' wind_and_edgevectors
 opparm wind_and_edgevectors  bindings ( 0 ) groupbindings ( 0 )
 opparm wind_and_edgevectors folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( detail ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'int sorted [] = array(0); int n = npoints(0); \nint last = 0; setpointattrib(0, \'sort\', 0, 0, \'set\');\n\n// sort points logically and find edge vectors\nfor ( int i; i < n; i++ ) {\n\n    // get last point appended to sorted\n    int len = len(sorted);\n    int start = getcomp(sorted, len - 1);\n    \n    // chums of this iterations starting point\n    int chums [] = neighbours(0, start); \n    \n    // find next point\n    int next;\n    \n    // if not the first iteration\n    if ( i != 0 ) {\n    \n        // find vector pointing towards last point, to compare against\n        vector c = normalize(point(0, \'P\', last) - point(0, \'P\', start));\n        \n        // and then remove last point from chums\n        removevalue(chums, last);\n        \n        // find chum with greatest angle from c\n        float phi = 1;\n        for ( int u; u < len(chums); u ++ ) {\n            int chump = getcomp(chums, u);\n            vector q = point(0, \'P\', chump);\n            vector p = point(0, \'P\', start);\n            vector e = normalize(q - p);\n            float theta = dot(e, c);\n            if ( theta < phi ) {\n                phi  = theta;\n                next = chump;  }\n            \n                                           }                                           \n                  }\n                  else next = chums[0];\n                                      \n    // calculate edge vector\n    vector p0 = point(0, \'P\', start);\n    vector p1 = point(0, \'P\', next);\n    vector e  = p1 - p0; setpointattrib(0, \'edge\', start, e, \'set\');\n                           \n    // append chum to sorted list, set last to start, set sort attribute;    \n    append(sorted, next); last = start;\n    setpointattrib(0, \'sort\', start, i, \'set\');\n                          }\n                          ' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 )
@@ -4146,7 +4087,7 @@ opuserdata -n '___Version___' -v '' wind_and_edgevectors
 
 # Node sort_nbc (Sop/sort)
 opadd -e -n sort sort_nbc
-oplocate -x 3.7928985228516217 -y 8.6311382482104442 sort_nbc
+oplocate -x 3.7928999999999999 -y 8.6311400000000003 sort_nbc
 opspareds "" sort_nbc
 opparm -V 20.5.522 sort_nbc pointsfolder ( 0 ) ptgroup ( "" ) ptsort ( attribute ) pointseed ( 0 ) pointoffset ( 0 ) pointprox ( 0 0 0 ) pointobjpath ( "" ) pointdir ( 0 1 0 ) pointexpr ( 0 ) pointattrib ( _nbc ) pointattribcomp ( 0 ) pointreverse ( off ) primitivesfolder ( 0 ) primgroup ( "" ) primsort ( none ) primseed ( 0 ) primoffset ( 0 ) primprox ( 0 0 0 ) primobjpath ( "" ) primdir ( 0 1 0 ) primexpr ( 0 ) primattrib ( "" ) primattribcomp ( 0 ) primreverse ( off ) vertexprimorder ( on )
 chlock sort_nbc -*
@@ -4157,7 +4098,7 @@ opuserdata -n '___Version___' -v '20.5.522' sort_nbc
 
 # Node _nbc (Sop/attribwrangle)
 opadd -e -n attribwrangle _nbc
-oplocate -x 3.789898522851622 -y 9.630138248210443 _nbc
+oplocate -x 3.7898999999999998 -y 9.6301400000000008 _nbc
 opspareds "" _nbc
 opparm _nbc  bindings ( 0 ) groupbindings ( 0 )
 opparm _nbc folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '// use by following sort to ensure ptnum 0 is a corner\ni@_nbc = neighbourcount(0, @ptnum);\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -4169,7 +4110,7 @@ opuserdata -n '___Version___' -v '' _nbc
 
 # Node sort_by_sort (Sop/sort)
 opadd -e -n sort sort_by_sort
-oplocate -x 3.7928985228516217 -y 5.6311382482104433 sort_by_sort
+oplocate -x 3.7928999999999999 -y 5.6311400000000003 sort_by_sort
 opspareds "" sort_by_sort
 opparm -V 20.5.522 sort_by_sort pointsfolder ( 0 ) ptgroup ( "" ) ptsort ( attribute ) pointseed ( 0 ) pointoffset ( 0 ) pointprox ( 0 0 0 ) pointobjpath ( "" ) pointdir ( 0 1 0 ) pointexpr ( 0 ) pointattrib ( sort ) pointattribcomp ( 0 ) pointreverse ( off ) primitivesfolder ( 0 ) primgroup ( "" ) primsort ( none ) primseed ( 0 ) primoffset ( 0 ) primprox ( 0 0 0 ) primobjpath ( "" ) primdir ( 0 1 0 ) primexpr ( 0 ) primattrib ( "" ) primattribcomp ( 0 ) primreverse ( off ) vertexprimorder ( on )
 chlock sort_by_sort -*
@@ -4180,7 +4121,7 @@ opuserdata -n '___Version___' -v '20.5.522' sort_by_sort
 
 # Node removepoint (Sop/attribwrangle)
 opadd -e -n attribwrangle removepoint
-oplocate -x 3.789898522851622 -y 2.6301382482104434 removepoint
+oplocate -x 3.7898999999999998 -y 2.6301399999999999 removepoint
 opspareds "" removepoint
 opparm removepoint  bindings ( 0 ) groupbindings ( 0 )
 opparm removepoint folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'removepoint(0, length(v@edge) == 0 ? @ptnum : -1);' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -4192,7 +4133,7 @@ opuserdata -n '___Version___' -v '' removepoint
 
 # Node removeprim (Sop/attribwrangle)
 opadd -e -n attribwrangle removeprim
-oplocate -x 3.789898522851622 -y 3.630138248210443 removeprim
+oplocate -x 3.7898999999999998 -y 3.6301399999999999 removeprim
 opspareds "" removeprim
 opparm removeprim  bindings ( 0 ) groupbindings ( 0 )
 opparm removeprim folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( primitive ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'removeprim(0, @primnum, 0);' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -4204,7 +4145,7 @@ opuserdata -n '___Version___' -v '' removeprim
 
 # Node reconstruct (Sop/attribwrangle)
 opadd -e -n attribwrangle reconstruct
-oplocate -x 3.789898522851622 -y 1.630138248210443 reconstruct
+oplocate -x 3.7898999999999998 -y 1.6301399999999999 reconstruct
 opspareds "" reconstruct
 opparm reconstruct  bindings ( 0 ) groupbindings ( 0 )
 opparm reconstruct folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( detail ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'int n = npoints(0); int r = addprim(0, \'poly\');\nfor( int i; i < n; i++ ) {\n    addvertex(0, r, i);  }\n    \nremovepointattrib(0, \'chums\');        ' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -4216,7 +4157,7 @@ opuserdata -n '___Version___' -v '' reconstruct
 
 # Node remove_nbc (Sop/attribwrangle)
 opadd -e -n attribwrangle remove_nbc
-oplocate -x 3.789898522851622 -y 7.630138248210443 remove_nbc
+oplocate -x 3.7898999999999998 -y 7.6301399999999999 remove_nbc
 opspareds "" remove_nbc
 opparm remove_nbc  bindings ( 0 ) groupbindings ( 0 )
 opparm remove_nbc folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'removepointattrib(0, \'_nbc\');' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -4228,7 +4169,7 @@ opuserdata -n '___Version___' -v '' remove_nbc
 
 # Node remove_sort_att (Sop/attribwrangle)
 opadd -e -n attribwrangle remove_sort_att
-oplocate -x 3.789898522851622 -y 4.630138248210443 remove_sort_att
+oplocate -x 3.7898999999999998 -y 4.6301399999999999 remove_sort_att
 opspareds "" remove_sort_att
 opparm remove_sort_att  bindings ( 0 ) groupbindings ( 0 )
 opparm remove_sort_att folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'removepointattrib(0, \'sort\');' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -4240,7 +4181,7 @@ opuserdata -n '___Version___' -v '' remove_sort_att
 
 # Node attribcopy1 (Sop/attribcopy)
 opadd -e -n attribcopy attribcopy1
-oplocate -x 5.7894485228516217 -y 0.63113824821044329 attribcopy1
+oplocate -x 5.7894500000000004 -y 0.63113799999999998 attribcopy1
 opspareds "" attribcopy1
 opparm -V 20.5.522 attribcopy1 srcgroup ( 0 ) srcgrouptype ( prims ) destgroup ( "" ) destgrouptype ( prims ) matchbyattribute ( off ) matchbyattributemethod ( byvalues ) attributetomatch ( piece ) attrib ( otherattrib ) attribname ( * ) copyp ( off ) usenewname ( off ) newname ( "" ) class ( guess ) copyvariable ( on ) copydata ( on )
 chlock attribcopy1 -*
@@ -4253,7 +4194,7 @@ opcf ..
 
 # Node rayintersect (Sop/subnet)
 opadd -e -n subnet rayintersect
-oplocate -x 9.5 -y -7.1500000059604645 rayintersect
+oplocate -x 9.5 -y -7.1500000000000004 rayintersect
 opspareds '    groupsimple {         name    "Main"         label   "Ray Intersect"          parm {             name    "ray"             label   "Ray"             type    string             default { "" }             parmtag { "script_callback_language" "python" }         }     }      groupsimple {         name    "filter"         label   "Filter"          parm {             name    "threshold"             label   "Threshold"             type    integer             joinnext             default { "0" }             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "condition"             label   "Condition"             type    ordinal             default { "1" }             menu {                 "0" "Greater"                 "1" "Less"             }             parmtag { "script_callback_language" "python" }         }         parm {             name    "sepparm"             label   "Separator"             type    separator             default { "" }         }         parm {             name    "blast"             label   "Blast Out Of Bounds"             type    toggle             default { "off" }             parmtag { "script_callback_language" "python" }         }     }      parm {         name    "label1"         baseparm         label   "Input #1 Label"         invisible         export  all     }     parm {         name    "label2"         baseparm         label   "Input #2 Label"         invisible         export  all     }     parm {         name    "label3"         baseparm         label   "Input #3 Label"         invisible         export  all     }     parm {         name    "label4"         baseparm         label   "Input #4 Label"         invisible         export  all     } ' rayintersect
 opparm -V 20.5.522 rayintersect label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) Main ( 0 ) ray ( "" ) filter ( 0 ) threshold ( 0 ) condition ( 1 ) sepparm ( ) blast ( off )
 chlock rayintersect -*
@@ -4265,7 +4206,7 @@ opcf rayintersect
 
 # Node output0 (Sop/output)
 opadd -e -n output output0
-oplocate -x 3.5016000034663821 -y -6.1730602976611424 output0
+oplocate -x 3.5015999999999998 -y -6.1730600000000004 output0
 opspareds "" output0
 opparm -V 20.5.522 output0 outputidx ( 0 )
 chlock output0 -*
@@ -4276,7 +4217,7 @@ opuserdata -n '___Version___' -v '20.5.522' output0
 
 # Node keep_points (Sop/attribwrangle)
 opadd -e -n attribwrangle keep_points
-oplocate -x 3.4970000034663822 -y 6.8490000069141388 keep_points
+oplocate -x 3.4969999999999999 -y 6.8490000000000002 keep_points
 opspareds "" keep_points
 opparm keep_points  bindings ( 0 ) groupbindings ( 0 )
 opparm keep_points folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( primitive ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'removeprim(0, @primnum, 0);' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -4288,7 +4229,7 @@ opuserdata -n '___Version___' -v '' keep_points
 
 # Node init (Sop/attribwrangle)
 opadd -e -n attribwrangle init
-oplocate -x 3.4970000034663822 -y 4.8490000069141388 init
+oplocate -x 3.4969999999999999 -y 4.8490000000000002 init
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "sidefx::look" "blank" }              parm {                 name    "Ray"                 label   "Ray"                 type    string                 default { "" }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' init
 opparm init  bindings ( 0 ) groupbindings ( 0 )
 opparm init folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'i@id = @ptnum;\n\n//\nstring rayname = chs(\'Ray\'); int hasray = haspointattrib(0, rayname);\nif ( hasray == 0 ) error(\'Input does not have the ray vector.\');\n//\nvector ray = point(0, rayname, @ptnum); \nv@foci = @P + (ray * length(getbbox_size(0))); v@ray = v@foci - @P;' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 ) Ray ( '`chs("../ray")`' )
@@ -4300,7 +4241,7 @@ opuserdata -n '___Version___' -v '' init
 
 # Node visualize5 (Sop/visualize)
 opadd -e -n visualize visualize5
-oplocate -x 1.3752000034663818 -y 4.0221000069141386 visualize5
+oplocate -x 1.3752 -y 4.0221 visualize5
 opspareds '    parm {         name    "setvisualizers"         baseparm         label   "Update Visualizers"         export  none     }     parm {         name    "clearvisualizers"         baseparm         label   "Clear Incoming Visualizers"         export  none     }     parm {         name    "wireframe"         baseparm         label   "Wireframe"         export  none     }     parm {         name    "lit"         baseparm         label   "Lighting"         export  none     }     parm {         name    "xray"         baseparm         label   "X-Ray"         export  none     }     parm {         name    "setcuspangle"         baseparm         label   "Set Cusp Angle"         nolabel         joinnext         export  none     }     parm {         name    "cuspangle"         baseparm         label   "Cusp Angle"         export  none     }     parm {         name    "showpoints"         baseparm         label   "Show Points"         export  none     }     parm {         name    "spherepoints"         baseparm         label   "Points as Spheres"         export  none     }     parm {         name    "spriteblend"         baseparm         label   "Sprite Blending"         export  none     }     parm {         name    "setspritecutoff"         baseparm         label   "Set Sprite Cutoff"         nolabel         joinnext         export  none     }     parm {         name    "spritecutoff"         baseparm         label   "Sprite Cutoff"         export  none     }     parm {         name    "node_vis_enabled"         label   "Visualization Enabled"         type    toggle         invisible         default { "1" }     }     multiparm {         name    "num_visualizers"         label    "Visualizers"         invisible         default 0         parmtag { "multistartoffset" "0" }          parm {             name    "vis_active#"             label   "Active #"             type    toggle             invisible             default { "0" }         }         parm {             name    "vis_data#"             label   "Raw Data #"             type    string             invisible             nolabel             default { "" }             parmtag { "editor" "1" }         }     }      parm {         name    "shadeopencurves"         baseparm         label   "Shade Open Curves"         export  none     } ' visualize5
 opparm visualize5  num_visualizers ( 1 )
 opparm visualize5 setvisualizers ( on ) clearvisualizers ( off ) wireframe ( nochange ) shadeopencurves ( nochange ) lit ( nochange ) xray ( nochange ) setcuspangle ( off ) cuspangle ( 60 ) showpoints ( nochange ) spherepoints ( nochange ) spriteblend ( nochange ) setspritecutoff ( off ) spritecutoff ( 0.5 ) node_vis_enabled ( on ) num_visualizers ( 1 ) vis_active0 ( on ) vis_data0 ( '{\n	"flags":{\n		"type":"int",\n		"value":27\n	},\n	"icon":{\n		"type":"string",\n		"value":"VIEW_visualization_color"\n	},\n	"label":{\n		"type":"string",\n		"value":"Color 1"\n	},\n	"name":{\n		"type":"string",\n		"value":"vis_color_1"\n	},\n	"parameters":{\n		"type":"string",\n		"value":"{\\nversion 0.8\\nstyle\\t[ 0\\tlocks=0 ]\\t(\\t\\"vector\\"\\t)\\nclass\\t[ 0\\tlocks=0 ]\\t(\\t\\"auto\\"\\t)\\nattrib\\t[ 0\\tlocks=0 ]\\t(\\tray\\t)\\nvisibility\\t[ 0\\tlocks=0 ]\\t(\\t\\"always\\"\\t)\\ndecorradius\\t[ 0\\tlocks=0 ]\\t(\\t1\\t)\\ngroup\\t[ 0\\tlocks=0 ]\\t(\\t\\"\\"\\t)\\npointsize\\t[ 0\\tlocks=0 ]\\t(\\t3\\t)\\nlengthscale\\t[ 0\\tlocks=0 ]\\t(\\t1\\t)\\nunitlength\\t[ 0\\tlocks=0 ]\\t(\\t1\\t)\\nnormalize\\t[ 0\\tlocks=0 ]\\t(\\t\\"off\\"\\t)\\narrowheads\\t[ 0\\tlocks=0 ]\\t(\\t\\"off\\"\\t)\\nvectorcoloring\\t[ 0\\tlocks=0 ]\\t(\\t\\"fixed\\"\\t)\\ncolorattrib\\t[ 0\\tlocks=0 ]\\t(\\tCd\\t)\\nramptype\\t[ 0\\tlocks=0 ]\\t(\\t\\"false\\"\\t)\\ncolorramp\\t[ 0\\tlocks=0 ]\\t(\\t5\\t)\\nrangespec\\t[ 0\\tlocks=0 ]\\t(\\t\\"center-width\\"\\t)\\nminscalar\\t[ 0\\tlocks=0 ]\\t(\\t0\\t)\\nmaxscalar\\t[ 0\\tlocks=0 ]\\t(\\t10\\t)\\ncenterscalar\\t[ 0\\tlocks=0 ]\\t(\\t0\\t)\\nwidthscalar\\t[ 0\\tlocks=0 ]\\t(\\t2\\t)\\nclamptype\\t[ 0\\tlocks=0 ]\\t(\\t\\"edge\\"\\t)\\ntreatasscalar\\t[ 0\\tlocks=0 ]\\t(\\t\\"on\\"\\t)\\nusing\\t[ 0\\tlocks=0 ]\\t(\\t\\"length\\"\\t)\\ncomponent\\t[ 0\\tlocks=0 ]\\t(\\t0\\t)\\nrefvec\\t[ 0\\tlocks=0 ]\\t(\\t0\\t1\\t0\\t)\\nmarkercolor\\t[ 0\\tlocks=0 ]\\t(\\t0.4\\t0.4\\t0.4\\t0.4\\t)\\ntrail\\t[ 0\\tlocks=0 ]\\t(\\t1\\t1\\t0\\t0.5\\t)\\ntextcolor\\t[ 0\\tlocks=0 ]\\t(\\t0.25\\t0.75\\t0.75\\t)\\nfontsize\\t[ 0\\tlocks=0 ]\\t(\\t\\"guidefont\\"\\t)\\nxcolor\\t[ 0\\tlocks=0 ]\\t(\\t1\\t0\\t0\\t1\\t)\\nycolor\\t[ 0\\tlocks=0 ]\\t(\\t0\\t1\\t0\\t1\\t)\\nzcolor\\t[ 0\\tlocks=0 ]\\t(\\t0\\t0\\t1\\t1\\t)\\ncolorramp1pos\\t[ 0\\tlocks=0 ]\\t(\\t0\\t)\\ncolorramp1c\\t[ 0\\tlocks=0 ]\\t(\\t0.20000000298023224\\t0\\t1\\t)\\ncolorramp1interp\\t[ 0\\tlocks=0 ]\\t(\\t\\"linear\\"\\t)\\ncolorramp2pos\\t[ 0\\tlocks=0 ]\\t(\\t0.25\\t)\\ncolorramp2c\\t[ 0\\tlocks=0 ]\\t(\\t0\\t0.8500000238418579\\t1\\t)\\ncolorramp2interp\\t[ 0\\tlocks=0 ]\\t(\\t\\"linear\\"\\t)\\ncolorramp3pos\\t[ 0\\tlocks=0 ]\\t(\\t0.5\\t)\\ncolorramp3c\\t[ 0\\tlocks=0 ]\\t(\\t0\\t1\\t0.10000000149011612\\t)\\ncolorramp3interp\\t[ 0\\tlocks=0 ]\\t(\\t\\"linear\\"\\t)\\ncolorramp4pos\\t[ 0\\tlocks=0 ]\\t(\\t0.75\\t)\\ncolorramp4c\\t[ 0\\tlocks=0 ]\\t(\\t0.949999988079071\\t1\\t0\\t)\\ncolorramp4interp\\t[ 0\\tlocks=0 ]\\t(\\t\\"linear\\"\\t)\\ncolorramp5pos\\t[ 0\\tlocks=0 ]\\t(\\t1\\t)\\ncolorramp5c\\t[ 0\\tlocks=0 ]\\t(\\t1\\t0\\t0\\t)\\ncolorramp5interp\\t[ 0\\tlocks=0 ]\\t(\\t\\"linear\\"\\t)\\n}\\n"\n	},\n	"scope":{\n		"type":"int",\n		"value":2\n	},\n	"type":{\n		"type":"string",\n		"value":"vis_marker"\n	}\n}\n' )
@@ -4312,7 +4253,7 @@ opuserdata -n '___Version___' -v '' visualize5
 
 # Node lines_to_intersect (Sop/attribwrangle)
 opadd -e -n attribwrangle lines_to_intersect
-oplocate -x 5.4970000034663826 -y 3.8490000069141388 lines_to_intersect
+oplocate -x 5.4969999999999999 -y 3.8490000000000002 lines_to_intersect
 opspareds "" lines_to_intersect
 opparm lines_to_intersect  bindings ( 0 ) groupbindings ( 0 )
 opparm lines_to_intersect folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'int a = addprim(0, \'polyline\');\nint t = addpoint(0, v@foci); setpointattrib(0, \'id\', t, i@id, \'set\');\naddvertex(0, a, @ptnum); addvertex(0, a, t);' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -4324,7 +4265,7 @@ opuserdata -n '___Version___' -v '' lines_to_intersect
 
 # Node foreach_end6 (Sop/block_end)
 opadd -e -n block_end foreach_end6
-oplocate -x 3.5016000034663821 -y -0.1535499930858612 foreach_end6
+oplocate -x 3.5015999999999998 -y -0.15354999999999999 foreach_end6
 opspareds "" foreach_end6
 opparm -V 20.5.522 foreach_end6 itermethod ( pieces ) method ( merge ) iterations ( 10 ) startvalue ( 1 ) increment ( 1 ) class ( point ) useattrib ( on ) attrib ( id ) usemaxiter ( off ) maxiter ( 10 ) blockpath ( ../foreach_begin6 ) templatepath ( ../foreach_begin6 ) resetcookpass ( 0 ) dosinglepass ( off ) singlepass ( 0 ) stopcondition ( 0 ) multithread ( off )
 chlock foreach_end6 -*
@@ -4336,7 +4277,7 @@ opuserdata -n '___Version___' -v '20.5.522' foreach_end6
 
 # Node foreach_begin6 (Sop/block_begin)
 opadd -e -n block_begin foreach_begin6
-oplocate -x 3.5016000034663821 -y 2.8471500069141391 foreach_begin6
+oplocate -x 3.5015999999999998 -y 2.8471500000000001 foreach_begin6
 opspareds "" foreach_begin6
 opparm -V 20.5.522 foreach_begin6 method ( piece ) blockpath ( ../foreach_end6 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
 chlock foreach_begin6 -*
@@ -4348,7 +4289,7 @@ opuserdata -n '___Version___' -v '20.5.522' foreach_begin6
 
 # Node foreach_begin6_metadata1 (Sop/block_begin)
 opadd -e -n block_begin foreach_begin6_metadata1
-oplocate -x 5.5016000034663826 -y 2.8471500069141391 foreach_begin6_metadata1
+oplocate -x 5.5015999999999998 -y 2.8471500000000001 foreach_begin6_metadata1
 opspareds "" foreach_begin6_metadata1
 opparm -V 20.5.522 foreach_begin6_metadata1 method ( input ) blockpath ( ../foreach_end6 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
 chlock foreach_begin6_metadata1 -*
@@ -4360,7 +4301,7 @@ opuserdata -n '___Version___' -v '20.5.522' foreach_begin6_metadata1
 
 # Node prune (Sop/attribwrangle)
 opadd -e -n attribwrangle prune
-oplocate -x 5.4970000034663826 -y 1.8490000069141386 prune
+oplocate -x 5.4969999999999999 -y 1.849 prune
 opspareds "" prune
 opparm prune  bindings ( 0 ) groupbindings ( 0 )
 opparm prune folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'int prune = point(1, \'id\', 0);\nremovepoint(0, i@id == prune ? @ptnum : -1);' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -4372,7 +4313,7 @@ opuserdata -n '___Version___' -v '' prune
 
 # Node intersect (Sop/attribwrangle)
 opadd -e -n attribwrangle intersect
-oplocate -x 3.4970000034663822 -y 0.84900000691413879 intersect
+oplocate -x 3.4969999999999999 -y 0.84899999999999998 intersect
 opspareds "" intersect
 opparm intersect  bindings ( 0 ) groupbindings ( 0 )
 opparm intersect folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'vector intersections [] = array(); int prim [] = array(); vector uvw [] = array();\nint q = intersect_all(1, @P, v@ray, intersections, prim, uvw); int len = len(intersections);\n\n//i@index;\nforeach ( int i; vector u; intersections ) {\n    int t = addpoint(0, u);\n    setpointattrib(0, \'index\', t, i, \'set\');\n    setpointattrib(0, \'id\', t, i@id, \'set\');\n                                    }\n\nremovepoint(0, @ptnum);\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -4384,7 +4325,7 @@ opuserdata -n '___Version___' -v '' intersect
 
 # Node condition_filter (Sop/attribwrangle)
 opadd -e -n attribwrangle condition_filter
-oplocate -x 3.4970000034663822 -y -4.1509999930858612 condition_filter
+oplocate -x 3.4969999999999999 -y -4.1509999999999998 condition_filter
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "Condition"                 label   "Condition"                 type    integer                 default { "0" }                 range   { 0 10 }             }             parm {                 name    "Threshold"                 label   "Threshold"                 type    integer                 default { "0" }                 range   { 0 10 }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' condition_filter
 opparm condition_filter  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -4402,7 +4343,7 @@ opuserdata -n '___Version___' -v '' condition_filter
 
 # Node foreach_end7 (Sop/block_end)
 opadd -e -n block_end foreach_end7
-oplocate -x 3.5016000034663821 -y -5.1535499930858606 foreach_end7
+oplocate -x 3.5015999999999998 -y -5.1535500000000001 foreach_end7
 opspareds "" foreach_end7
 opparm -V 20.5.522 foreach_end7 itermethod ( pieces ) method ( merge ) iterations ( 10 ) startvalue ( 1 ) increment ( 1 ) class ( point ) useattrib ( on ) attrib ( id ) usemaxiter ( off ) maxiter ( 10 ) blockpath ( ../foreach_begin7 ) templatepath ( ../foreach_begin7 ) resetcookpass ( 0 ) dosinglepass ( off ) singlepass ( 0 ) stopcondition ( 0 ) multithread ( off )
 chlock foreach_end7 -*
@@ -4414,7 +4355,7 @@ opuserdata -n '___Version___' -v '20.5.522' foreach_end7
 
 # Node foreach_begin7 (Sop/block_begin)
 opadd -e -n block_begin foreach_begin7
-oplocate -x 3.5016000034663821 -y -3.1528499930858609 foreach_begin7
+oplocate -x 3.5015999999999998 -y -3.1528499999999999 foreach_begin7
 opspareds "" foreach_begin7
 opparm -V 20.5.522 foreach_begin7 method ( piece ) blockpath ( ../foreach_end7 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
 chlock foreach_begin7 -*
@@ -4426,7 +4367,7 @@ opuserdata -n '___Version___' -v '20.5.522' foreach_begin7
 
 # Node clean (Sop/attribwrangle)
 opadd -e -n attribwrangle clean
-oplocate -x 3.4970000034663822 -y -1.150999993085861 clean
+oplocate -x 3.4969999999999999 -y -1.151 clean
 opspareds "" clean
 opparm clean  bindings ( 0 ) groupbindings ( 0 )
 opparm clean folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'removepointattrib(0, \'foci\'); removepointattrib(0, \'ray\');' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -4438,7 +4379,7 @@ opuserdata -n '___Version___' -v '' clean
 
 # Node filter_bounds (Sop/attribwrangle)
 opadd -e -n attribwrangle filter_bounds
-oplocate -x 9.4970000034663826 -y -2.1509999930858612 filter_bounds
+oplocate -x 9.4969999999999999 -y -2.1509999999999998 filter_bounds
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "sidefx::look" "blank" }              parm {                 name    "Mode"                 label   "Mode"                 type    integer                 default { "0" }                 range   { 0 10 }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' filter_bounds
 opparm filter_bounds  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -4454,7 +4395,7 @@ opuserdata -n '___Version___' -v '' filter_bounds
 
 # Node extractcentroid2 (Sop/extractcentroid)
 opadd -e -n extractcentroid extractcentroid2
-oplocate -x 9.5 -y 6.8499999940395355 extractcentroid2
+oplocate -x 9.5 -y 6.8499999999999996 extractcentroid2
 opspareds "" extractcentroid2
 opparm -V 20.5.522 extractcentroid2 partitiontype ( detail ) pieceattrib ( name ) class ( prim ) method ( com ) output ( points ) centroidattrib ( centroid ) transferattributes ( "" ) transfergroups ( "" )
 chlock extractcentroid2 -*
@@ -4465,7 +4406,7 @@ opuserdata -n '___Version___' -v '20.5.522' extractcentroid2
 
 # Node com_vector (Sop/attribwrangle)
 opadd -e -n attribwrangle com_vector
-oplocate -x 7.4970000034663826 -y 5.8490000069141388 com_vector
+oplocate -x 7.4969999999999999 -y 5.8490000000000002 com_vector
 opspareds "" com_vector
 opparm com_vector  bindings ( 0 ) groupbindings ( 0 )
 opparm com_vector folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '@commag = length(point(1, \'P\', 0) - @P);' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -4479,7 +4420,7 @@ opcf ..
 
 # Node solverpropagation (Sop/subnet)
 opadd -e -n subnet solverpropagation
-oplocate -x 1.4999999999999998 -y -3.1500000059604645 solverpropagation
+oplocate -x 1.5 -y -3.1499999999999999 solverpropagation
 opspareds '    groupsimple {         name    "propagationsolver"         label   "Propagation Solver"          parm {             name    "mode"             label   "Mode"             type    ordinal             default { "0" }             menu {                 "0" "Proximity"                 "1" "Connectivity"             }             parmtag { "script_callback_language" "python" }         }         parm {             name    "sepparm3"             label   "Separator"             type    separator             default { "" }         }         parm {             name    "start"             label   "Start Frame"             type    integer             joinnext             default { "1" }             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "end"             label   "End Frame"             type    integer             joinnext             default { "0" }             hidewhen "{ hold != 1 }"             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "hold"             label   "Hold"             type    toggle             default { "off" }             parmtag { "script_callback_language" "python" }         }         parm {             name    "sepparm"             label   "Separator"             type    separator             default { "" }         }         parm {             name    "distance"             label   "Distance"             type    float             default { "1" }             hidewhen "{ mode != 0 }"             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "max"             label   "Max"             type    integer             default { "10" }             hidewhen "{ mode != 0 }"             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "sepparm2"             label   "Separator"             type    separator             default { "" }             hidewhen "{ mode != 0 }"         }         parm {             name    "initgrowth"             label   "Initial"             type    float             default { "0.1" }             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "rate"             label   "Rate"             type    float             default { "0.1" }             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "sepparm4"             label   "Separator"             type    separator             default { "" }         }         parm {             name    "paint"             label   "Paint"             type    toggle             default { "on" }             parmtag { "script_callback_language" "python" }         }     }      parm {         name    "label1"         baseparm         label   "Input #1 Label"         invisible         export  all     }     parm {         name    "label2"         baseparm         label   "Input #2 Label"         invisible         export  all     }     parm {         name    "label3"         baseparm         label   "Input #3 Label"         invisible         export  all     }     parm {         name    "label4"         baseparm         label   "Input #4 Label"         invisible         export  all     } ' solverpropagation
 opparm -V 20.5.522 solverpropagation label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) propagationsolver ( 0 ) mode ( 0 ) sepparm3 ( ) start ( 1 ) end ( 0 ) hold ( off ) sepparm ( ) distance ( 1 ) max ( 10 ) sepparm2 ( ) initgrowth ( 0.1 ) rate ( 0.1 ) sepparm4 ( ) paint ( on )
 chlock solverpropagation -*
@@ -4491,7 +4432,7 @@ opcf solverpropagation
 
 # Node output0 (Sop/output)
 opadd -e -n output output0
-oplocate -x 1.5016000120590436 -y -5.1924794177668918 output0
+oplocate -x 1.5016 -y -5.1924799999999998 output0
 opspareds "" output0
 opparm -V 20.5.522 output0 outputidx ( 0 )
 chlock output0 -*
@@ -4502,7 +4443,7 @@ opuserdata -n '___Version___' -v '20.5.522' output0
 
 # Node init (Sop/attribwrangle)
 opadd -e -n attribwrangle init
-oplocate -x 1.4970000034663828 -y 4.8490000069141388 init
+oplocate -x 1.4970000000000001 -y 4.8490000000000002 init
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }      parm {         name    "InitGrowth"         label   "Initgrowth"         type    float         default { "0" }         range   { 0 1 }     } ' init
 opparm init  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -4518,7 +4459,7 @@ opuserdata -n '___Version___' -v '' init
 
 # Node chums (Sop/attribwrangle)
 opadd -e -n attribwrangle chums
-oplocate -x 1.4970000034663828 -y 3.8490000069141383 chums
+oplocate -x 1.4970000000000001 -y 3.8490000000000002 chums
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }      parm {         name    "Mode"         label   "Mode"         type    integer         default { "0" }         range   { 0 10 }     }     parm {         name    "Distance"         label   "Distance"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "Max"         label   "Max"         type    integer         default { "0" }         range   { 0 10 }     } ' chums
 opparm chums  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -4538,7 +4479,7 @@ opuserdata -n '___Version___' -v '' chums
 
 # Node spread (Sop/solver)
 opadd -e -n solver spread
-oplocate -x 1.500000003466383 -y 2.8500000069141378 spread
+oplocate -x 1.5 -y 2.8500000000000001 spread
 opspareds "" spread
 chblockbegin
 chadd -t 0 0 spread startframe
@@ -4752,7 +4693,7 @@ opcf ../..
 
 # Node timeshift1 (Sop/timeshift)
 opadd -e -n timeshift timeshift1
-oplocate -x 3.5000000034663827 -y -3.1499999930858618 timeshift1
+oplocate -x 3.5 -y -3.1499999999999999 timeshift1
 opspareds "" timeshift1
 chblockbegin
 chadd -t 0 0 timeshift1 frame
@@ -4777,7 +4718,7 @@ opuserdata -n '___Version___' -v '20.5.522' timeshift1
 
 # Node switch1 (Sop/switch)
 opadd -e -n switch switch1
-oplocate -x 1.500000003466383 -y -3.1501999930858613 switch1
+oplocate -x 1.5 -y -3.1501999999999999 switch1
 opspareds "" switch1
 chblockbegin
 chadd -t 0 0 switch1 input
@@ -4793,7 +4734,7 @@ opuserdata -n '___Version___' -v '20.5.522' switch1
 
 # Node attribdelete1 (Sop/attribdelete)
 opadd -e -n attribdelete attribdelete1
-oplocate -x 1.4965500034663821 -y -4.1499999930858618 attribdelete1
+oplocate -x 1.49655 -y -4.1500000000000004 attribdelete1
 opspareds "" attribdelete1
 opparm attribdelete1 usereference ( off ) negate ( off ) doptdel ( on ) ptdel ( 'chums __*' ) dovtxdel ( on ) vtxdel ( "" ) doprimdel ( on ) primdel ( "" ) dodtldel ( on ) dtldel ( "" ) updatevar ( on )
 chlock attribdelete1 -*
@@ -4804,7 +4745,7 @@ opuserdata -n '___Version___' -v '' attribdelete1
 
 # Node attribpromote1 (Sop/attribpromote)
 opadd -e -n attribpromote attribpromote1
-oplocate -x 1.4965500034663821 -y 1.8500000069141387 attribpromote1
+oplocate -x 1.49655 -y 1.8500000000000001 attribpromote1
 opspareds "" attribpromote1
 opparm -V 20.5.522 attribpromote1 inname ( growth ) inclass ( point ) outclass ( detail ) usepieceattrib ( off ) pieceattrib ( name ) method ( max ) useoutname ( on ) outname ( growthmax ) deletein ( off )
 chlock attribpromote1 -*
@@ -4815,7 +4756,7 @@ opuserdata -n '___Version___' -v '20.5.522' attribpromote1
 
 # Node attribpromote2 (Sop/attribpromote)
 opadd -e -n attribpromote attribpromote2
-oplocate -x 1.4965500034663821 -y 0.85000000691413824 attribpromote2
+oplocate -x 1.49655 -y 0.84999999999999998 attribpromote2
 opspareds "" attribpromote2
 opparm -V 20.5.522 attribpromote2 inname ( growth ) inclass ( point ) outclass ( detail ) usepieceattrib ( off ) pieceattrib ( name ) method ( min ) useoutname ( on ) outname ( growthmin ) deletein ( off )
 chlock attribpromote2 -*
@@ -4826,7 +4767,7 @@ opuserdata -n '___Version___' -v '20.5.522' attribpromote2
 
 # Node attribpromote3 (Sop/attribpromote)
 opadd -e -n attribpromote attribpromote3
-oplocate -x 1.4965500034663821 -y -0.14999999308586176 attribpromote3
+oplocate -x 1.49655 -y -0.14999999999999999 attribpromote3
 opspareds "" attribpromote3
 opparm -V 20.5.522 attribpromote3 inname ( growthmax ) inclass ( detail ) outclass ( point ) usepieceattrib ( off ) pieceattrib ( name ) method ( mean ) useoutname ( off ) outname ( "" ) deletein ( on )
 chlock attribpromote3 -*
@@ -4837,7 +4778,7 @@ opuserdata -n '___Version___' -v '20.5.522' attribpromote3
 
 # Node attribpromote4 (Sop/attribpromote)
 opadd -e -n attribpromote attribpromote4
-oplocate -x 1.4965500034663821 -y -1.1499999930858618 attribpromote4
+oplocate -x 1.49655 -y -1.1499999999999999 attribpromote4
 opspareds "" attribpromote4
 opparm -V 20.5.522 attribpromote4 inname ( growthmin ) inclass ( detail ) outclass ( point ) usepieceattrib ( off ) pieceattrib ( name ) method ( mean ) useoutname ( off ) outname ( "" ) deletein ( on )
 chlock attribpromote4 -*
@@ -4848,7 +4789,7 @@ opuserdata -n '___Version___' -v '20.5.522' attribpromote4
 
 # Node attribwrangle1 (Sop/attribwrangle)
 opadd -e -n attribwrangle attribwrangle1
-oplocate -x 1.4970000034663828 -y -2.150999993085863 attribwrangle1
+oplocate -x 1.4970000000000001 -y -2.1509999999999998 attribwrangle1
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }      parm {         name    "Paint"         label   "Paint"         type    integer         default { "0" }         range   { 0 10 }     } ' attribwrangle1
 opparm attribwrangle1  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -4866,7 +4807,7 @@ opcf ..
 
 # Node vector_conditional_rotate (Sop/subnet)
 opadd -e -n subnet vector_conditional_rotate
-oplocate -x 13.5 -y 2.8499999940395355 vector_conditional_rotate
+oplocate -x 13.5 -y 2.8500000000000001 vector_conditional_rotate
 opspareds '    groupsimple {         name    "main"         label   "Conditional Rotate"          parm {             name    "ifmode"             label   "If"             type    ordinal             joinnext             default { "0" }             menu {                 "0" "Greater Then"                 "1" "Less Then"             }             parmtag { "script_callback_language" "python" }         }         parm {             name    "beta"             label   "Angle"             type    integer             joinnext             default { "90" }             help    "The threshold angle."             range   { 0 180 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "OpMode"             label   "Mode"             type    ordinal             joinnext             default { "0" }             help    "Invert Difference - will invert the difference between Vector and the condition vector (which is a function of Target). If set to Greater Then 90, and Vector is 110 degrees away from Target, Vector will rotate to be 70 degrees away from Target. Explicit Variance - if the condition is met, set a explicit degree amount to rotate from Target, with a per-point variance option. Orthgonal - makes Vector orthogonal to Target. "             menu {                 "0" "Invert Difference"                 "1" "Explicit Variance"                 "2" "Orthogonal"             }             parmtag { "script_callback_language" "python" }         }         parm {             name    "varimode"             label   "Variance"             type    toggle             default { "off" }             help    "Add per point variance to rotation angle."             hidewhen "{ OpMode != 1 }"             parmtag { "script_callback_language" "python" }         }         parm {             name    "sepparm"             label   "Separator"             type    separator             default { "" }             hidewhen "{ OpMode != 1 }"         }         parm {             name    "alpha"             label   "Explicit Angle"             type    integer             default { "45" }             help    "The rotation amount from target vector."             hidewhen "{ OpMode != 1 }"             range   { 0 180 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "variancemax"             label   "Variance Max"             type    integer             default { "10" }             help    "The maximum rotation angle from target vector."             hidewhen "{ OpMode != 1 } { varimode != 1 }"             range   { 0 180 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "sepparm2"             label   "Separator"             type    separator             default { "" }         }         parm {             name    "vector"             label   "Vector"             type    string             default { "" }             help    "The vector to operate on."             parmtag { "script_callback_language" "python" }         }         parm {             name    "target"             label   "Target"             type    string             default { "" }             help    "The reference vector."             parmtag { "script_callback_language" "python" }         }     }      parm {         name    "label1"         baseparm         label   "Input #1 Label"         invisible         export  all     }     parm {         name    "label2"         baseparm         label   "Input #2 Label"         invisible         export  all     }     parm {         name    "label3"         baseparm         label   "Input #3 Label"         invisible         export  all     }     parm {         name    "label4"         baseparm         label   "Input #4 Label"         invisible         export  all     } ' vector_conditional_rotate
 opparm -V 20.5.522 vector_conditional_rotate label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) main ( 0 ) ifmode ( 0 ) beta ( 90 ) OpMode ( 0 ) varimode ( off ) sepparm ( ) alpha ( 45 ) variancemax ( 10 ) sepparm2 ( ) vector ( "" ) target ( "" )
 chlock vector_conditional_rotate -*
@@ -4878,7 +4819,7 @@ opcf vector_conditional_rotate
 
 # Node output0 (Sop/output)
 opadd -e -n output output0
-oplocate -x 1.5016000135219656 -y 2.8471500016748905 output0
+oplocate -x 1.5016 -y 2.8471500000000001 output0
 opspareds "" output0
 opparm -V 20.5.522 output0 outputidx ( 0 )
 chlock output0 -*
@@ -4889,7 +4830,7 @@ opuserdata -n '___Version___' -v '20.5.522' output0
 
 # Node vector_orient (Sop/attribwrangle)
 opadd -e -n attribwrangle vector_orient
-oplocate -x 1.4970000034663824 -y 3.8490000069141388 vector_orient
+oplocate -x 1.4970000000000001 -y 3.8490000000000002 vector_orient
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "VectorName"                 label   "VectorName"                 type    string                 default { "" }             }             parm {                 name    "TargetName"                 label   "TargetName"                 type    string                 default { "" }             }             parm {                 name    "Lessor"                 label   "Lessor"                 type    integer                 default { "0" }                 help    "The > || < condition to engage operation."                 range   { 0 10 }             }             parm {                 name    "OpMode"                 label   "OpMode"                 type    integer                 default { "0" }                 help    "Operation type -  see code notes."                 range   { 0 10 }             }             parm {                 name    "ModeVariance"                 label   "ModeVariance"                 type    integer                 default { "0" }                 help    "Add variance to angle when in Explicit Variance mode."                 range   { 0 10 }             }             parm {                 name    "Beta"                 label   "Beta"                 type    float                 default { "0" }                 help    "Condition threshold angle."                 range   { 0 1 }             }             parm {                 name    "Alpha"                 label   "Alpha"                 type    float                 default { "0" }                 help    "Explicit Variance angle."                 range   { 0 1 }             }             parm {                 name    "Delta"                 label   "Delta"                 type    float                 default { "0" }                 help    "Variance angle max."                 range   { 0 1 }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' vector_orient
 opparm vector_orient  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -4917,7 +4858,7 @@ opcf ..
 
 # Node vectorfield_formula (Sop/subnet)
 opadd -e -n subnet vectorfield_formula
-oplocate -x 13.5 -y 1.8499999940395355 vectorfield_formula
+oplocate -x 13.5 -y 1.8500000000000001 vectorfield_formula
 opspareds "" vectorfield_formula
 opparm -V 20.5.522 vectorfield_formula label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' )
 chlock vectorfield_formula -*
@@ -4929,7 +4870,7 @@ opcf vectorfield_formula
 
 # Node output0 (Sop/output)
 opadd -e -n output output0
-oplocate -x 2.1054352992052756 -y 3.8471500016748901 output0
+oplocate -x 2.1054400000000002 -y 3.8471500000000001 output0
 opspareds "" output0
 opparm -V 20.5.522 output0 outputidx ( 0 )
 chlock output0 -*
@@ -4940,7 +4881,7 @@ opuserdata -n '___Version___' -v '20.5.522' output0
 
 # Node style01 (Sop/attribwrangle)
 opadd -e -n attribwrangle style01
-oplocate -x -8.231964714316689 -y 7.994452954498108 style01
+oplocate -x -8.2319600000000008 -y 7.9944499999999996 style01
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }      parm {         name    "Scale"         label   "Scale"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "RateX"         label   "Ratex"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "RateZ"         label   "Ratez"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "PostMultiply"         label   "Postmultiply"         type    float         default { "0" }         range   { 0 1 }     } ' style01
 opparm style01  bindings ( 0 ) groupbindings ( 0 )
 opparm style01 folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//\nvector u = @P * ch(\'Scale\');\n\nfloat xr = @Time / ch(\'RateX\');\nfloat zr = @Time / ch(\'RateZ\');\nfloat x = sin(u.x+(xr));\nfloat z = cos(u.z+(zr));\n@N = set(x,0,z) * ch(\'PostMultiply\');' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) Scale ( 10 ) RateX ( 1 ) RateZ ( 1 ) PostMultiply ( 0.1 )
@@ -4952,7 +4893,7 @@ opuserdata -n '___Version___' -v '' style01
 
 # Node style02 (Sop/attribwrangle)
 opadd -e -n attribwrangle style02
-oplocate -x -5.9727647143166891 -y 7.5426529544981076 style02
+oplocate -x -5.9727600000000001 -y 7.5426500000000001 style02
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }      parm {         name    "Scale"         label   "Scale"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "Rate"         label   "Rate"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "PostMultiply"         label   "Postmultiply"         type    float         default { "0" }         range   { 0 1 }     } ' style02
 opparm style02  bindings ( 0 ) groupbindings ( 0 )
 opparm style02 folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//v.x = cos(length(p)*p.x);\n//v.y = p.x\n\nvector u = @P * ch(\'Scale\');\n\nfloat r = @Time / ch(\'Rate\');\n\nfloat x = cos(length(@P) * u.x + (r));\nfloat z = u.z;\n@N = set(x,x,z)* ch(\'PostMultiply\');' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) Scale ( 10 ) Rate ( 1 ) PostMultiply ( 0.03 )
@@ -4964,7 +4905,7 @@ opuserdata -n '___Version___' -v '' style02
 
 # Node style03 (Sop/attribwrangle)
 opadd -e -n attribwrangle style03
-oplocate -x -3.7135647143166892 -y 7.0908529544981072 style03
+oplocate -x -3.7135600000000002 -y 7.0908499999999997 style03
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }      parm {         name    "Scale"         label   "Scale"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "ratex"         label   "Ratex"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "ratez"         label   "Ratez"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "PostMultiply"         label   "Postmultiply"         type    float         default { "0" }         range   { 0 1 }     } ' style03
 opparm style03  bindings ( 0 ) groupbindings ( 0 )
 opparm style03 folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//v.x = sin(sin(p.x));\n//v.y = cos(length(p));\n\nvector u = @P * ch(\'Scale\');\nfloat xr = @Time / ch(\'ratex\');\nfloat zr = @Time / ch(\'ratez\');\nfloat x = sin(sin(u.x+xr) +zr);\nfloat z = cos(length(u+xr)+zr);\n@N = set(x,x,z)* ch(\'PostMultiply\');' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) Scale ( 10 ) ratex ( 1 ) ratez ( 1 ) PostMultiply ( 0.05 )
@@ -4976,7 +4917,7 @@ opuserdata -n '___Version___' -v '' style03
 
 # Node style04 (Sop/attribwrangle)
 opadd -e -n attribwrangle style04
-oplocate -x -1.4543647143166893 -y 6.6390529544981076 style04
+oplocate -x -1.4543600000000001 -y 6.6390500000000001 style04
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }      parm {         name    "Scale"         label   "Scale"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "ratex"         label   "Ratex"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "ratez"         label   "Ratez"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "PostMultiply"         label   "Postmultiply"         type    float         default { "0" }         range   { 0 1 }     } ' style04
 opparm style04  bindings ( 0 ) groupbindings ( 0 )
 opparm style04 folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//v.x = sin(max(u.x,u.z));\n//v.y = (cos(u.y)+cos(sin(u.x)));\n\nvector u = @P * ch(\'Scale\');\n\nfloat xr = @Time / ch(\'ratex\');\nfloat zr = @Time / ch(\'ratez\');\n\nfloat x = sin(max(u.x,u.z)+xr);\nfloat z = (cos(u.x)+cos(sin(u.z)+zr));\n@N = set(x,0,z) * ch(\'PostMultiply\');' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) Scale ( 10 ) ratex ( 1 ) ratez ( 1 ) PostMultiply ( 0.1 )
@@ -4988,7 +4929,7 @@ opuserdata -n '___Version___' -v '' style04
 
 # Node style05 (Sop/attribwrangle)
 opadd -e -n attribwrangle style05
-oplocate -x 0.80483528568331053 -y 6.1872529544981081 style05
+oplocate -x 0.80483499999999997 -y 6.1872499999999997 style05
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }      parm {         name    "Scale"         label   "Scale"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "rate"         label   "Rate"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "PostMultiply"         label   "Postmultiply"         type    float         default { "0" }         range   { 0 1 }     } ' style05
 opparm style05  bindings ( 0 ) groupbindings ( 0 )
 opparm style05 folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//v.x = cos(p.y);\n//v.y = sin(p.x)/sin(p.x)/p.x;\n\nvector u = @P * ch(\'Scale\');\n\nfloat r = @Time / ch(\'rate\');\n\nfloat x = cos(u.z+r);\nfloat z = sin(u.x)/sin(u.x)/u.x;\n@N = set(x,0,z) * ch(\'PostMultiply\');' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) Scale ( 10 ) rate ( 1 ) PostMultiply ( 0.05 )
@@ -5000,7 +4941,7 @@ opuserdata -n '___Version___' -v '' style05
 
 # Node current01 (Sop/attribwrangle)
 opadd -e -n attribwrangle current01
-oplocate -x 3.0640352856833104 -y 5.7354529544981077 current01
+oplocate -x 3.0640399999999999 -y 5.7354500000000002 current01
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }      parm {         name    "Scale"         label   "Scale"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "RateX"         label   "Ratex"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "PostMultiply"         label   "Postmultiply"         type    float         default { "0" }         range   { 0 1 }     } ' current01
 opparm current01  bindings ( 0 ) groupbindings ( 0 )
 opparm current01 folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//v.x = p.x;\n//v.y = sin(p.x);\n\nvector u = @P * ch(\'Scale\');\n\nfloat xr = @Time / ch(\'RateX\');\n\nfloat x = u.x;\nfloat z = sin(u.x+xr);\n\n@N = set(x,0,z) * ch(\'PostMultiply\');' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) Scale ( 12 ) RateX ( 1 ) PostMultiply ( 0.019 )
@@ -5012,7 +4953,7 @@ opuserdata -n '___Version___' -v '' current01
 
 # Node current02 (Sop/attribwrangle)
 opadd -e -n attribwrangle current02
-oplocate -x 5.3232352856833103 -y 5.2836529544981072 current02
+oplocate -x 5.3232400000000002 -y 5.2836499999999997 current02
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }      parm {         name    "Scale"         label   "Scale"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "RateX"         label   "Ratex"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "PostMultiply"         label   "Postmultiply"         type    float         default { "0" }         range   { 0 1 }     } ' current02
 opparm current02  bindings ( 0 ) groupbindings ( 0 )
 opparm current02 folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//v.x = sin(p.y/max((length(p)+max(p.x,length(p))),cos(length(p))));\n//v.y = sin(p.y);;\n\nvector u = @P * ch(\'Scale\');\n\nfloat xr = @Time / ch(\'RateX\');\n\nfloat x = sin(u.z/max((length(@P)+max(u.x,length(@P))),cos(length(@P))) + xr);\nfloat z = sin(u.x);\n@N = set(x,0,z) * ch(\'PostMultiply\');' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) Scale ( 10 ) RateX ( 0.5 ) PostMultiply ( 0.1 )
@@ -5024,7 +4965,7 @@ opuserdata -n '___Version___' -v '' current02
 
 # Node current03 (Sop/attribwrangle)
 opadd -e -n attribwrangle current03
-oplocate -x 7.5824352856833102 -y 4.8318529544981077 current03
+oplocate -x 7.5824400000000001 -y 4.8318500000000002 current03
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }      parm {         name    "Scale"         label   "Scale"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "RateX"         label   "Ratex"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "PostMultiply"         label   "Postmultiply"         type    float         default { "0" }         range   { 0 1 }     } ' current03
 opparm current03  bindings ( 0 ) groupbindings ( 0 )
 opparm current03 folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//v.x = p.y;\n//v.y = cos(p.x);\nvector u = @P * ch(\'Scale\');\n\nfloat xr = @Time / ch(\'RateX\');\n\nfloat x = u.z;\nfloat z = cos(u.x+xr);\n@N = set(x,0,z) * ch(\'PostMultiply\');' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) Scale ( 10 ) RateX ( 1 ) PostMultiply ( 0.1 )
@@ -5036,7 +4977,7 @@ opuserdata -n '___Version___' -v '' current03
 
 # Node current04 (Sop/attribwrangle)
 opadd -e -n attribwrangle current04
-oplocate -x 10.10083528568331 -y 4.2661859544981073 current04
+oplocate -x 10.1008 -y 4.2661899999999999 current04
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }      parm {         name    "Scale"         label   "Scale"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "RateX"         label   "Ratex"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "RateZ"         label   "Ratez"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "PostMultiply"         label   "Postmultiply"         type    float         default { "0" }         range   { 0 1 }     } ' current04
 opparm current04  bindings ( 0 ) groupbindings ( 0 )
 opparm current04 folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//v.x = cos((p.y-p.y));\n//v.y = cos(p.x);\n\nvector u = @P * ch(\'Scale\');\n\nfloat xr = @Time / ch(\'RateX\');\nfloat zr = @Time / ch(\'RateZ\');\n\nfloat x = cos((u.y-u.y+xr));\nfloat z = cos(u.x+zr);\n\n@N = set(x,0,z) * ch(\'PostMultiply\');' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) Scale ( 10 ) RateX ( 1 ) RateZ ( 1 ) PostMultiply ( 0.1 )
@@ -5048,7 +4989,7 @@ opuserdata -n '___Version___' -v '' current04
 
 # Node current05 (Sop/attribwrangle)
 opadd -e -n attribwrangle current05
-oplocate -x 12.10083528568331 -y 3.9282529544981077 current05
+oplocate -x 12.1008 -y 3.9282499999999998 current05
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }      parm {         name    "Scale"         label   "Scale"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "RateX"         label   "Ratex"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "RateZ"         label   "Ratez"         type    float         default { "0" }         range   { 0 1 }     }     parm {         name    "PostMultiply"         label   "Postmultiply"         type    float         default { "0" }         range   { 0 1 }     } ' current05
 opparm current05  bindings ( 0 ) groupbindings ( 0 )
 opparm current05 folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//v.x = sin(p.y/max((length(p)+max(p.x,length(p))),cos(length(p))));\n//v.y = sin(p.y)\n\nvector u = @P * ch(\'Scale\');\n\nfloat xr = @Time / ch(\'RateX\');\nfloat zr = @Time / ch(\'RateZ\');\n\nfloat x = sin(u.z/ max((length(@P)+max(u.x,length(@P)) ),cos(length(@P))) + xr);\nfloat z = sin(u.z+zr);\n@N = set(x,0,z) * ch(\'PostMultiply\');' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) Scale ( 10 ) RateX ( 1 ) RateZ ( 1 ) PostMultiply ( 0.1 )
@@ -5060,7 +5001,7 @@ opuserdata -n '___Version___' -v '' current05
 
 # Node switch1 (Sop/switch)
 opadd -e -n switch switch1
-oplocate -x 2.10383528568331 -y 4.8326529544981076 switch1
+oplocate -x 2.1038399999999999 -y 4.8326500000000001 switch1
 opspareds "" switch1
 opparm -V 20.5.522 switch1 input ( 9 )
 chlock switch1 -*
@@ -5074,7 +5015,7 @@ opcf ..
 
 # Node vectorfield_object_flow (Sop/subnet)
 opadd -e -n subnet vectorfield_object_flow
-oplocate -x 13.5 -y 0.84999999403953552 vectorfield_object_flow
+oplocate -x 13.5 -y 0.84999999999999998 vectorfield_object_flow
 opspareds '    groupsimple {         name    "Main"         label   "Object Flow"          parm {             name    "distance"             label   "Distance"             type    float             default { "0" }             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "sim"             label   "Simulate"             type    toggle             default { "0" }             parmtag { "script_callback_language" "python" }         }         parm {             name    "blast"             label   "Blast Static"             type    toggle             default { "0" }             parmtag { "script_callback_language" "python" }         }     }      parm {         name    "label1"         baseparm         label   "Input #1 Label"         invisible         export  all     }     parm {         name    "label2"         baseparm         label   "Input #2 Label"         invisible         export  all     }     parm {         name    "label3"         baseparm         label   "Input #3 Label"         invisible         export  all     }     parm {         name    "label4"         baseparm         label   "Input #4 Label"         invisible         export  all     } ' vectorfield_object_flow
 opparm -V 20.5.522 vectorfield_object_flow label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) Main ( 0 ) distance ( 0 ) sim ( off ) blast ( off )
 chlock vectorfield_object_flow -*
@@ -5086,7 +5027,7 @@ opcf vectorfield_object_flow
 
 # Node output0 (Sop/output)
 opadd -e -n output output0
-oplocate -x 1.5016000135219656 -y -3.0122588157927268 output0
+oplocate -x 1.5016 -y -3.0122599999999999 output0
 opspareds "" output0
 opparm -V 20.5.522 output0 outputidx ( 0 )
 chlock output0 -*
@@ -5097,7 +5038,7 @@ opuserdata -n '___Version___' -v '20.5.522' output0
 
 # Node object_flow (Sop/attribwrangle)
 opadd -e -n attribwrangle object_flow
-oplocate -x 1.4970000034663826 -y 1.8101000069141389 object_flow
+oplocate -x 1.4970000000000001 -y 1.8101 object_flow
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "Distance"                 label   "Distance"                 type    float                 default { "0" }                 range   { 0 1 }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' object_flow
 opparm object_flow  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -5113,7 +5054,7 @@ opuserdata -n '___Version___' -v '' object_flow
 
 # Node object_vectors (Sop/attribwrangle)
 opadd -e -n attribwrangle object_vectors
-oplocate -x 1.4970000034663826 -y 2.8101000069141389 object_vectors
+oplocate -x 1.4970000000000001 -y 2.8100999999999998 object_vectors
 opspareds "" object_vectors
 opparm object_vectors  bindings ( 0 ) groupbindings ( 0 )
 opparm object_vectors folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '@N = @N; v@v = detail(1, \'v\');' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -5125,7 +5066,7 @@ opuserdata -n '___Version___' -v '' object_vectors
 
 # Node trail1 (Sop/trail)
 opadd -e -n trail trail1
-oplocate -x 3.5000000034663827 -y 4.8111000069141383 trail1
+oplocate -x 3.5 -y 4.8110999999999997 trail1
 opspareds "" trail1
 opparm -V 20.5.522 trail1 result ( velocity ) length ( 2 ) inc ( 1 ) cache ( 2 ) clear ( 0 ) evalframe ( off ) surftype ( quads ) close ( on ) velscale ( 1 ) velapproximation ( 'Backward Difference' ) computeaccel ( off ) accelattribute ( accel ) computeangular ( off ) matchbyattribute ( off ) attributetomatch ( id )
 chlock trail1 -*
@@ -5136,7 +5077,7 @@ opuserdata -n '___Version___' -v '20.5.522' trail1
 
 # Node attribpromote2 (Sop/attribpromote)
 opadd -e -n attribpromote attribpromote2
-oplocate -x 3.4965500034663828 -y 3.8111000069141387 attribpromote2
+oplocate -x 3.49655 -y 3.8111000000000002 attribpromote2
 opspareds "" attribpromote2
 opparm -V 20.5.522 attribpromote2 inname ( v ) inclass ( point ) outclass ( detail ) usepieceattrib ( off ) pieceattrib ( name ) method ( mean ) useoutname ( off ) outname ( "" ) deletein ( off )
 chlock attribpromote2 -*
@@ -5147,7 +5088,7 @@ opuserdata -n '___Version___' -v '20.5.522' attribpromote2
 
 # Node solver1 (Sop/solver)
 opadd -e -n solver solver1
-oplocate -x -0.49999999653361726 -y 0.81110000691413875 solver1
+oplocate -x -0.5 -y 0.81110000000000004 solver1
 opspareds "" solver1
 opparm solver1 resimulate ( 0 ) useinitialsop ( off ) initialsop ( "" ) startframe ( 15 ) substep ( 1 ) cacheenabled ( on ) cachetodisk ( off ) cachemaxsize ( 5000 )
 chlock solver1 -*
@@ -5351,7 +5292,7 @@ opcf ../..
 
 # Node attribwrangle4 (Sop/attribwrangle)
 opadd -e -n attribwrangle attribwrangle4
-oplocate -x -0.50299999653361738 -y 1.8490000069141388 attribwrangle4
+oplocate -x -0.503 -y 1.849 attribwrangle4
 opspareds "" attribwrangle4
 opparm attribwrangle4  bindings ( 0 ) groupbindings ( 0 )
 opparm attribwrangle4 folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'i@__id = @ptnum;' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -5363,7 +5304,7 @@ opuserdata -n '___Version___' -v '' attribwrangle4
 
 # Node trail2 (Sop/trail)
 opadd -e -n trail trail2
-oplocate -x -0.49999999653361726 -y -0.18889999308586081 trail2
+oplocate -x -0.5 -y -0.18890000000000001 trail2
 opspareds "" trail2
 opparm -V 20.5.522 trail2 result ( velocity ) length ( 2 ) inc ( 1 ) cache ( 2 ) clear ( 0 ) evalframe ( off ) surftype ( quads ) close ( on ) velscale ( 1 ) velapproximation ( 'Backward Difference' ) computeaccel ( off ) accelattribute ( accel ) computeangular ( off ) matchbyattribute ( off ) attributetomatch ( id )
 chlock trail2 -*
@@ -5374,7 +5315,7 @@ opuserdata -n '___Version___' -v '20.5.522' trail2
 
 # Node blast (Sop/attribwrangle)
 opadd -e -n attribwrangle blast
-oplocate -x 1.4970000034663826 -y -2.1898999930858611 blast
+oplocate -x 1.4970000000000001 -y -2.1899000000000002 blast
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "Mode"                 label   "Mode"                 type    integer                 default { "0" }                 range   { 0 10 }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' blast
 opparm blast  bindings ( 0 ) groupbindings ( 0 )
 chblockbegin
@@ -5390,7 +5331,7 @@ opuserdata -n '___Version___' -v '' blast
 
 # Node switch1 (Sop/switch)
 opadd -e -n switch switch1
-oplocate -x 1.5050000034663826 -y -1.1938999930858616 switch1
+oplocate -x 1.5049999999999999 -y -1.1939 switch1
 opspareds "" switch1
 chblockbegin
 chadd -t 0.58333333333333337 0.58333333333333337 switch1 input
@@ -5407,7 +5348,7 @@ opuserdata -n 'nodeshape' -v 'circle' switch1
 
 # Node set (Sop/attribwrangle)
 opadd -e -n attribwrangle set
-oplocate -x -0.50299999653361738 -y -1.228799993085862 set
+oplocate -x -0.503 -y -1.2287999999999999 set
 opspareds "" set
 opparm set  bindings ( 0 ) groupbindings ( 0 )
 opparm set folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'v@objectflow = v@v; removepointattrib(0, \'v\'); removepointattrib(0, \'__id\');' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
@@ -5421,19 +5362,19 @@ opcf ..
 
 # Node vector_project (Sop/subnet)
 opadd -e -n subnet vector_project
-oplocate -x 13.5 -y -0.15000000596046451 vector_project
+oplocate -x 13.5 -y -0.14999999999999999 vector_project
 opspareds '    groupsimple {         name    "Main"         label   "Vector Project"          parm {             name    "projectionmode"             label   "Mode"             type    ordinal             default { "0" }             menu {                 "0" "Tangent Plane"                 "1" "Onto"             }             parmtag { "script_callback_language" "python" }         }         parm {             name    "vector"             label   "Vector"             type    string             default { "" }             help    "The vector to be projected."             parmtag { "editor" "0" }             parmtag { "script_callback_language" "python" }         }         parm {             name    "target"             label   "Target"             type    string             default { "" }             help    "The reference vector."             parmtag { "script_callback_language" "python" }         }     }      parm {         name    "label1"         baseparm         label   "Input #1 Label"         invisible         export  all     }     parm {         name    "label2"         baseparm         label   "Input #2 Label"         invisible         export  all     }     parm {         name    "label3"         baseparm         label   "Input #3 Label"         invisible         export  all     }     parm {         name    "label4"         baseparm         label   "Input #4 Label"         invisible         export  all     } ' vector_project
 opparm -V 20.5.522 vector_project label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) Main ( 0 ) projectionmode ( 0 ) vector ( "" ) target ( "" )
 chlock vector_project -*
 chautoscope vector_project -*
-opset -d on -r on -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off vector_project
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off vector_project
 opexprlanguage -s hscript vector_project
 opuserdata -n '___Version___' -v '20.5.522' vector_project
 opcf vector_project
 
 # Node output0 (Sop/output)
 opadd -e -n output output0
-oplocate -x -0.49839998647803441 -y 1.8471500016748905 output0
+oplocate -x -0.49840000000000001 -y 1.8471500000000001 output0
 opspareds "" output0
 opparm -V 20.5.522 output0 outputidx ( 0 )
 chlock output0 -*
@@ -5444,7 +5385,7 @@ opuserdata -n '___Version___' -v '20.5.522' output0
 
 # Node tangentplane (Sop/attribwrangle)
 opadd -e -n attribwrangle tangentplane
-oplocate -x -0.50299999653361738 -y 3.8490000069141383 tangentplane
+oplocate -x -0.503 -y 3.8490000000000002 tangentplane
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "Target"                 label   "Target"                 type    string                 default { "" }             }             parm {                 name    "Vector"                 label   "Vector"                 type    string                 default { "" }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' tangentplane
 opparm tangentplane  bindings ( 0 ) groupbindings ( 0 )
 opparm tangentplane folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//\nstring aname = chs(\'Target\'); string bname = chs(\'Vector\');\n// error handle\nint hasa = haspointattrib(0, aname); int hasb = haspointattrib(0, bname);\nif ( hasa == 0 ) error(\'Input does not have the vector A\');\nif ( hasb == 0 ) error(\'Input does not have the vector B\');\n\n//\nvector a = normalize(point(0, aname, @ptnum)); vector b = normalize(point(0, bname, @ptnum));\nvector c = normalize(b - ((dot(b, a)) * a));\n\nsetpointattrib(0, bname, @ptnum, c, \'set\');\n   ' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 ) Target ( '`chs("../target")`' ) Vector ( '`chs("../vector")`' )
@@ -5456,7 +5397,7 @@ opuserdata -n '___Version___' -v '' tangentplane
 
 # Node onto (Sop/attribwrangle)
 opadd -e -n attribwrangle onto
-oplocate -x 1.4970000034663826 -y 3.8490000069141383 onto
+oplocate -x 1.4970000000000001 -y 3.8490000000000002 onto
 opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "sidefx::look" "blank" }              parm {                 name    "Target"                 label   "Target"                 type    string                 default { "" }             }             parm {                 name    "Vector"                 label   "Vector"                 type    string                 default { "" }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' onto
 opparm onto  bindings ( 0 ) groupbindings ( 0 )
 opparm onto folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//\nstring aname = chs(\'Target\'); string bname = chs(\'Vector\');\n// error handle\nint hasa = haspointattrib(0, aname); int hasb = haspointattrib(0, bname);\nif ( hasa == 0 ) error(\'Input does not have the vector A\');\nif ( hasb == 0 ) error(\'Input does not have the vector B\');\n\n//\nvector a = point(0, aname, @ptnum); vector b = point(0, bname, @ptnum);\n\n// Calculate dot product of a and b\nfloat d = dot(b, a);\n\n// Calculate the magnitude of a\nfloat a_magnitude = length(a);\n\n// Normalize d by dividing by the magnitude of a\nd = d / a_magnitude;\n\n// set projection\nvector q = d * normalize(a);\nsetpointattrib(0, bname, @ptnum, q, \'set\');\n    ' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 ) Target ( '`chs("../target")`' ) Vector ( '`chs("../vector")`' )
@@ -5468,7 +5409,7 @@ opuserdata -n '___Version___' -v '' onto
 
 # Node switch1 (Sop/switch)
 opadd -e -n switch switch1
-oplocate -x -0.49499998241662974 -y 2.8449999988079071 switch1
+oplocate -x -0.495 -y 2.8450000000000002 switch1
 opspareds "" switch1
 chblockbegin
 chadd -t 0 0 switch1 input
@@ -5484,7 +5425,1269 @@ opuserdata -n '___Version___' -v '20.5.522' switch1
 opuserdata -n 'nodeshape' -v 'circle' switch1
 oporder -e output0 tangentplane onto switch1 
 opcf ..
-oporder -e curvature gradient attributefunction attributenormalize cluster curvefromanim matrixcurve solvercurveadvect deformerripple solverdecay isolatecorners matrixconstruct matrixtangentspace meshcage noisepower prim_angle_partition prim_reconstruct rayintersect solverpropagation vector_conditional_rotate vectorfield_formula vectorfield_object_flow vector_project 
+
+# Node array_remove_duplicate (Sop/subnet)
+opadd -e -n subnet array_remove_duplicate
+oplocate -x 17.5 -y 2.8499999940395355 array_remove_duplicate
+opspareds '    groupsimple {         name    "main"         label   "Array Remove Duplicate"         grouptag { "group_type" "simple" }          parm {             name    "runover"             label   "Run Over"             type    ordinal             default { "0" }             menu {                 "0" "Detail"                 "1" "Primitives"                 "2" "Points"             }             parmtag { "script_callback_language" "python" }         }         parm {             name    "datatype"             label   "Data Type"             type    ordinal             default { "0" }             menu {                 "0" "Integer      "                 "1" "Float"                 "2" "String"             }             parmtag { "script_callback_language" "python" }         }         parm {             name    "attribute"             label   "Attribute"             type    string             default { "" }             parmtag { "script_callback_language" "python" }         }     }      group {         name    "folder0"         label   "Folder Name"         invisibletab          parm {             name    "label1"             baseparm             label   "Input #1 Label"             export  dialog         }         parm {             name    "label2"             baseparm             label   "Input #2 Label"             export  dialog         }         parm {             name    "label3"             baseparm             label   "Input #3 Label"             export  dialog         }         parm {             name    "label4"             baseparm             label   "Input #4 Label"             export  dialog         }     }  ' array_remove_duplicate
+opparm -V 20.5.522 array_remove_duplicate label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) main ( 0 ) runover ( 0 ) datatype ( 0 ) attribute ( "" ) folder0 ( 0 )
+chlock array_remove_duplicate -*
+chautoscope array_remove_duplicate -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off array_remove_duplicate
+opexprlanguage -s hscript array_remove_duplicate
+opcf array_remove_duplicate
+
+# Node detail_int (Sop/attribwrangle)
+opadd -e -n attribwrangle detail_int
+oplocate -x -0.5 -y 8.8499999999999996 detail_int
+opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "attribute"                 label   "Attribute"                 type    string                 default { "" }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' detail_int
+opparm detail_int  bindings ( 0 ) groupbindings ( 0 )
+chblockbegin
+chadd -t 0 0 detail_int attribute
+chkey -t 0 -v 0 -m 0 -a 0.33333333333333331 -A 0.33333333333333331 -T a  -o mM  -F 'chs("../attribute")' detail_int/attribute
+chblockend
+opparm detail_int folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( detail ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//\nstring name = chs(\'attribute\'); \n\n//\nhasdetailattrib(0, name)  != 1 ? error(\'Input does not have a @\' + name + \' attribute.\') : -1;\n\n//\nint arr [] = detail(0, name); int sortasc [] = sort(arr); i[]@sorted;\n\n//\nforeach( int i; int u; sortasc )\n{\n    int current = getcomp(sortasc, i);\n    int previou = getcomp(sortasc, i + 1);\n    if (current != previou ) append(@sorted, current);\n}\n\nsetdetailattrib(0, name, @sorted, \'set\'); removedetailattrib(0, \'sorted\');\n\n\n\n\n\n\n\n\n\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 ) attribute ( attribute )
+chlock detail_int -*
+chautoscope detail_int -* +attribute
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off detail_int
+opexprlanguage -s hscript detail_int
+opuserdata -n '___Version___' -v '' detail_int
+
+# Node detail_float (Sop/attribwrangle)
+opadd -e -n attribwrangle detail_float
+oplocate -x 1.5 -y 7.8499999999999996 detail_float
+opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "attribute"                 label   "Attribute"                 type    string                 default { "" }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' detail_float
+opparm detail_float  bindings ( 0 ) groupbindings ( 0 )
+chblockbegin
+chadd -t 0 0 detail_float attribute
+chkey -t 0 -v 0 -m 0 -a 0.33333333333333331 -A 0.33333333333333331 -T a  -o mM  -F 'chs("../attribute")' detail_float/attribute
+chblockend
+opparm detail_float folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( detail ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//\nstring name = chs(\'attribute\'); \n\n//\nhasdetailattrib(0, name)  != 1 ? error(\'Input does not have a @\' + name + \' attribute.\') : -1;\n\n//\nfloat arr [] = detail(0, name); float sortasc [] = sort(arr); f[]@sorted;\n\n//\nforeach( int i; float u; sortasc )\n{\n    float current = getcomp(sortasc, i);\n    float previou = getcomp(sortasc, i + 1);\n    if (current != previou ) append(@sorted, current);\n}\n\nsetdetailattrib(0, name, @sorted, \'set\'); removedetailattrib(0, \'sorted\');\n\n\n\n\n\n\n\n\n\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 ) attribute ( attribute )
+chlock detail_float -*
+chautoscope detail_float -* +attribute
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off detail_float
+opexprlanguage -s hscript detail_float
+opuserdata -n '___Version___' -v '' detail_float
+
+# Node detail_string (Sop/attribwrangle)
+opadd -e -n attribwrangle detail_string
+oplocate -x 3.5 -y 6.8499999999999996 detail_string
+opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "attribute"                 label   "Attribute"                 type    string                 default { "" }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' detail_string
+opparm detail_string  bindings ( 0 ) groupbindings ( 0 )
+chblockbegin
+chadd -t 0 0 detail_string attribute
+chkey -t 0 -v 0 -m 0 -a 0.33333333333333331 -A 0.33333333333333331 -T a  -o mM  -F 'chs("../attribute")' detail_string/attribute
+chblockend
+opparm detail_string folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( detail ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//\nstring name = chs(\'attribute\'); \n\n//\nhasdetailattrib(0, name)  != 1 ? error(\'Input does not have a @\' + name + \' attribute.\') : -1;\n\n//\nstring arr [] = detail(0, name); string sortasc [] = sort(arr); s[]@sorted;\n\n//\nforeach( int i; string u; sortasc )\n{\n    string current = getcomp(sortasc, i);\n    string previou = getcomp(sortasc, i + 1);\n    if (current != previou ) append(@sorted, current);\n}\n\nsetdetailattrib(0, name, @sorted, \'set\'); removedetailattrib(0, \'sorted\');\n\n\n\n\n\n\n\n\n\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 ) attribute ( attribute )
+chlock detail_string -*
+chautoscope detail_string -* +attribute
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off detail_string
+opexprlanguage -s hscript detail_string
+opuserdata -n '___Version___' -v '' detail_string
+
+# Node prim_int (Sop/attribwrangle)
+opadd -e -n attribwrangle prim_int
+oplocate -x 5.5 -y 8.8499999999999996 prim_int
+opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "attribute"                 label   "Attribute"                 type    string                 default { "" }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' prim_int
+opparm prim_int  bindings ( 0 ) groupbindings ( 0 )
+chblockbegin
+chadd -t 0 0 prim_int attribute
+chkey -t 0 -v 0 -m 0 -a 0.33333333333333331 -A 0.33333333333333331 -T a  -o mM  -F 'chs("../attribute")' prim_int/attribute
+chblockend
+opparm prim_int folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( primitive ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//\nstring name = chs(\'attribute\'); \n\n//\nhasprimattrib(0, name)  != 1 ? error(\'Input does not have a @\' + name + \' attribute.\') : -1;\n\n//\nint arr [] = prim(0, name, @primnum); int sortasc [] = sort(arr); i[]@sorted;\n\n//\nforeach( int i; int u; sortasc )\n{\n    int current = getcomp(sortasc, i);\n    int previou = getcomp(sortasc, i + 1);\n    if (current != previou ) append(@sorted, current);\n}\n\nsetprimattrib(0, name, @primnum, @sorted, \'set\'); removeprimattrib(0, \'sorted\');\n\n\n\n\n\n\n\n\n\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 ) attribute ( attribute )
+chlock prim_int -*
+chautoscope prim_int -* +attribute
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off prim_int
+opexprlanguage -s hscript prim_int
+opuserdata -n '___Version___' -v '' prim_int
+
+# Node prim_float (Sop/attribwrangle)
+opadd -e -n attribwrangle prim_float
+oplocate -x 7.5 -y 7.8499999999999996 prim_float
+opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "attribute"                 label   "Attribute"                 type    string                 default { "" }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' prim_float
+opparm prim_float  bindings ( 0 ) groupbindings ( 0 )
+chblockbegin
+chadd -t 0 0 prim_float attribute
+chkey -t 0 -v 0 -m 0 -a 0.33333333333333331 -A 0.33333333333333331 -T a  -o mM  -F 'chs("../attribute")' prim_float/attribute
+chblockend
+opparm prim_float folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( primitive ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//\nstring name = chs(\'attribute\'); \n\n//\nhasprimattrib(0, name)  != 1 ? error(\'Input does not have a @\' + name + \' attribute.\') : -1;\n\n//\nfloat arr [] = prim(0, name, @primnum); float sortasc [] = sort(arr); f[]@sorted;\n\n//\nforeach( int i; float u; sortasc )\n{\n    float current = getcomp(sortasc, i);\n    float previou = getcomp(sortasc, i + 1);\n    if (current != previou ) append(@sorted, current);\n}\n\nsetprimattrib(0, name, @primnum, @sorted, \'set\'); removeprimattrib(0, \'sorted\');\n\n\n\n\n\n\n\n\n\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 ) attribute ( attribute )
+chlock prim_float -*
+chautoscope prim_float -* +attribute
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off prim_float
+opexprlanguage -s hscript prim_float
+opuserdata -n '___Version___' -v '' prim_float
+
+# Node prim_string (Sop/attribwrangle)
+opadd -e -n attribwrangle prim_string
+oplocate -x 9.5 -y 6.8499999999999996 prim_string
+opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "attribute"                 label   "Attribute"                 type    string                 default { "" }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' prim_string
+opparm prim_string  bindings ( 0 ) groupbindings ( 0 )
+chblockbegin
+chadd -t 0 0 prim_string attribute
+chkey -t 0 -v 0 -m 0 -a 0.33333333333333331 -A 0.33333333333333331 -T a  -o mM  -F 'chs("../attribute")' prim_string/attribute
+chblockend
+opparm prim_string folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( primitive ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//\nstring name = chs(\'attribute\'); \n\n//\nhasprimattrib(0, name)  != 1 ? error(\'Input does not have a @\' + name + \' attribute.\') : -1;\n\n//\nstring arr [] = prim(0, name, @primnum); string sortasc [] = sort(arr); s[]@sorted;\n\n//\nforeach( int i; string u; sortasc )\n{\n    string current = getcomp(sortasc, i);\n    string previou = getcomp(sortasc, i + 1);\n    if (current != previou ) append(@sorted, current);\n}\n\nsetprimattrib(0, name, @primnum, @sorted, \'set\'); removeprimattrib(0, \'sorted\');\n\n\n\n\n\n\n\n\n\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 ) attribute ( attribute )
+chlock prim_string -*
+chautoscope prim_string -* +attribute
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off prim_string
+opexprlanguage -s hscript prim_string
+opuserdata -n '___Version___' -v '' prim_string
+
+# Node point_int (Sop/attribwrangle)
+opadd -e -n attribwrangle point_int
+oplocate -x 11.5 -y 8.8499999999999996 point_int
+opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "attribute"                 label   "Attribute"                 type    string                 default { "" }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' point_int
+opparm point_int  bindings ( 0 ) groupbindings ( 0 )
+chblockbegin
+chadd -t 0 0 point_int attribute
+chkey -t 0 -v 0 -m 0 -a 0.33333333333333331 -A 0.33333333333333331 -T a  -o mM  -F 'chs("../attribute")' point_int/attribute
+chblockend
+opparm point_int folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//\nstring name = chs(\'attribute\'); \n\n//\nhaspointattrib(0, name)  != 1 ? error(\'Input does not have a @\' + name + \' attribute.\') : -1;\n\n//\nint arr [] = point(0, name, @ptnum); int sortasc [] = sort(arr); i[]@sorted;\n\n//\nforeach( int i; int u; sortasc )\n{\n    int current = getcomp(sortasc, i);\n    int previou = getcomp(sortasc, i + 1);\n    if (current != previou ) append(@sorted, current);\n}\n\nsetpointattrib(0, name, @ptnum, @sorted, \'set\'); removepointattrib(0, \'sorted\');\n\n\n\n\n\n\n\n\n\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 ) attribute ( attribute )
+chlock point_int -*
+chautoscope point_int -* +attribute
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off point_int
+opexprlanguage -s hscript point_int
+opuserdata -n '___Version___' -v '' point_int
+
+# Node point_float (Sop/attribwrangle)
+opadd -e -n attribwrangle point_float
+oplocate -x 13.5 -y 7.8499999999999996 point_float
+opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "attribute"                 label   "Attribute"                 type    string                 default { "" }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' point_float
+opparm point_float  bindings ( 0 ) groupbindings ( 0 )
+chblockbegin
+chadd -t 0 0 point_float attribute
+chkey -t 0 -v 0 -m 0 -a 0.33333333333333331 -A 0.33333333333333331 -T a  -o mM  -F 'chs("../attribute")' point_float/attribute
+chblockend
+opparm point_float folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//\nstring name = chs(\'attribute\'); \n\n//\nhaspointattrib(0, name)  != 1 ? error(\'Input does not have a @\' + name + \' attribute.\') : -1;\n\n//\nfloat arr [] = point(0, name, @ptnum); float sortasc [] = sort(arr); f[]@sorted;\n\n//\nforeach( int i; float u; sortasc )\n{\n    float current = getcomp(sortasc, i);\n    float previou = getcomp(sortasc, i + 1);\n    if (current != previou ) append(@sorted, current);\n}\n\nsetpointattrib(0, name, @ptnum, @sorted, \'set\'); removepointattrib(0, \'sorted\');\n\n\n\n\n\n\n\n\n\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 ) attribute ( attribute )
+chlock point_float -*
+chautoscope point_float -* +attribute
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off point_float
+opexprlanguage -s hscript point_float
+opuserdata -n '___Version___' -v '' point_float
+
+# Node point_string (Sop/attribwrangle)
+opadd -e -n attribwrangle point_string
+oplocate -x 15.5 -y 6.8499999999999996 point_string
+opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "attribute"                 label   "Attribute"                 type    string                 default { "" }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' point_string
+opparm point_string  bindings ( 0 ) groupbindings ( 0 )
+chblockbegin
+chadd -t 0 0 point_string attribute
+chkey -t 0 -v 0 -m 0 -a 0.33333333333333331 -A 0.33333333333333331 -T a  -o mM  -F 'chs("../attribute")' point_string/attribute
+chblockend
+opparm point_string folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//\nstring name = chs(\'attribute\'); \n\n//\nhaspointattrib(0, name)  != 1 ? error(\'Input does not have a @\' + name + \' attribute.\') : -1;\n\n//\nstring arr [] = point(0, name, @ptnum); string sortasc [] = sort(arr); s[]@sorted;\n\n//\nforeach( int i; string u; sortasc )\n{\n    string current = getcomp(sortasc, i);\n    string previou = getcomp(sortasc, i + 1);\n    if (current != previou ) append(@sorted, current);\n}\n\nsetpointattrib(0, name, @ptnum, @sorted, \'set\'); removepointattrib(0, \'sorted\');\n\n\n\n\n\n\n\n\n\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 ) attribute ( attribute )
+chlock point_string -*
+chautoscope point_string -* +attribute
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off point_string
+opexprlanguage -s hscript point_string
+opuserdata -n '___Version___' -v '' point_string
+
+# Node output0 (Sop/output)
+opadd -e -n output output0
+oplocate -x 7.5 -y 0.59999999999999998 output0
+opspareds "" output0
+opparm -V 20.5.522 output0 outputidx ( 0 )
+chlock output0 -*
+chautoscope output0 -*
+opset -d on -r on -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off output0
+opexprlanguage -s hscript output0
+
+# Node switch2 (Sop/switch)
+opadd -e -n switch switch2
+oplocate -x -0.5 -y 5.8300000000000001 switch2
+opspareds "" switch2
+chblockbegin
+chadd -t 0 0 switch2 input
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../datatype")' switch2/input
+chblockend
+opparm -V 20.5.522 switch2 input ( input )
+chlock switch2 -*
+chautoscope switch2 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off switch2
+opexprlanguage -s hscript switch2
+
+# Node switch3 (Sop/switch)
+opadd -e -n switch switch3
+oplocate -x 5.5 -y 5.8300000000000001 switch3
+opspareds "" switch3
+chblockbegin
+chadd -t 0 0 switch3 input
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../datatype")' switch3/input
+chblockend
+opparm -V 20.5.522 switch3 input ( input )
+chlock switch3 -*
+chautoscope switch3 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off switch3
+opexprlanguage -s hscript switch3
+
+# Node switch4 (Sop/switch)
+opadd -e -n switch switch4
+oplocate -x 11.5 -y 5.8300000000000001 switch4
+opspareds "" switch4
+chblockbegin
+chadd -t 0 0 switch4 input
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../datatype")' switch4/input
+chblockend
+opparm -V 20.5.522 switch4 input ( input )
+chlock switch4 -*
+chautoscope switch4 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off switch4
+opexprlanguage -s hscript switch4
+
+# Node switch5 (Sop/switch)
+opadd -e -n switch switch5
+oplocate -x 7.5 -y 2.8300000000000001 switch5
+opspareds "" switch5
+chblockbegin
+chadd -t 0 0 switch5 input
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../runover")' switch5/input
+chblockend
+opparm -V 20.5.522 switch5 input ( input )
+chlock switch5 -*
+chautoscope switch5 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off switch5
+opexprlanguage -s hscript switch5
+oporder -e detail_int detail_float detail_string prim_int prim_float prim_string point_int point_float point_string output0 switch2 switch3 switch4 switch5 
+opcf ..
+
+# Node attribute_range (Sop/subnet)
+opadd -e -n subnet attribute_range
+oplocate -x 1.5 -y -1.1499999999999999 attribute_range
+opspareds '    groupsimple {         name    "main"         label   "Attribute Range"         grouptag { "group_type" "simple" }          parm {             name    "runover"             label   "Run Over"             type    ordinal             default { "0" }             menu {                 "0" "Primitives"                 "1" "Points"             }             parmtag { "script_callback_language" "python" }         }         parm {             name    "exportas"             label   "Export Normalization As"             type    ordinal             default { "0" }             help    "The method for exporting the normalized attribute. With \'New Attribute\', a new attribute will be created with the original name appended with \'_n\'."             menu {                 "0" "Overwrite Existing"                 "1" "New Attribute"                 "2" "Do Not Export"             }             parmtag { "script_callback_language" "python" }         }         parm {             name    "sample"             label   "Sample"             type    ordinal             default { "0" }             help    "Whether to sample the current frame or the frame range. Divisor will divide the start/end frame and only sample those frames (the value of Divisor defines the nth frame to sample)."             menu {                 "0" "Current Frame       "                 "1" "Frame Range"             }             parmtag { "script_callback_language" "python" }         }         parm {             name    "startframe"             label   "Start"             type    integer             default { "0" }             hidewhen "{ sample != 1 }"             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "endframe"             label   "End"             type    integer             default { "0" }             hidewhen "{ sample != 1 }"             range   { 0 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "divisor"             label   "Divisor"             type    integer             default { "0" }             hidewhen "{ sample != 1 }"             range   { 1 10 }             parmtag { "script_callback_language" "python" }         }         parm {             name    "exportbounds"             label   "Export Bounds"             type    toggle             default { "0" }             help    "A detail array of two components (min/max) of the attributes will be exported as the attribute name appended with \'range\'."             parmtag { "script_callback_language" "python" }         }         parm {             name    "sepparm"             label   "sepparm"             type    separator             default { "" }         }         multiscroll {             name    "list"             label    "List Of Attributes"             default 0             parmtag { "group_type" "simple" }              parm {                 name    "attribute#"                 label   "Attribute"                 type    string                 default { "" }                 parmtag { "script_callback_language" "python" }             }         }      }      group {         name    "folder0"         label   "Folder Name"         invisibletab          parm {             name    "label1"             baseparm             label   "Input #1 Label"             export  dialog         }         parm {             name    "label2"             baseparm             label   "Input #2 Label"             export  dialog         }         parm {             name    "label3"             baseparm             label   "Input #3 Label"             export  dialog         }         parm {             name    "label4"             baseparm             label   "Input #4 Label"             export  dialog         }     }  ' attribute_range
+opparm attribute_range  list ( 1 )
+chblockbegin
+chadd -t 0 0 attribute_range startframe
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F '$FSTART' attribute_range/startframe
+chadd -t 0 0 attribute_range endframe
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F '$FEND' attribute_range/endframe
+chblockend
+opparm -V 20.5.522 attribute_range label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' ) main ( 0 ) runover ( 1 ) exportas ( 0 ) sample ( 0 ) startframe ( startframe ) endframe ( endframe ) divisor ( 1 ) exportbounds ( off ) sepparm ( ) list ( 1 ) folder0 ( 0 ) attribute1 ( "" )
+chlock attribute_range -*
+chautoscope attribute_range -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off attribute_range
+opexprlanguage -s hscript attribute_range
+opcf attribute_range
+
+# Node output0 (Sop/output)
+opadd -e -n output output0
+oplocate -x -0.5 -y -1.1499999999999999 output0
+opspareds "" output0
+opparm -V 20.5.522 output0 outputidx ( 0 )
+chlock output0 -*
+chautoscope output0 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off output0
+opexprlanguage -s hscript output0
+
+# Node export_point (Sop/attribwrangle)
+opadd -e -n attribwrangle export_point
+oplocate -x -6.5 -y 2.8500000000000001 export_point
+opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "attribute"                 label   "Attribute"                 type    string                 default { "" }             }             parm {                 name    "export_mode"                 label   "Export Mode"                 type    integer                 default { "0" }                 range   { 0 10 }             }             parm {                 name    "array_mode"                 label   "Array Mode"                 type    integer                 default { "0" }                 range   { 0 10 }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' export_point
+opparm export_point  bindings ( 0 ) groupbindings ( 0 )
+chblockbegin
+chadd -t 0 0 export_point export_mode
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../exportas")' export_point/export_mode
+chadd -t 0 0 export_point array_mode
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../exportbounds")' export_point/array_mode
+chblockend
+opparm export_point folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//- Fetch the name of the attribute, and the value\nstring handle = chs(\'attribute\');\nfloat attribute = point(0, handle, @ptnum);\n\n//- Fetch the bounds calculated by attribute promote\nfloat min = detail(1, handle, 0); float max = detail(2, handle, 0);\n\n//- Normalize the attribute\nfloat normalized = fit(attribute, min, max, 0, 1);\n\n//- Mode as described in UI tooltip\nint exportmode = chi(\'export_mode\');\n\n//- Overwrite Existing\nif (exportmode == 0) { setpointattrib(0, handle, @ptnum, normalized, \'set\'); }\n\n//- Export New Attribute\nif (exportmode == 1) { setpointattrib(0, concat(handle, \'_n\'), @ptnum, normalized, \'set\'); }\n\n//- If \'Export Bounds\' is enabled\nint arrmode = chi(\'array_mode\');\n\nif ( arrmode == 1 )\n{\n    //- Store bounds in a array\n    float arr [] = array(min, max); \n    \n    //- \n    string arrname = concat(handle, \'range\');\n    setdetailattrib(0, arrname, arr, \'set\');\n}\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 ) attribute ( "" ) export_mode ( export_mode ) array_mode ( array_mode )
+chlock export_point -*
+chautoscope export_point -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off export_point
+opexprlanguage -s hscript export_point
+opuserdata -n '___Version___' -v '' export_point
+
+# Node min (Sop/attribpromote)
+opadd -e -n attribpromote min
+oplocate -x -4.5 -y 3.8500000000000001 min
+opspareds "" min
+chblockbegin
+chadd -t 0 0 min inclass
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../runover") + 1' min/inclass
+chblockend
+opparm -V 20.5.522 min inname ( '`chs("../export_point/attribute")`' ) inclass ( inclass ) outclass ( detail ) usepieceattrib ( off ) pieceattrib ( name ) method ( min ) useoutname ( off ) outname ( "" ) deletein ( on )
+chlock min -*
+chautoscope min -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off min
+opexprlanguage -s hscript min
+
+# Node max (Sop/attribpromote)
+opadd -e -n attribpromote max
+oplocate -x -2.6899999999999999 -y 3.8500000000000001 max
+opspareds "" max
+chblockbegin
+chadd -t 0 0 max inclass
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../runover") + 1' max/inclass
+chblockend
+opparm -V 20.5.522 max inname ( '`chs("../export_point/attribute")`' ) inclass ( inclass ) outclass ( detail ) usepieceattrib ( off ) pieceattrib ( name ) method ( max ) useoutname ( off ) outname ( "" ) deletein ( on )
+chlock max -*
+chautoscope max -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off max
+opexprlanguage -s hscript max
+
+# Node sample_range (Sop/solver)
+opadd -e -n solver sample_range
+oplocate -x 3.5 -y 6.8499999999999996 sample_range
+opspareds "" sample_range
+opparm sample_range resimulate ( 0 ) useinitialsop ( off ) initialsop ( "" ) startframe ( 1 ) substep ( 1 ) cacheenabled ( on ) cachetodisk ( off ) cachemaxsize ( 5000 )
+chlock sample_range -*
+chautoscope sample_range -*
+opcolor -c 0.8399999737739563 0.8399999737739563 0.8399999737739563 sample_range
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off sample_range
+opexprlanguage -s hscript sample_range
+opuserdata -n '___Version___' -v '' sample_range
+
+# Editable subnode
+opcf sample_range/d
+
+# Node s (Dop/sopsolver)
+opadd -e -n sopsolver s
+oplocate -x 1.88226 -y 0.51761800000000002 s
+opspareds "" s
+opparm s  numinputs ( 0 ) numoutputs ( 0 ) numstamps ( 0 )
+opparm -V 20.5.522 s parmop_usesoppath ( default ) usesoppath ( off ) parmop_soppath ( default ) soppath ( "" ) parmop_datapath ( default ) datapath ( Geometry ) parmop_doinvoke ( default ) doinvoke ( off ) parmop_primaryinputname ( default ) primaryinputname ( data ) parmop_numinputs ( default ) numinputs ( 0 ) parmop_numoutputs ( default ) numoutputs ( 0 ) parmop_transformsopoutput ( default ) transformsopoutput ( on ) parmop_solveinitframe ( default ) solveinitframe ( on ) parmop_numstamps ( default ) numstamps ( 0 ) parmop_usetimestep ( default ) usetimestep ( on ) parmop_timescale ( default ) timescale ( 1 ) defaultparmop ( initial ) addaffectors ( on ) group ( * ) dataname ( '$OS' ) uniquedataname ( on ) solverperobject ( off )
+chlock s -*
+chautoscope s -*
+opcolor -c 0.80000001192092896 0.80000001192092896 0.80000001192092896 s
+opset -d on -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off s
+opexprlanguage -s hscript s
+opuserdata -n '___Version___' -v '20.5.522' s
+opcf s
+
+# Node Prev_Frame (Sop/dopimport::2.0)
+opadd -e -n dopimport::2.0 Prev_Frame
+oplocate -x -4.5 -y -3.1499999999999999 Prev_Frame
+opspareds "" Prev_Frame
+chblockbegin
+chadd -t 0 0 Prev_Frame integrateovertime
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F '1/$FPS' Prev_Frame/integrateovertime
+chblockend
+opparm -V 20.5.522 Prev_Frame doppath ( '`stamps("..", "DOPNET", "../..")`' ) objpattern ( '`stamps("..", "OBJID", arg(dopnodeobjs(".."),0))`' ) relpattern ( "" ) donotsim ( on ) folder_geometry ( 0 ) importstyle ( fetch ) spacer ( "" ) pointsquicksetup ( menu ) geodatapath ( '`stamps("..", "DATANAME", chs("../datapath"))`' ) pack ( off ) pivot ( centroid ) viewportlod ( full ) adddopobjectpath ( off ) adddopobjectname ( off ) dopobjectnameattrib ( dopobjectname ) adddopdatapath ( off ) dopdatapathattrib ( dopdatapath ) transferattributes ( "" ) transfergroups ( "" ) folder_xform ( 0 ) doposxform ( on ) dogeoxform ( on ) keepworldspacepos ( on ) pointvels ( none ) integrateovertime ( integrateovertime ) addtoexistingvel ( on )
+chlock Prev_Frame -*
+chautoscope Prev_Frame -*
+opcolor -c 0.56000000238418579 0.49000000953674316 0.86000001430511475 Prev_Frame
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off Prev_Frame
+opexprlanguage -s hscript Prev_Frame
+
+# Node OUT (Sop/output)
+opadd -e -n output OUT
+oplocate -x -2.5 -y -10.15 OUT
+opspareds "" OUT
+opparm -V 20.5.522 OUT outputidx ( 0 )
+chlock OUT -*
+chautoscope OUT -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off OUT
+opexprlanguage -s hscript OUT
+
+# Node export_point (Sop/attribwrangle)
+opadd -e -n attribwrangle export_point
+oplocate -x -2.5 -y -0.14999999999999999 export_point
+opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "attribute"                 label   "Attribute"                 type    string                 default { "" }             }             parm {                 name    "export_mode"                 label   "Export Mode"                 type    integer                 default { "0" }                 range   { 0 10 }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' export_point
+opparm export_point  bindings ( 0 ) groupbindings ( 0 )
+chblockbegin
+chadd -t 0 0 export_point export_mode
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../exportas")' export_point/export_mode
+chblockend
+opparm export_point folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//- Fetch the name of the attribute, and the value\nstring handle = chs(\'attribute\');\nfloat attribute = point(0, handle, @ptnum);\n\n//- Fetch the bounds calculated by attribute promote\nfloat min = detail(1, handle, 0); float max = detail(2, handle, 0);\n\n//- Store bounds in a array\nfloat arr [] = array(min, max); \n\n//- \nstring arrname = concat(handle, \'range\');\nsetdetailattrib(0, arrname, arr, \'set\');\n\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 ) attribute ( ptfoo ) export_mode ( export_mode )
+chlock export_point -*
+chautoscope export_point -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off export_point
+opexprlanguage -s hscript export_point
+opuserdata -n '___Version___' -v '' export_point
+
+# Node min (Sop/attribpromote)
+opadd -e -n attribpromote min
+oplocate -x -0.5 -y 0.84999999999999998 min
+opspareds "" min
+chblockbegin
+chadd -t 0 0 min inclass
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../../../../runover") + 1' min/inclass
+chblockend
+opparm -V 20.5.522 min inname ( '`chs("../export_point/attribute")`' ) inclass ( inclass ) outclass ( detail ) usepieceattrib ( off ) pieceattrib ( name ) method ( min ) useoutname ( off ) outname ( "" ) deletein ( on )
+chlock min -*
+chautoscope min -*
+opset -d on -r on -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off min
+opexprlanguage -s hscript min
+
+# Node max (Sop/attribpromote)
+opadd -e -n attribpromote max
+oplocate -x 1.3100000000000001 -y 0.84999999999999998 max
+opspareds "" max
+chblockbegin
+chadd -t 0 0 max inclass
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../../../../runover") + 1' max/inclass
+chblockend
+opparm -V 20.5.522 max inname ( '`chs("../export_point/attribute")`' ) inclass ( inclass ) outclass ( detail ) usepieceattrib ( off ) pieceattrib ( name ) method ( max ) useoutname ( off ) outname ( "" ) deletein ( on )
+chlock max -*
+chautoscope max -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off max
+opexprlanguage -s hscript max
+
+# Node fetch (Sop/attribwrangle)
+opadd -e -n attribwrangle fetch
+oplocate -x -2.5 -y -6.1500000000000004 fetch
+opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "attribute"                 label   "Attribute"                 type    string                 default { "" }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' fetch
+opparm fetch  bindings ( 0 ) groupbindings ( 0 )
+opparm fetch folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( detail ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//- name of the array from second input\nstring attribute = concat(chs(\'attribute\'), \'range\');\n\n//- value of that array\nfloat arr [] = detail(1, attribute);\n\n//- first frame corner case, set to second input array\nint has = hasdetailattrib(0, attribute);\nif (has == 0) { setdetailattrib(0, attribute, arr, \'set\'); }\n\n//- check min/max of second input array of lower/higher and current array needs to update\nelse\n{\n    //- my current array and bounds\n    float myarray [] = detail(0, attribute);\n    float mymin = getcomp(myarray, 0); float mymax = getcomp(myarray, 1);\n    \n    //- second input bounds\n    float newmin = getcomp(arr, 0); float newmax = getcomp(arr, 1);\n    \n    //-\n    if ( newmin < mymin ) setcomp(myarray, newmin, 0);\n    if ( newmax > mymax ) setcomp(myarray, newmax, 1);\n    \n    setdetailattrib(0, attribute, myarray, \'set\');\n\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 ) attribute ( ptfoo )
+chlock fetch -*
+chautoscope fetch -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off fetch
+opexprlanguage -s hscript fetch
+opuserdata -n '___Version___' -v '' fetch
+
+# Node debug (Sop/attribwrangle)
+opadd -e -n attribwrangle debug
+oplocate -x -2.5 -y -8.1500000000000004 debug
+opspareds "" debug
+opparm debug  bindings ( 0 ) groupbindings ( 0 )
+opparm debug folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( detail ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'i@framessampled += 1;' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
+chlock debug -*
+chautoscope debug -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b on debug
+opexprlanguage -s hscript debug
+opuserdata -n '___Version___' -v '' debug
+
+# Node export_prim (Sop/attribwrangle)
+opadd -e -n attribwrangle export_prim
+oplocate -x -4.5099999999999998 -y -0.14999999999999999 export_prim
+opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "attribute"                 label   "Attribute"                 type    string                 default { "" }             }             parm {                 name    "export_mode"                 label   "Export Mode"                 type    integer                 default { "0" }                 range   { 0 10 }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' export_prim
+opparm export_prim  bindings ( 0 ) groupbindings ( 0 )
+chblockbegin
+chadd -t 0 0 export_prim export_mode
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../exportas")' export_prim/export_mode
+chblockend
+opparm export_prim folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( primitive ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//- Fetch the name of the attribute, and the value\nstring handle = chs(\'attribute\');\nfloat attribute = prim(0, handle, @primnum);\n\n//- Fetch the bounds calculated by attribute promote\nfloat min = detail(1, handle, 0); float max = detail(2, handle, 0);\n\n//- Store bounds in a array\nfloat arr [] = array(min, max); \n\n//- \nstring arrname = concat(handle, \'range\');\nsetdetailattrib(0, arrname, arr, \'set\');\n\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 ) attribute ( ptfoo ) export_mode ( export_mode )
+chlock export_prim -*
+chautoscope export_prim -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off export_prim
+opexprlanguage -s hscript export_prim
+opuserdata -n '___Version___' -v '' export_prim
+
+# Node Input_1 (Sop/object_merge)
+opadd -e -n object_merge Input_1
+oplocate -x -2.5 -y 2.8500000000000001 Input_1
+opspareds "" Input_1
+opparm Input_1  numobj ( 1 )
+opparm -V 20.5.522 Input_1 numobj ( 1 ) _separator ( ) xformtype ( object ) xformpath ( "" ) invertxform ( off ) createptgroups ( off ) ptgroupprefix ( _ptgrp_ ) createprimgroups ( off ) primgroupprefix ( _primgrp_ ) verbosegroups ( off ) suffixfirstgroup ( on ) createptstring ( off ) createprimstring ( off ) pathattrib ( objname ) pack ( off ) pivot ( centroid ) viewportlod ( full ) addpath ( on ) enable1 ( on ) objpath1 ( '`opinputpath("../..", 0)`' ) group1 ( "" ) expand1 ( off )
+chlock Input_1 -*
+chautoscope Input_1 -*
+opcolor -c 0.80000001192092896 0.80000001192092896 0.80000001192092896 Input_1
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off Input_1
+opexprlanguage -s hscript Input_1
+
+# Node foreach_end1 (Sop/block_end)
+opadd -e -n block_end foreach_end1
+oplocate -x -2.5 -y -2.1499999999999999 foreach_end1
+opspareds "" foreach_end1
+chblockbegin
+chadd -t 0 0 foreach_end1 iterations
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../../../../list")' foreach_end1/iterations
+chblockend
+opparm -V 20.5.522 foreach_end1 itermethod ( count ) method ( feedback ) iterations ( iterations ) startvalue ( 1 ) increment ( 1 ) class ( point ) useattrib ( on ) attrib ( "" ) usemaxiter ( off ) maxiter ( 10 ) blockpath ( ../foreach_begin1 ) templatepath ( ../foreach_begin1 ) resetcookpass ( 0 ) dosinglepass ( off ) singlepass ( 0 ) stopcondition ( 0 ) multithread ( off )
+chlock foreach_end1 -*
+chautoscope foreach_end1 -*
+opcolor -c 0.75 0.40000000596046448 0 foreach_end1
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off foreach_end1
+opexprlanguage -s hscript foreach_end1
+
+# Node foreach_begin1 (Sop/block_begin)
+opadd -e -n block_begin foreach_begin1
+oplocate -x -2.5 -y 1.8500000000000001 foreach_begin1
+opspareds "" foreach_begin1
+opparm -V 20.5.522 foreach_begin1 method ( feedback ) blockpath ( ../foreach_end1 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
+chlock foreach_begin1 -*
+chautoscope foreach_begin1 -*
+opcolor -c 0.75 0.40000000596046448 0 foreach_begin1
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off foreach_begin1
+opexprlanguage -s hscript foreach_begin1
+
+# Node foreach_count1 (Sop/block_begin)
+opadd -e -n block_begin foreach_count1
+oplocate -x -4.5 -y 1.8500000000000001 foreach_count1
+opspareds "" foreach_count1
+opparm -V 20.5.522 foreach_count1 method ( metadata ) blockpath ( ../foreach_end1 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
+chlock foreach_count1 -*
+chautoscope foreach_count1 -*
+opcolor -c 0.75 0.40000000596046448 0 foreach_count1
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off foreach_count1
+opexprlanguage -s hscript foreach_count1
+
+# Node python1 (Sop/python)
+opadd -e -n python python1
+oplocate -x -2.5 -y 0.84999999999999998 python1
+opspareds '    parm {         name    "python"         baseparm         label   "Python Code"         export  none     }     parm {         name    "maintainstate"         baseparm         label   "Maintain State"         export  none     }     parm {         name    "spare_input0"         label   "Spare Input 0"         type    oppath         default { "" }         help    "Refer to this in expressions as -1, such as: npoints(-1)"         parmtag { "cook_dependent" "1" }         parmtag { "opfilter" "!!SOP!!" }         parmtag { "oprelative" "." }     } ' python1
+opparm -V 20.5.522 python1 python ( '#- Me\nnode = hou.pwd()\n\n#- Geometry of metadata block\ngeo = node.inputs()[1].geometry()\n\n#- parent node (tool ui)\nlevelup = node.parent().parent().parent().parent();\nprint(levelup)\n\n#- Get iteration number, add 1 as multiblocks are 1 - based\niteration = str(geo.intAttribValue("iteration") + 1)\n\n#- In the ui, attribute fields are labelled \'attribute\' plus the index (mapping to iteration)\nlookup    = f"attribute{iteration}"\n\n#- Fetch the attribute name as depicted in the ui\nattribute = levelup.parm(lookup).eval()\n#print(attribute)\n\n#- Set the \'attribute\' parameter on the \'export\' wrangle, the attrib promotes are linked\nnet = hou.pwd().parent().node(\'export_point\').parm(\'attribute\').set(attribute)\nnet = hou.pwd().parent().node(\'export_prim\').parm(\'attribute\').set(attribute)\n#print(net)\n\n\n\n\n\n\n' ) maintainstate ( off ) spare_input0 ( "" )
+chlock python1 -*
+chautoscope python1 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off python1
+opexprlanguage -s hscript python1
+
+# Node foreach_begin2_metadata1 (Sop/block_begin)
+opadd -e -n block_begin foreach_begin2_metadata1
+oplocate -x -2.5 -y -4.1500000000000004 foreach_begin2_metadata1
+opspareds "" foreach_begin2_metadata1
+opparm -V 20.5.522 foreach_begin2_metadata1 method ( input ) blockpath ( ../foreach_end2 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
+chlock foreach_begin2_metadata1 -*
+chautoscope foreach_begin2_metadata1 -*
+opcolor -c 0.75 0.40000000596046448 0 foreach_begin2_metadata1
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off foreach_begin2_metadata1
+opexprlanguage -s hscript foreach_begin2_metadata1
+
+# Node Input_2 (Sop/object_merge)
+opadd -e -n object_merge Input_2
+oplocate -x 7.4699999999999998 -y -2.23 Input_2
+opspareds "" Input_2
+opparm Input_2  numobj ( 1 )
+opparm -V 20.5.522 Input_2 numobj ( 1 ) _separator ( ) xformtype ( object ) xformpath ( "" ) invertxform ( off ) createptgroups ( off ) ptgroupprefix ( _ptgrp_ ) createprimgroups ( off ) primgroupprefix ( _primgrp_ ) verbosegroups ( off ) suffixfirstgroup ( on ) createptstring ( off ) createprimstring ( off ) pathattrib ( objname ) pack ( off ) pivot ( centroid ) viewportlod ( full ) addpath ( on ) enable1 ( on ) objpath1 ( '`opinputpath("../..", 1)`' ) group1 ( "" ) expand1 ( off )
+chlock Input_2 -*
+chautoscope Input_2 -*
+opcolor -c 0.80000001192092896 0.80000001192092896 0.80000001192092896 Input_2
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off Input_2
+opexprlanguage -s hscript Input_2
+
+# Node foreach_end2 (Sop/block_end)
+opadd -e -n block_end foreach_end2
+oplocate -x -2.5 -y -7.1500000000000004 foreach_end2
+opspareds "" foreach_end2
+chblockbegin
+chadd -t 0 0 foreach_end2 iterations
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../../../../list")' foreach_end2/iterations
+chblockend
+opparm -V 20.5.522 foreach_end2 itermethod ( count ) method ( feedback ) iterations ( iterations ) startvalue ( 1 ) increment ( 1 ) class ( point ) useattrib ( on ) attrib ( "" ) usemaxiter ( off ) maxiter ( 10 ) blockpath ( ../foreach_begin2 ) templatepath ( ../foreach_begin2 ) resetcookpass ( 0 ) dosinglepass ( off ) singlepass ( 0 ) stopcondition ( 0 ) multithread ( off )
+chlock foreach_end2 -*
+chautoscope foreach_end2 -*
+opcolor -c 0.75 0.40000000596046448 0 foreach_end2
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off foreach_end2
+opexprlanguage -s hscript foreach_end2
+
+# Node foreach_begin2 (Sop/block_begin)
+opadd -e -n block_begin foreach_begin2
+oplocate -x -4.5 -y -4.1500000000000004 foreach_begin2
+opspareds "" foreach_begin2
+opparm -V 20.5.522 foreach_begin2 method ( feedback ) blockpath ( ../foreach_end2 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
+chlock foreach_begin2 -*
+chautoscope foreach_begin2 -*
+opcolor -c 0.75 0.40000000596046448 0 foreach_begin2
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off foreach_begin2
+opexprlanguage -s hscript foreach_begin2
+
+# Node foreach_count2 (Sop/block_begin)
+opadd -e -n block_begin foreach_count2
+oplocate -x -6.5 -y -4.1500000000000004 foreach_count2
+opspareds "" foreach_count2
+opparm -V 20.5.522 foreach_count2 method ( metadata ) blockpath ( ../foreach_end2 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
+chlock foreach_count2 -*
+chautoscope foreach_count2 -*
+opcolor -c 0.75 0.40000000596046448 0 foreach_count2
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off foreach_count2
+opexprlanguage -s hscript foreach_count2
+
+# Node python2 (Sop/python)
+opadd -e -n python python2
+oplocate -x -4.5 -y -5.1500000000000004 python2
+opspareds '    parm {         name    "python"         baseparm         label   "Python Code"         export  none     }     parm {         name    "maintainstate"         baseparm         label   "Maintain State"         export  none     }     parm {         name    "spare_input0"         label   "Spare Input 0"         type    oppath         default { "" }         help    "Refer to this in expressions as -1, such as: npoints(-1)"         parmtag { "cook_dependent" "1" }         parmtag { "opfilter" "!!SOP!!" }         parmtag { "oprelative" "." }     } ' python2
+opparm -V 20.5.522 python2 python ( '#- Me\nnode = hou.pwd()\n\n#- Geometry of metadata block\ngeo = node.inputs()[1].geometry()\n\n#- parent node (tool ui)\nlevelup = node.parent().parent().parent().parent();\nprint(levelup)\n\n#- Get iteration number, add 1 as multiblocks are 1 - based\niteration = str(geo.intAttribValue("iteration") + 1)\n\n#- In the ui, attribute fields are labelled \'attribute\' plus the index (mapping to iteration)\nlookup    = f"attribute{iteration}"\n\n#- Fetch the attribute name as depicted in the ui\nattribute = levelup.parm(lookup).eval()\n#print(attribute)\n\n#- Set the \'attribute\' parameter on the \'export\' wrangle, the attrib promotes are linked\nnet = hou.pwd().parent().node(\'fetch\').parm(\'attribute\').set(attribute)\n#print(net)\n\n\n\n\n\n\n' ) maintainstate ( off ) spare_input0 ( "" )
+chlock python2 -*
+chautoscope python2 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off python2
+opexprlanguage -s hscript python2
+
+# Node Input_3 (Sop/object_merge)
+opadd -e -n object_merge Input_3
+oplocate -x 8.7699999999999996 -y -2.8500000000000001 Input_3
+opspareds "" Input_3
+opparm Input_3  numobj ( 1 )
+opparm -V 20.5.522 Input_3 numobj ( 1 ) _separator ( ) xformtype ( object ) xformpath ( "" ) invertxform ( off ) createptgroups ( off ) ptgroupprefix ( _ptgrp_ ) createprimgroups ( off ) primgroupprefix ( _primgrp_ ) verbosegroups ( off ) suffixfirstgroup ( on ) createptstring ( off ) createprimstring ( off ) pathattrib ( objname ) pack ( off ) pivot ( centroid ) viewportlod ( full ) addpath ( on ) enable1 ( on ) objpath1 ( '`opinputpath("../..", 2)`' ) group1 ( "" ) expand1 ( off )
+chlock Input_3 -*
+chautoscope Input_3 -*
+opcolor -c 0.80000001192092896 0.80000001192092896 0.80000001192092896 Input_3
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off Input_3
+opexprlanguage -s hscript Input_3
+
+# Node switch3 (Sop/switch)
+opadd -e -n switch switch3
+oplocate -x -2.5 -y -1.1499999999999999 switch3
+opspareds "" switch3
+chblockbegin
+chadd -t 0 0 switch3 input
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../runover")' switch3/input
+chblockend
+opparm -V 20.5.522 switch3 input ( input )
+chlock switch3 -*
+chautoscope switch3 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off switch3
+opexprlanguage -s hscript switch3
+opuserdata -n 'nodeshape' -v 'rect' switch3
+
+# Node Input_4 (Sop/object_merge)
+opadd -e -n object_merge Input_4
+oplocate -x 10.289999999999999 -y -3.3999999999999999 Input_4
+opspareds "" Input_4
+opparm Input_4  numobj ( 1 )
+opparm -V 20.5.522 Input_4 numobj ( 1 ) _separator ( ) xformtype ( object ) xformpath ( "" ) invertxform ( off ) createptgroups ( off ) ptgroupprefix ( _ptgrp_ ) createprimgroups ( off ) primgroupprefix ( _primgrp_ ) verbosegroups ( off ) suffixfirstgroup ( on ) createptstring ( off ) createprimstring ( off ) pathattrib ( objname ) pack ( off ) pivot ( centroid ) viewportlod ( full ) addpath ( on ) enable1 ( on ) objpath1 ( '`opinputpath("../..", 3)`' ) group1 ( "" ) expand1 ( off )
+chlock Input_4 -*
+chautoscope Input_4 -*
+opcolor -c 0.80000001192092896 0.80000001192092896 0.80000001192092896 Input_4
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off Input_4
+opexprlanguage -s hscript Input_4
+oporder -e Prev_Frame OUT export_point min max fetch debug export_prim Input_1 foreach_end1 foreach_begin1 foreach_count1 python1 foreach_begin2_metadata1 Input_2 foreach_end2 foreach_begin2 foreach_count2 python2 Input_3 switch3 Input_4 
+opcf ..
+
+# End of editable subnode
+opcf ../..
+
+
+# Node export_prim (Sop/attribwrangle)
+opadd -e -n attribwrangle export_prim
+oplocate -x -8.5 -y 2.8500000000000001 export_prim
+opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "attribute"                 label   "Attribute"                 type    string                 default { "" }             }             parm {                 name    "export_mode"                 label   "Export Mode"                 type    integer                 default { "0" }                 range   { 0 10 }             }             parm {                 name    "array_mode"                 label   "Array Mode"                 type    integer                 default { "0" }                 range   { 0 10 }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' export_prim
+opparm export_prim  bindings ( 0 ) groupbindings ( 0 )
+chblockbegin
+chadd -t 0 0 export_prim export_mode
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../exportas")' export_prim/export_mode
+chadd -t 0 0 export_prim array_mode
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../exportbounds")' export_prim/array_mode
+chblockend
+opparm export_prim folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( primitive ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//- Fetch the name of the attribute, and the value\nstring handle = chs(\'attribute\');\nfloat attribute = prim(0, handle, @primnum);\n\n//- Fetch the bounds calculated by attribute promote\nfloat min = detail(1, handle, 0); float max = detail(2, handle, 0);\n\n//- Normalize the attribute\nfloat normalized = fit(attribute, min, max, 0, 1);\n\n//- Mode as described in UI tooltip\nint exportmode = chi(\'export_mode\');\n\n//- Overwrite Existing\nif (exportmode == 0) { setprimattrib(0, handle, @primnum, normalized, \'set\'); }\n\n//- Export New Attribute\nif (exportmode == 1) { setprimattrib(0, concat(handle, \'_n\'), @primnum, normalized, \'set\'); }\n\n//- If \'Export Bounds\' is enabled\nint arrmode = chi(\'array_mode\');\n\nif ( arrmode == 1 )\n{\n    //- Store bounds in a array\n    float arr [] = array(min, max); \n    \n    //- \n    string arrname = concat(handle, \'range\');\n    setdetailattrib(0, arrname, arr, \'set\');\n}\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 ) attribute ( "" ) export_mode ( export_mode ) array_mode ( array_mode )
+chlock export_prim -*
+chautoscope export_prim -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off export_prim
+opexprlanguage -s hscript export_prim
+opuserdata -n '___Version___' -v '' export_prim
+
+# Node foreach_end1 (Sop/block_end)
+opadd -e -n block_end foreach_end1
+oplocate -x -6.5 -y 0.84999999999999998 foreach_end1
+opspareds "" foreach_end1
+chblockbegin
+chadd -t 0 0 foreach_end1 iterations
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../list")' foreach_end1/iterations
+chblockend
+opparm -V 20.5.522 foreach_end1 itermethod ( count ) method ( feedback ) iterations ( iterations ) startvalue ( 1 ) increment ( 1 ) class ( point ) useattrib ( on ) attrib ( "" ) usemaxiter ( off ) maxiter ( 10 ) blockpath ( ../foreach_begin1 ) templatepath ( ../foreach_begin1 ) resetcookpass ( 0 ) dosinglepass ( off ) singlepass ( 0 ) stopcondition ( 0 ) multithread ( off )
+chlock foreach_end1 -*
+chautoscope foreach_end1 -*
+opcolor -c 0.75 0.40000000596046448 0 foreach_end1
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off foreach_end1
+opexprlanguage -s hscript foreach_end1
+
+# Node foreach_begin1 (Sop/block_begin)
+opadd -e -n block_begin foreach_begin1
+oplocate -x -6.5 -y 4.8499999999999996 foreach_begin1
+opspareds "" foreach_begin1
+opparm -V 20.5.522 foreach_begin1 method ( feedback ) blockpath ( ../foreach_end1 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
+chlock foreach_begin1 -*
+chautoscope foreach_begin1 -*
+opcolor -c 0.75 0.40000000596046448 0 foreach_begin1
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off foreach_begin1
+opexprlanguage -s hscript foreach_begin1
+
+# Node foreach_count1 (Sop/block_begin)
+opadd -e -n block_begin foreach_count1
+oplocate -x -8.5 -y 4.8499999999999996 foreach_count1
+opspareds "" foreach_count1
+opparm -V 20.5.522 foreach_count1 method ( metadata ) blockpath ( ../foreach_end1 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
+chlock foreach_count1 -*
+chautoscope foreach_count1 -*
+opcolor -c 0.75 0.40000000596046448 0 foreach_count1
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off foreach_count1
+opexprlanguage -s hscript foreach_count1
+
+# Node null1 (Sop/null)
+opadd -e -n null null1
+oplocate -x -6.5 -y 5.8200000000000003 null1
+opspareds "" null1
+opparm -V 20.5.522 null1 copyinput ( on ) cacheinput ( off )
+chlock null1 -*
+chautoscope null1 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off null1
+opexprlanguage -s hscript null1
+
+# Node python1 (Sop/python)
+opadd -e -n python python1
+oplocate -x -6.5 -y 3.8500000000000001 python1
+opspareds '    parm {         name    "python"         baseparm         label   "Python Code"         export  none     }     parm {         name    "maintainstate"         baseparm         label   "Maintain State"         export  none     }     parm {         name    "spare_input0"         label   "Spare Input 0"         type    oppath         default { "" }         help    "Refer to this in expressions as -1, such as: npoints(-1)"         parmtag { "cook_dependent" "1" }         parmtag { "opfilter" "!!SOP!!" }         parmtag { "oprelative" "." }     } ' python1
+opparm -V 20.5.522 python1 python ( '#- Me\nnode = hou.pwd()\n\n#- Geometry of metadata block\ngeo = node.inputs()[1].geometry()\n\n#- parent node (tool ui)\nlevelup = node.parent();\n\n#- Get iteration number, add 1 as multiblocks are 1 - based\niteration = str(geo.intAttribValue("iteration") + 1)\n\n#- In the ui, attribute fields are labelled \'attribute\' plus the index (mapping to iteration)\nlookup    = f"attribute{iteration}"\n\n#- Fetch the attribute name as depicted in the ui\nattribute = levelup.parm(lookup).eval()\n#print(attribute)\n\n#- Set the \'attribute\' parameter on the \'export\' wrangle, the attrib promotes are linked\nnet = hou.pwd().parent().node(\'export_point\').parm(\'attribute\').set(attribute)\nnet = hou.pwd().parent().node(\'export_prim\').parm(\'attribute\').set(attribute)\n#print(net)\n\n\n\n\n\n\n' ) maintainstate ( off ) spare_input0 ( "" )
+chlock python1 -*
+chautoscope python1 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off python1
+opexprlanguage -s hscript python1
+
+# Node retime1 (Sop/retime)
+opadd -e -n retime retime1
+oplocate -x 3.5 -y 7.8499999999999996 retime1
+opspareds "" retime1
+chblockbegin
+chadd -t 0 0 retime1 frame
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F '$FF' retime1/frame
+chadd -t 0 0 retime1 time
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F '$T' retime1/time
+chadd -t 0 0 retime1 startframe
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("inputrangex")' retime1/startframe
+chadd -t 0 0 retime1 outputrangex
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../startframe")' retime1/outputrangex
+chadd -t 0 0 retime1 outputrangey
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../endframe") / ch("../divisor")' retime1/outputrangey
+chadd -t 0 0 retime1 inputrangex
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../startframe")' retime1/inputrangex
+chadd -t 0 0 retime1 inputrangey
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../endframe")' retime1/inputrangey
+chadd -t 0 0 retime1 timestep
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F '1 / $FPS' retime1/timestep
+chblockend
+opparm retime1 folder0 ( 0 ) evalmode ( fit ) frame ( frame ) time ( time ) startframe ( startframe ) speed ( 1 ) shiftframe ( 1 ) outputrange ( outputrangex outputrangey ) opreb ( hold ) opostb ( hold ) inputrange ( inputrangex inputrangey ) ipreb ( hold ) ipostb ( hold ) substep ( 1 ) folder3 ( 0 ) addframeattribs ( off ) outframeattrib ( output_frame ) inframeattrib ( input_frame ) _ ( "" ) sepparm ( ) folder2 ( 0 ) interpolate ( on ) doslerp ( on ) interp ( linear ) timestep ( timestep ) usevforpinterp ( on ) scalevel ( off ) folder1 ( 0 0 ) attribs ( * ) ptidattr ( id ) unmatchedpts ( freeze ) unmatchedgroup ( unmatched ) primidattr ( name ) voxelblend ( none ) vel ( vel ) advdt ( 0.02 ) interpvel ( off )
+chlock retime1 -*
+chautoscope retime1 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off retime1
+opexprlanguage -s hscript retime1
+opuserdata -n '___Version___' -v '' retime1
+
+# Node switch1 (Sop/switch)
+opadd -e -n switch switch1
+oplocate -x -0.5 -y -0.17000000000000001 switch1
+opspareds "" switch1
+chblockbegin
+chadd -t 0 0 switch1 input
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../sample")' switch1/input
+chblockend
+opparm -V 20.5.522 switch1 input ( input )
+chlock switch1 -*
+chautoscope switch1 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off switch1
+opexprlanguage -s hscript switch1
+
+# Node export_point1 (Sop/attribwrangle)
+opadd -e -n attribwrangle export_point1
+oplocate -x 3.5 -y 2.8500000000000001 export_point1
+opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "attribute"                 label   "Attribute"                 type    string                 default { "" }             }             parm {                 name    "export_mode"                 label   "Export Mode"                 type    integer                 default { "0" }                 range   { 0 10 }             }             parm {                 name    "array_mode"                 label   "Array Mode"                 type    integer                 default { "0" }                 range   { 0 10 }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' export_point1
+opparm export_point1  bindings ( 0 ) groupbindings ( 0 )
+chblockbegin
+chadd -t 0 0 export_point1 export_mode
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../exportas")' export_point1/export_mode
+chadd -t 0 0 export_point1 array_mode
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../exportbounds")' export_point1/array_mode
+chblockend
+opparm export_point1 folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//- Fetch the name of the attribute, and the value\nstring handle = chs(\'attribute\'); \nfloat attribute = point(0, handle, @ptnum);\n\n//- Fetch the bounds array of second input\nstring boundname = concat(handle,\'range\'); float bounds [] = detail(1, boundname, 0);\n\n//- Extract min/max from bounds\nfloat min = getcomp(bounds, 0); float max = getcomp(bounds, 1);\n\n//- Normalize the attribute\nfloat normalized = fit(attribute, min, max, 0, 1);\n\n//- Mode as described in UI tooltip\nint exportmode = chi(\'export_mode\');\n\n//- Overwrite Existing\nif (exportmode == 0) { setpointattrib(0, handle, @ptnum, normalized, \'set\'); }\n\n//- Export New Attribute\nif (exportmode == 1) { setpointattrib(0, concat(handle, \'_n\'), @ptnum, normalized, \'set\'); }\n\n//- If \'Export Bounds\' is enabled\nint arrmode = chi(\'array_mode\');\n\nif ( arrmode == 1 )\n{\n    setdetailattrib(0, boundname, bounds, \'set\');\n}\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 ) attribute ( ptfoo ) export_mode ( export_mode ) array_mode ( array_mode )
+chlock export_point1 -*
+chautoscope export_point1 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off export_point1
+opexprlanguage -s hscript export_point1
+opuserdata -n '___Version___' -v '' export_point1
+
+# Node foreach_begin2_metadata1 (Sop/block_begin)
+opadd -e -n block_begin foreach_begin2_metadata1
+oplocate -x 3.5 -y 4.8499999999999996 foreach_begin2_metadata1
+opspareds "" foreach_begin2_metadata1
+opparm -V 20.5.522 foreach_begin2_metadata1 method ( input ) blockpath ( ../foreach_end2 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
+chlock foreach_begin2_metadata1 -*
+chautoscope foreach_begin2_metadata1 -*
+opcolor -c 0.75 0.40000000596046448 0 foreach_begin2_metadata1
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off foreach_begin2_metadata1
+opexprlanguage -s hscript foreach_begin2_metadata1
+
+# Node export_prim1 (Sop/attribwrangle)
+opadd -e -n attribwrangle export_prim1
+oplocate -x 1.5 -y 2.8500000000000001 export_prim1
+opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "group_type" "simple" }             grouptag { "sidefx::look" "blank" }              parm {                 name    "attribute"                 label   "Attribute"                 type    string                 default { "" }             }             parm {                 name    "export_mode"                 label   "Export Mode"                 type    integer                 default { "0" }                 range   { 0 10 }             }             parm {                 name    "array_mode"                 label   "Array Mode"                 type    integer                 default { "0" }                 range   { 0 10 }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' export_prim1
+opparm export_prim1  bindings ( 0 ) groupbindings ( 0 )
+chblockbegin
+chadd -t 0 0 export_prim1 export_mode
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../exportas")' export_prim1/export_mode
+chadd -t 0 0 export_prim1 array_mode
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../exportbounds")' export_prim1/array_mode
+chblockend
+opparm export_prim1 folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( primitive ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '//- Fetch the name of the attribute, and the value\nstring handle = chs(\'attribute\'); \nfloat attribute = prim(0, handle, @primnum);\n\n//- Fetch the bounds array of second input\nstring boundname = concat(handle,\'range\'); float bounds [] = detail(1, boundname, 0);\n\n//- Extract min/max from bounds\nfloat min = getcomp(bounds, 0); float max = getcomp(bounds, 1);\n\n//- Normalize the attribute\nfloat normalized = fit(attribute, min, max, 0, 1);\n\n//- Mode as described in UI tooltip\nint exportmode = chi(\'export_mode\');\n\n//- Overwrite Existing\nif (exportmode == 0) { setprimattrib(0, handle, @primnum, normalized, \'set\'); }\n\n//- Export New Attribute\nif (exportmode == 1) { setprimattrib(0, concat(handle, \'_n\'), @primnum, normalized, \'set\'); }\n\n//- If \'Export Bounds\' is enabled\nint arrmode = chi(\'array_mode\');\n\nif ( arrmode == 1 )\n{\n    setdetailattrib(0, boundname, bounds, \'set\');\n}\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 ) attribute ( ptfoo ) export_mode ( export_mode ) array_mode ( array_mode )
+chlock export_prim1 -*
+chautoscope export_prim1 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off export_prim1
+opexprlanguage -s hscript export_prim1
+opuserdata -n '___Version___' -v '' export_prim1
+
+# Node timeshift2 (Sop/timeshift)
+opadd -e -n timeshift timeshift2
+oplocate -x 3.5 -y 5.8499999999999996 timeshift2
+opspareds "" timeshift2
+chblockbegin
+chadd -t 0 0 timeshift2 frame
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../retime1/outputrangey")' timeshift2/frame
+chadd -t 0 0 timeshift2 time
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F '$T' timeshift2/time
+chadd -t 0 0 timeshift2 frange1
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F '$FSTART' timeshift2/frange1
+chadd -t 0 0 timeshift2 frange2
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F '$FEND' timeshift2/frange2
+chadd -t 0 0 timeshift2 trange1
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F '$TSTART' timeshift2/trange1
+chadd -t 0 0 timeshift2 trange2
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F '$TEND' timeshift2/trange2
+chblockend
+opparm -V 20.5.522 timeshift2 method ( byframe ) frame ( frame ) integerframe ( on ) time ( time ) rangeclamp ( none ) frange ( frange1 frange2 ) trange ( trange1 trange2 )
+chlock timeshift2 -*
+chautoscope timeshift2 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off timeshift2
+opexprlanguage -s hscript timeshift2
+
+# Node foreach_end2 (Sop/block_end)
+opadd -e -n block_end foreach_end2
+oplocate -x 3.5 -y 0.84999999999999998 foreach_end2
+opspareds "" foreach_end2
+chblockbegin
+chadd -t 0 0 foreach_end2 iterations
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../list")' foreach_end2/iterations
+chblockend
+opparm -V 20.5.522 foreach_end2 itermethod ( count ) method ( feedback ) iterations ( iterations ) startvalue ( 1 ) increment ( 1 ) class ( point ) useattrib ( on ) attrib ( "" ) usemaxiter ( off ) maxiter ( 10 ) blockpath ( ../foreach_begin2 ) templatepath ( ../foreach_begin2 ) resetcookpass ( 0 ) dosinglepass ( off ) singlepass ( 0 ) stopcondition ( 0 ) multithread ( off )
+chlock foreach_end2 -*
+chautoscope foreach_end2 -*
+opcolor -c 0.75 0.40000000596046448 0 foreach_end2
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off foreach_end2
+opexprlanguage -s hscript foreach_end2
+
+# Node foreach_begin2 (Sop/block_begin)
+opadd -e -n block_begin foreach_begin2
+oplocate -x 1.5 -y 4.8499999999999996 foreach_begin2
+opspareds "" foreach_begin2
+opparm -V 20.5.522 foreach_begin2 method ( feedback ) blockpath ( ../foreach_end2 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
+chlock foreach_begin2 -*
+chautoscope foreach_begin2 -*
+opcolor -c 0.75 0.40000000596046448 0 foreach_begin2
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off foreach_begin2
+opexprlanguage -s hscript foreach_begin2
+
+# Node foreach_count2 (Sop/block_begin)
+opadd -e -n block_begin foreach_count2
+oplocate -x -0.5 -y 4.8499999999999996 foreach_count2
+opspareds "" foreach_count2
+opparm -V 20.5.522 foreach_count2 method ( metadata ) blockpath ( ../foreach_end2 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
+chlock foreach_count2 -*
+chautoscope foreach_count2 -*
+opcolor -c 0.75 0.40000000596046448 0 foreach_count2
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off foreach_count2
+opexprlanguage -s hscript foreach_count2
+
+# Node python2 (Sop/python)
+opadd -e -n python python2
+oplocate -x 1.5 -y 3.8500000000000001 python2
+opspareds '    parm {         name    "python"         baseparm         label   "Python Code"         export  none     }     parm {         name    "maintainstate"         baseparm         label   "Maintain State"         export  none     }     parm {         name    "spare_input0"         label   "Spare Input 0"         type    oppath         default { "" }         help    "Refer to this in expressions as -1, such as: npoints(-1)"         parmtag { "cook_dependent" "1" }         parmtag { "opfilter" "!!SOP!!" }         parmtag { "oprelative" "." }     } ' python2
+opparm -V 20.5.522 python2 python ( '#- Me\nnode = hou.pwd()\n\n#- Geometry of metadata block\ngeo = node.inputs()[1].geometry()\n\n#- parent node (tool ui)\nlevelup = node.parent();\n\n#- Get iteration number, add 1 as multiblocks are 1 - based\niteration = str(geo.intAttribValue("iteration") + 1)\n\n#- In the ui, attribute fields are labelled \'attribute\' plus the index (mapping to iteration)\nlookup    = f"attribute{iteration}"\n\n#- Fetch the attribute name as depicted in the ui\nattribute = levelup.parm(lookup).eval()\n#print(attribute)\n\n#- Set the \'attribute\' parameter on the \'export\' wrangle, the attrib promotes are linked\nnet = hou.pwd().parent().node(\'export_point1\').parm(\'attribute\').set(attribute)\nnet = hou.pwd().parent().node(\'export_prim1\').parm(\'attribute\').set(attribute)\n#print(net)\n\n\n\n\n\n\n' ) maintainstate ( off ) spare_input0 ( "" )
+chlock python2 -*
+chautoscope python2 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off python2
+opexprlanguage -s hscript python2
+
+# Node switch2 (Sop/switch)
+opadd -e -n switch switch2
+oplocate -x -6.5 -y 1.8300000000000001 switch2
+opspareds "" switch2
+chblockbegin
+chadd -t 0 0 switch2 input
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../runover")' switch2/input
+chblockend
+opparm -V 20.5.522 switch2 input ( input )
+chlock switch2 -*
+chautoscope switch2 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off switch2
+opexprlanguage -s hscript switch2
+opuserdata -n 'nodeshape' -v 'rect' switch2
+
+# Node switch3 (Sop/switch)
+opadd -e -n switch switch3
+oplocate -x 3.5 -y 1.8300000000000001 switch3
+opspareds "" switch3
+chblockbegin
+chadd -t 0 0 switch3 input
+chkey -t 0 -v 0 -V 0 -m 0 -M 0 -a 0 -A 0 -F 'ch("../runover")' switch3/input
+chblockend
+opparm -V 20.5.522 switch3 input ( input )
+chlock switch3 -*
+chautoscope switch3 -*
+opset -d on -r on -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off switch3
+opexprlanguage -s hscript switch3
+opuserdata -n 'nodeshape' -v 'rect' switch3
+oporder -e output0 export_point min max sample_range export_prim foreach_end1 foreach_begin1 foreach_count1 null1 python1 retime1 switch1 export_point1 foreach_begin2_metadata1 export_prim1 timeshift2 foreach_end2 foreach_begin2 foreach_count2 python2 switch2 switch3 
+opcf ..
+
+# Node transformuniform (Sop/subnet)
+opadd -e -n subnet transformuniform
+oplocate -x 17.5 -y 1.8499999940395355 transformuniform
+opspareds "" transformuniform
+opparm -V 20.5.522 transformuniform label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' )
+chlock transformuniform -*
+chautoscope transformuniform -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off transformuniform
+opexprlanguage -s hscript transformuniform
+opcf transformuniform
+
+# Node move_back (Sop/attribwrangle)
+opadd -e -n attribwrangle move_back
+oplocate -x 0 -y -0.88820000000000077 move_back
+opspareds "" move_back
+opparm move_back  bindings ( 0 ) groupbindings ( 0 )
+opparm move_back folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '@P *= @__scale; @P += v@__translate;\nremovepointattrib(0, \'__scale\');\nremovepointattrib(0, \'__translate\');' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
+chlock move_back -*
+chautoscope move_back -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off move_back
+opexprlanguage -s hscript move_back
+opuserdata -n '___Version___' -v '' move_back
+
+# Node objectinfo (Sop/attribwrangle)
+opadd -e -n attribwrangle objectinfo
+oplocate -x 0 -y 3.1317999999999993 objectinfo
+opspareds "" objectinfo
+opparm objectinfo  bindings ( 0 ) groupbindings ( 0 )
+opparm objectinfo folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '/*\n    to ensure a consistent scale when calculating cutter plane noise\n    which is based on world space, for any arbitary sized object,\n    this will scale it relative to its original scale, to fit a scale the parameters\n    have been calibrated to, to be re-applied later\n*/\n\nvector size = getbbox_size(0); v@__translate = getbbox_center(0);\n\n/*\n    sum size of each axis and divide by 3 to find average. divide by two to get radius.\n    this place object at origin and scale to approximate the dimensions of a sphere with 1m radius\n*/\n@__scale  = ((size.x + size.y + size.z) / 3) / 2; \n\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
+chlock objectinfo -*
+chautoscope objectinfo -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off objectinfo
+opexprlanguage -s hscript objectinfo
+opuserdata -n '___Version___' -v '' objectinfo
+
+# Node object_trans_scale (Sop/attribwrangle)
+opadd -e -n attribwrangle object_trans_scale
+oplocate -x 0 -y 2.1317999999999997 object_trans_scale
+opspareds "" object_trans_scale
+opparm object_trans_scale  bindings ( 0 ) groupbindings ( 0 )
+opparm object_trans_scale folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '@P -= v@__translate; @P /= @__scale;' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
+chlock object_trans_scale -*
+chautoscope object_trans_scale -*
+opcolor -c 0.8399999737739563 0.8399999737739563 0.8399999737739563 object_trans_scale
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off object_trans_scale
+opexprlanguage -s hscript object_trans_scale
+opuserdata -n '___Version___' -v '' object_trans_scale
+
+# Node compile_end1 (Sop/compile_end)
+opadd -e -n compile_end compile_end1
+oplocate -x 0 -y 0.11179999999999968 compile_end1
+opspareds "" compile_end1
+opparm -V 20.5.522 compile_end1 docompile ( on ) unload ( always ) primarypath ( "" ) forcerecompile ( 0 ) delayillegal ( off ) fallback ( off )
+chlock compile_end1 -*
+chautoscope compile_end1 -*
+opcolor -c 0.75 0.75 0 compile_end1
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off compile_end1
+opexprlanguage -s hscript compile_end1
+opuserdata -n '___Version___' -v '20.5.522' compile_end1
+
+# Node compile_begin1 (Sop/compile_begin)
+opadd -e -n compile_begin compile_begin1
+oplocate -x 0 -y 5.1117999999999997 compile_begin1
+opspareds "" compile_begin1
+opparm -V 20.5.522 compile_begin1 blockpath ( ../compile_end1 ) name ( "" ) optional ( off ) createbeginblock ( 0 )
+chlock compile_begin1 -*
+chautoscope compile_begin1 -*
+opcolor -c 0.75 0.75 0 compile_begin1
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off compile_begin1
+opexprlanguage -s hscript compile_begin1
+opuserdata -n '___Version___' -v '20.5.522' compile_begin1
+
+# Node foreach_end2 (Sop/block_end)
+opadd -e -n block_end foreach_end2
+oplocate -x 0 -y 1.1117999999999997 foreach_end2
+opspareds "" foreach_end2
+opparm -V 20.5.522 foreach_end2 itermethod ( pieces ) method ( merge ) iterations ( 10 ) startvalue ( 1 ) increment ( 1 ) class ( primitive ) useattrib ( on ) attrib ( class ) usemaxiter ( off ) maxiter ( 10 ) blockpath ( ../foreach_begin2 ) templatepath ( ../foreach_begin2 ) resetcookpass ( 0 ) dosinglepass ( off ) singlepass ( 1 ) stopcondition ( 0 ) multithread ( on )
+chlock foreach_end2 -*
+chautoscope foreach_end2 -*
+opcolor -c 0.75 0.40000000596046448 0 foreach_end2
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off foreach_end2
+opexprlanguage -s hscript foreach_end2
+opuserdata -n '___Version___' -v '20.5.522' foreach_end2
+
+# Node foreach_begin2 (Sop/block_begin)
+opadd -e -n block_begin foreach_begin2
+oplocate -x 0 -y 4.1117999999999997 foreach_begin2
+opspareds "" foreach_begin2
+opparm -V 20.5.522 foreach_begin2 method ( piece ) blockpath ( ../foreach_end2 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
+chlock foreach_begin2 -*
+chautoscope foreach_begin2 -*
+opcolor -c 0.75 0.40000000596046448 0 foreach_begin2
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off foreach_begin2
+opexprlanguage -s hscript foreach_begin2
+opuserdata -n '___Version___' -v '20.5.522' foreach_begin2
+
+# Node connectivity2 (Sop/connectivity)
+opadd -e -n connectivity connectivity2
+oplocate -x 0 -y 6.1117999999999997 connectivity2
+opspareds "" connectivity2
+opparm -V 20.5.522 connectivity2 connecttype ( prim ) primincgroup ( "" ) pointincgroup ( "" ) attribname ( class ) attribtype ( int ) prefix ( piece ) createvarmap ( off ) varname ( "" ) seamgroup ( "" ) byuv ( off ) uvattrib ( uv )
+chlock connectivity2 -*
+chautoscope connectivity2 -*
+opset -d on -r on -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off connectivity2
+opexprlanguage -s hscript connectivity2
+opuserdata -n '___Version___' -v '20.5.522' connectivity2
+
+# Node output0 (Sop/output)
+opadd -e -n output output0
+oplocate -x 1.6943999999999981 -y 4.2175999999999991 output0
+opspareds "" output0
+opparm -V 20.5.522 output0 outputidx ( 0 )
+chlock output0 -*
+chautoscope output0 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off output0
+opexprlanguage -s hscript output0
+oporder -e move_back objectinfo object_trans_scale compile_end1 compile_begin1 foreach_end2 foreach_begin2 connectivity2 output0 
+opcf ..
+
+# Node promote_attr_to_ui (Sop/python)
+opadd -e -n python promote_attr_to_ui
+oplocate -x 17.5 -y 0.84999999403953552 promote_attr_to_ui
+opspareds '    parm {         name    "python"         baseparm         label   "Python Code"         export  none     }     parm {         name    "maintainstate"         baseparm         label   "Maintain State"         export  none     }     parm {         name    "attribute"         label   "Attribute"         type    string         default { "" }         parmtag { "script_callback_language" "python" }     }     parm {         name    "parameter"         label   "Parameter"         type    string         default { "" }         parmtag { "script_callback_language" "python" }     } ' promote_attr_to_ui
+opparm -V 20.5.522 promote_attr_to_ui python ( 'node = hou.pwd()\ngeo = node.geometry()\nlevelup = node.parent()\n\n# name of the attribute to promote to ui\nattribute = node.parm(\'attribute\').eval()\n\n# the parameter on the ui to display the value\nuiparm = levelup.parm(node.parm(\'parameter\').eval())\n# print(uiparm)\n\n# get the attribute value (detail)\nfetch = geo.attribValue(attribute)\n# print(fetch)\n\n# set parameter to value\nuiparm.set(fetch)\n\n\n' ) maintainstate ( off ) attribute ( "" ) parameter ( "" )
+chlock promote_attr_to_ui -*
+chautoscope promote_attr_to_ui -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off promote_attr_to_ui
+opexprlanguage -s hscript promote_attr_to_ui
+
+# Node iterative_spread (Sop/subnet)
+opadd -e -n subnet iterative_spread
+oplocate -x 17.5 -y -0.15000000596046448 iterative_spread
+opspareds "" iterative_spread
+opparm -V 20.5.522 iterative_spread label1 ( 'Sub-Network Input #1' ) label2 ( 'Sub-Network Input #2' ) label3 ( 'Sub-Network Input #3' ) label4 ( 'Sub-Network Input #4' )
+chlock iterative_spread -*
+chautoscope iterative_spread -*
+opset -d on -r on -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off iterative_spread
+opexprlanguage -s hscript iterative_spread
+opuserdata -n '___Version___' -v '20.5.522' iterative_spread
+opcf iterative_spread
+
+# Node attribdelete1 (Sop/attribdelete)
+opadd -e -n attribdelete attribdelete1
+oplocate -x 0 -y 6.1117999999999997 attribdelete1
+opspareds "" attribdelete1
+opparm attribdelete1 usereference ( off ) negate ( off ) doptdel ( on ) ptdel ( * ) dovtxdel ( on ) vtxdel ( * ) doprimdel ( on ) primdel ( * ) dodtldel ( on ) dtldel ( * ) updatevar ( on )
+chlock attribdelete1 -*
+chautoscope attribdelete1 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off attribdelete1
+opexprlanguage -s hscript attribdelete1
+opuserdata -n '___Version___' -v '' attribdelete1
+
+# Node scatter1 (Sop/scatter::2.0)
+opadd -e -n scatter::2.0 scatter1
+oplocate -x 2.00345 -y 5.1117999999999997 scatter1
+opspareds "" scatter1
+opparm -V 20.5.522 scatter1 group ( "" ) stdswitcher ( 0 0 ) generateby ( bydensity ) indepvoxel ( off ) forcetotal ( on ) npts ( 1 ) densityscale ( 10 ) usedensityattrib ( off ) densityattrib ( density ) useareaattrib ( off ) areaattrib ( area ) useareaforvolumes ( off ) usedensitytexture ( off ) densitytexture ( default.pic ) uvattrib ( uv ) primcountattrib ( count ) useemergencylimit ( on ) emergencylimit ( 1e6 ) seed ( 0 ) overrideprimseed ( off ) primseedattrib ( primid ) randomizeorder ( on ) relaxpoints ( on ) relaxiterations ( 10 ) usegeometricnormals ( off ) scaleradiiby ( 1 ) usemaxradius ( on ) maxradius ( 10 ) useprimnumattrib ( off ) primnumattrib ( sourceprim ) useprimuvwattrib ( off ) primuvwattrib ( sourceprimuv ) useoutputdensityattrib ( off ) outputdensityattrib ( density ) useoutputradiusattrib ( off ) outputradiusattrib ( pscale ) useoutputidattrib ( off ) outputidattrib ( id ) radiusintexturespace ( off ) pointattribs ( * ) vertattribs ( 'N uv*' ) primattribs ( "" ) detailattribs ( "" ) detailattribsasdetail ( "" )
+chlock scatter1 -*
+chautoscope scatter1 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off scatter1
+opexprlanguage -s hscript scatter1
+opuserdata -n '___Version___' -v '20.5.522' scatter1
+
+# Node attribwrangle1 (Sop/attribwrangle)
+opadd -e -n attribwrangle attribwrangle1
+oplocate -x 2.0004499999999998 -y 4.1108000000000002 attribwrangle1
+opspareds "" attribwrangle1
+opparm attribwrangle1  bindings ( 0 ) groupbindings ( 0 )
+opparm attribwrangle1 folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'i@seed = 1;\n' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
+chlock attribwrangle1 -*
+chautoscope attribwrangle1 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off attribwrangle1
+opexprlanguage -s hscript attribwrangle1
+opuserdata -n '___Version___' -v '' attribwrangle1
+
+# Node scatter2 (Sop/scatter::2.0)
+opadd -e -n scatter::2.0 scatter2
+oplocate -x 0.0034499999999999999 -y 4.1117999999999997 scatter2
+opspareds "" scatter2
+opparm -V 20.5.522 scatter2 group ( "" ) stdswitcher ( 0 0 ) generateby ( bydensity ) indepvoxel ( off ) forcetotal ( on ) npts ( 100000 ) densityscale ( 10 ) usedensityattrib ( off ) densityattrib ( density ) useareaattrib ( off ) areaattrib ( area ) useareaforvolumes ( off ) usedensitytexture ( off ) densitytexture ( default.pic ) uvattrib ( uv ) primcountattrib ( count ) useemergencylimit ( on ) emergencylimit ( 1e6 ) seed ( 0 ) overrideprimseed ( off ) primseedattrib ( primid ) randomizeorder ( on ) relaxpoints ( on ) relaxiterations ( 10 ) usegeometricnormals ( off ) scaleradiiby ( 1 ) usemaxradius ( on ) maxradius ( 10 ) useprimnumattrib ( off ) primnumattrib ( sourceprim ) useprimuvwattrib ( off ) primuvwattrib ( sourceprimuv ) useoutputdensityattrib ( off ) outputdensityattrib ( density ) useoutputradiusattrib ( off ) outputradiusattrib ( pscale ) useoutputidattrib ( off ) outputidattrib ( id ) radiusintexturespace ( off ) pointattribs ( * ) vertattribs ( 'N uv*' ) primattribs ( "" ) detailattribs ( "" ) detailattribsasdetail ( "" )
+chlock scatter2 -*
+chautoscope scatter2 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off scatter2
+opexprlanguage -s hscript scatter2
+opuserdata -n '___Version___' -v '20.5.522' scatter2
+
+# Node attribtransfer1 (Sop/attribtransfer)
+opadd -e -n attribtransfer attribtransfer1
+oplocate -x 0 -y 3.1118000000000001 attribtransfer1
+opspareds "" attribtransfer1
+opparm -V 20.5.522 attribtransfer1 srcgroups ( "" ) srcgrouptype ( point ) dstgroups ( "" ) dstgrouptype ( point ) cardswitcher ( 0 0 ) detailattribs ( off ) detailattriblist ( "" ) primitiveattribs ( on ) primattriblist ( "" ) pointattribs ( on ) pointattriblist ( seed ) vertexattribs ( off ) vertexattriblist ( "" ) copyvariable ( on ) matchpattrib ( off ) kernel ( elendt ) kernelradius ( 10 ) maxsamplecount ( 1 ) threshold ( on ) thresholddist ( 0.01 ) blendwidth ( 0 ) uniformbias ( 0.5 )
+chlock attribtransfer1 -*
+chautoscope attribtransfer1 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off attribtransfer1
+opexprlanguage -s hscript attribtransfer1
+opuserdata -n '___Version___' -v '20.5.522' attribtransfer1
+
+# Node color1 (Sop/color)
+opadd -e -n color color1
+oplocate -x 0.0034499999999999999 -y 1.1117999999999999 color1
+opspareds "" color1
+opparm color1  ramp ( 2 )
+opparm color1 group ( grown ) grouptype ( guess ) deleteallcolorattribs ( off ) enable ( on ) class ( 2 ) colortype ( 0 ) color ( 1 0 0 ) seed ( 0 ) rampattribute ( growth ) ramprange ( 0 1 ) ramp ( 2 ) ramp1pos ( 0 ) ramp1c ( 1 0 0 ) ramp1interp ( linear ) ramp2pos ( 1 ) ramp2c ( 0 1 0 ) ramp2interp ( linear )
+chlock color1 -*
+chautoscope color1 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off color1
+opexprlanguage -s hscript color1
+opuserdata -n '___Version___' -v '' color1
+opuserdata -n '___toolcount___' -v '2' color1
+opuserdata -n '___toolid___' -v 'sop_color' color1
+
+# Node foreach_end1 (Sop/block_end)
+opadd -e -n block_end foreach_end1
+oplocate -x -1.99495 -y -4.8917000000000002 foreach_end1
+opspareds '    parm {         name    "itermethod"         baseparm         label   "Iteration Method"         export  none     }     parm {         name    "method"         baseparm         label   "Gather Method"         export  none     }     parm {         name    "iterations"         baseparm         label   "Iterations"         export  none     }     parm {         name    "startvalue"         baseparm         label   "Start Value"         export  none     }     parm {         name    "increment"         baseparm         label   "Increment"         export  none     }     parm {         name    "class"         baseparm         label   "Piece Elements"         export  none     }     parm {         name    "useattrib"         baseparm         label   "Piece Attribute"         joinnext         export  none     }     parm {         name    "attrib"         baseparm         label   "Piece Attribute"         export  none     }     parm {         name    "usemaxiter"         baseparm         label   "Max Iterations"         joinnext         export  none     }     parm {         name    "maxiter"         baseparm         label   "Max Iterations"         export  none     }     parm {         name    "blockpath"         baseparm         label   "Default Block Path"         export  none     }     parm {         name    "templatepath"         baseparm         label   "Piece Block Path"         export  none     }     parm {         name    "resetcookpass"         baseparm         label   "Reset Cached Pass"         export  none     }     parm {         name    "dosinglepass"         baseparm         label   "Do Single Pass"         joinnext         export  none     }     parm {         name    "singlepass"         baseparm         label   "Single Pass"         export  none     }     parm {         name    "stopcondition"         baseparm         label   "Stop Condition"         export  none     }     parm {         name    "multithread"         baseparm         label   "Multithread when Compiled"         export  none     }     parm {         name    "spare_input0"         label   "Spare Input 0"         type    oppath         default { "" }         help    "Refer to this in expressions as -1, such as: npoints(-1)"         parmtag { "cook_dependent" "1" }         parmtag { "opfilter" "!!SOP!!" }         parmtag { "oprelative" "." }     } ' foreach_end1
+chblockbegin
+chadd -t 0 0 foreach_end1 stopcondition
+chkey -t 0 -v 0 -m 0 -a 0 -A 0 -T a  -F 'detail(-1, \'stop\', 0)' foreach_end1/stopcondition
+chblockend
+opparm -V 20.5.522 foreach_end1 itermethod ( count ) method ( feedback ) iterations ( 500 ) startvalue ( 1 ) increment ( 1 ) class ( point ) useattrib ( on ) attrib ( "" ) usemaxiter ( off ) maxiter ( 10 ) blockpath ( ../foreach_begin1 ) templatepath ( ../foreach_begin1 ) resetcookpass ( 0 ) dosinglepass ( off ) singlepass ( 0 ) stopcondition ( stopcondition ) multithread ( off ) spare_input0 ( ../foreach_begin1 )
+chlock foreach_end1 -*
+chautoscope foreach_end1 -*
+opcolor -c 0.75 0.40000000596046448 0 foreach_end1
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off foreach_end1
+opexprlanguage -s hscript foreach_end1
+opuserdata -n '___Version___' -v '20.5.522' foreach_end1
+
+# Node foreach_begin1 (Sop/block_begin)
+opadd -e -n block_begin foreach_begin1
+oplocate -x 0.0050499999999999998 -y 0.10895000000000001 foreach_begin1
+opspareds "" foreach_begin1
+opparm -V 20.5.522 foreach_begin1 method ( feedback ) blockpath ( ../foreach_end1 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
+chlock foreach_begin1 -*
+chautoscope foreach_begin1 -*
+opcolor -c 0.75 0.40000000596046448 0 foreach_begin1
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off foreach_begin1
+opexprlanguage -s hscript foreach_begin1
+opuserdata -n '___Version___' -v '20.5.522' foreach_begin1
+
+# Node foreach_count1 (Sop/block_begin)
+opadd -e -n block_begin foreach_count1
+oplocate -x 0.0050499999999999998 -y -1.8910499999999999 foreach_count1
+opspareds "" foreach_count1
+opparm -V 20.5.522 foreach_count1 method ( metadata ) blockpath ( ../foreach_end1 ) resetcookpass ( 0 ) createmetablock ( 0 ) label1 ( 'iteration, numiterations, value, ivalue' )
+chlock foreach_count1 -*
+chautoscope foreach_count1 -*
+opcolor -c 0.75 0.40000000596046448 0 foreach_count1
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F off -c on -e on -b off foreach_count1
+opexprlanguage -s hscript foreach_count1
+opuserdata -n '___Version___' -v '20.5.522' foreach_count1
+
+# Node initialise (Sop/attribwrangle)
+opadd -e -n attribwrangle initialise
+oplocate -x 0.00044999999999999999 -y 2.1107999999999998 initialise
+opspareds "" initialise
+opparm initialise  bindings ( 0 ) groupbindings ( 0 )
+opparm initialise folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'if (i@seed) \n{\n    setpointgroup(0, \'seeds\', @ptnum, 1, \'set\');\n    setpointgroup(0, \'grown\', @ptnum, 1, \'set\');\n}\n\ni@id = @ptnum; removepointattrib(0, \'seed\'); i@iteration = 0;' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
+chlock initialise -*
+chautoscope initialise -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off initialise
+opexprlanguage -s hscript initialise
+opuserdata -n '___Version___' -v '' initialise
+
+# Node split1 (Sop/split)
+opadd -e -n split split1
+oplocate -x 0.0034499999999999999 -y -0.88819999999999999 split1
+opspareds "" split1
+opparm split1 group ( seeds ) grouptype ( points ) negate ( off ) removegrp ( off )
+chlock split1 -*
+chautoscope split1 -*
+opcomment -c 'only run nearpoints on seeds for performance' split1
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off -Y on split1
+opexprlanguage -s hscript split1
+opuserdata -n '___Version___' -v '' split1
+
+# Node fetch_chums (Sop/attribwrangle)
+opadd -e -n attribwrangle fetch_chums
+oplocate -x -1.9995499999999999 -y -0.88919999999999999 fetch_chums
+opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "sidefx::look" "blank" }              parm {                 name    "Resolution"                 label   "Resolution"                 type    integer                 default { "0" }                 range   { 0 10 }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' fetch_chums
+opparm fetch_chums  bindings ( 0 ) groupbindings ( 0 )
+opparm fetch_chums folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'i[]@N = nearpoints(1, @P, 1, chi(\'Resolution\'));\n\n\ni[]@chums;\nforeach( int i; @N )\n{\n    // don\'t store point if its already grown\n    int in = inpointgroup(1, \'grown\', i);\n    if ( in == 0 )\n    {\n        // store id, ptnum changed on split\n        int __id = point(1, \'id\', i);\n        append(@chums, __id);\n    }\n}\n\nremovepointattrib(0, \'N\');' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 ) Resolution ( 10 )
+chlock fetch_chums -*
+chautoscope fetch_chums -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off fetch_chums
+opexprlanguage -s hscript fetch_chums
+opuserdata -n '___Version___' -v '' fetch_chums
+
+# Node core_process (Sop/attribwrangle)
+opadd -e -n attribwrangle core_process
+oplocate -x -1.9995499999999999 -y -1.8892 core_process
+opspareds "" core_process
+opparm core_process  bindings ( 0 ) groupbindings ( 0 )
+opparm core_process folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( detail ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '// serial process is faster then fetching from every point in second for every point in first\nint n = npoints(1);\n\nfor( int i = 0; i < n; i++ )\n{\n    i[]@__chums = point(1, \'chums\', i);\n    \n    foreach ( int j; @__chums )\n    {\n        setpointgroup(0, \'seeds\', j, 1, \'set\');\n        setpointgroup(0, \'grown\', j, 1, \'set\');\n    }\n}' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
+chlock core_process -*
+chautoscope core_process -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off core_process
+opexprlanguage -s hscript core_process
+opuserdata -n '___Version___' -v '' core_process
+
+# Node reset_seeds (Sop/attribwrangle)
+opadd -e -n attribwrangle reset_seeds
+oplocate -x -3.9995500000000002 -y -0.88919999999999999 reset_seeds
+opspareds "" reset_seeds
+opparm reset_seeds  bindings ( 0 ) groupbindings ( 0 )
+opparm reset_seeds folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'setpointgroup(0, \'seeds\', @ptnum, 0, \'set\');' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
+chlock reset_seeds -*
+chautoscope reset_seeds -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off reset_seeds
+opexprlanguage -s hscript reset_seeds
+opuserdata -n '___Version___' -v '' reset_seeds
+
+# Node stop_condition (Sop/attribwrangle)
+opadd -e -n attribwrangle stop_condition
+oplocate -x -1.9995499999999999 -y -3.8892000000000002 stop_condition
+opspareds "" stop_condition
+opparm stop_condition  bindings ( 0 ) groupbindings ( 0 )
+opparm stop_condition folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( detail ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'i@stop = npointsgroup(0, \'grown\') == npoints(0);' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
+chlock stop_condition -*
+chautoscope stop_condition -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off stop_condition
+opexprlanguage -s hscript stop_condition
+opuserdata -n '___Version___' -v '' stop_condition
+
+# Node store_iteration (Sop/attribwrangle)
+opadd -e -n attribwrangle store_iteration
+oplocate -x -1.9995499999999999 -y -2.8892000000000002 store_iteration
+opspareds "" store_iteration
+opparm store_iteration  bindings ( 0 ) groupbindings ( 0 )
+opparm store_iteration folder0 ( 0 0 ) group ( seeds ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( 'i@iteration = detail(1, \'iteration\', 0);' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto )
+chlock store_iteration -*
+chautoscope store_iteration -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off store_iteration
+opexprlanguage -s hscript store_iteration
+opuserdata -n '___Version___' -v '' store_iteration
+
+# Node frame_fit (Sop/attribwrangle)
+opadd -e -n attribwrangle frame_fit
+oplocate -x -3.9995500000000002 -y -5.8891999999999998 frame_fit
+opspareds '    group {         name    "folder1"         label   "Code"          parm {             name    "group"             baseparm             label   "Group"             export  none             bindselector uvselect "Modify Attribs"                 "Select the geometry to affect and press Enter to complete."                 0 1 0xffffffff 0 grouptype 0         }         parm {             name    "grouptype"             baseparm             label   "Group Type"             export  none         }         parm {             name    "class"             baseparm             label   "Run Over"             export  none         }         parm {             name    "vex_numcount"             baseparm             label   "Number Count"             export  none         }         parm {             name    "vex_threadjobsize"             baseparm             label   "Thread Job Size"             export  none         }         groupsimple {             name    "folder_generatedparms_snippet"             label   "Generated Channel Parameters"             grouptag { "sidefx::look" "blank" }              parm {                 name    "Start"                 label   "Start"                 type    integer                 default { "0" }                 range   { 0 10 }             }             parm {                 name    "End"                 label   "End"                 type    integer                 default { "0" }                 range   { 0 10 }             }         }          parm {             name    "snippet"             baseparm             label   "VEXpression"             export  all         }         parm {             name    "exportlist"             baseparm             label   "Attributes to Create"             export  none         }         parm {             name    "vex_strict"             baseparm             label   "Enforce Prototypes"             export  none         }     }      group {         name    "folder1_1"         label   "Bindings"          parm {             name    "autobind"             baseparm             label   "Autobind by Name"             export  none         }         multiparm {             name    "bindings"             label    "Number of Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindname#"                 baseparm                 label   "Attribute Name"                 export  none             }             parm {                 name    "bindparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "groupautobind"             baseparm             label   "Autobind Groups by Name"             export  none         }         multiparm {             name    "groupbindings"             label    "Group Bindings"             baseparm             default 0             parmtag { "autoscope" "0000000000000000" }             parmtag { "multistartoffset" "1" }              parm {                 name    "bindgroupname#"                 baseparm                 label   "Group Name"                 export  none             }             parm {                 name    "bindgroupparm#"                 baseparm                 label   "VEX Parameter"                 export  none             }         }          parm {             name    "vex_cwdpath"             baseparm             label   "Evaluation Node Path"             export  none         }         parm {             name    "vex_outputmask"             baseparm             label   "Export Parameters"             export  none         }         parm {             name    "vex_updatenmls"             baseparm             label   "Update Normals If Displaced"             export  none         }         parm {             name    "vex_matchattrib"             baseparm             label   "Attribute to Match"             export  none         }         parm {             name    "vex_inplace"             baseparm             label   "Compute Results In Place"             export  none         }         parm {             name    "vex_selectiongroup"             baseparm             label   "Output Selection Group"             export  none         }         parm {             name    "vex_precision"             baseparm             label   "VEX Precision"             export  none         }     }  ' frame_fit
+opparm frame_fit  bindings ( 0 ) groupbindings ( 0 )
+opparm frame_fit folder0 ( 0 0 ) group ( "" ) grouptype ( guess ) class ( point ) vex_numcount ( 10 ) vex_threadjobsize ( 1024 ) snippet ( '@spread = fit(i@iteration, 0, detail(1, \'iterationmax\'), chi(\'Start\'), chi(\'End\'));\n\nif (@spread < @Frame) { @spread = 1; } else @spread = 0;' ) exportlist ( * ) vex_strict ( off ) autobind ( on ) bindings ( 0 ) groupautobind ( on ) groupbindings ( 0 ) vex_cwdpath ( . ) vex_outputmask ( * ) vex_updatenmls ( off ) vex_matchattrib ( id ) vex_inplace ( off ) vex_selectiongroup ( "" ) vex_precision ( auto ) folder1 ( 0 0 ) folder_generatedparms_snippet ( 0 ) Start ( 1 ) End ( 120 )
+chlock frame_fit -*
+chautoscope frame_fit -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off frame_fit
+opexprlanguage -s hscript frame_fit
+opuserdata -n '___Version___' -v '' frame_fit
+
+# Node attribpromote1 (Sop/attribpromote)
+opadd -e -n attribpromote attribpromote1
+oplocate -x -2 -y -5.8882000000000003 attribpromote1
+opspareds "" attribpromote1
+opparm -V 20.5.522 attribpromote1 inname ( iteration ) inclass ( point ) outclass ( detail ) usepieceattrib ( off ) pieceattrib ( name ) method ( max ) useoutname ( on ) outname ( iterationmax ) deletein ( off )
+chlock attribpromote1 -*
+chautoscope attribpromote1 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off attribpromote1
+opexprlanguage -s hscript attribpromote1
+opuserdata -n '___Version___' -v '20.5.522' attribpromote1
+
+# Node color2 (Sop/color)
+opadd -e -n color color2
+oplocate -x -3.99655 -y -6.8882000000000003 color2
+opspareds "" color2
+opparm color2  ramp ( 2 )
+opparm color2 group ( "" ) grouptype ( guess ) deleteallcolorattribs ( off ) enable ( on ) class ( 2 ) colortype ( 3 ) color ( 1 1 1 ) seed ( 0 ) rampattribute ( spread ) ramprange ( 0 1 ) ramp ( 2 ) ramp1pos ( 0 ) ramp1c ( 0 0 0 ) ramp1interp ( linear ) ramp2pos ( 1 ) ramp2c ( 1 0 0 ) ramp2interp ( linear )
+chlock color2 -*
+chautoscope color2 -*
+opset -d on -r on -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off color2
+opexprlanguage -s hscript color2
+opuserdata -n '___Version___' -v '' color2
+opuserdata -n '___toolcount___' -v '2' color2
+opuserdata -n '___toolid___' -v 'sop_color' color2
+
+# Node output0 (Sop/output)
+opadd -e -n output output0
+oplocate -x -3.99655 -y -7.7824 output0
+opspareds "" output0
+opparm -V 20.5.522 output0 outputidx ( 0 )
+chlock output0 -*
+chautoscope output0 -*
+opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c on -e on -b off output0
+opexprlanguage -s hscript output0
+opuserdata -n '___Version___' -v '20.5.522' output0
+oporder -e attribdelete1 scatter1 attribwrangle1 scatter2 attribtransfer1 color1 foreach_end1 foreach_begin1 foreach_count1 initialise split1 fetch_chums core_process reset_seeds stop_condition store_iteration frame_fit attribpromote1 color2 output0 
+opcf ..
+oporder -e curvature gradient attributefunction cluster curvefromanim matrixcurve solvercurveadvect deformerripple solverdecay isolatecorners matrixconstruct matrixtangentspace meshcage noisepower prim_angle_partition prim_reconstruct rayintersect solverpropagation vector_conditional_rotate vectorfield_formula vectorfield_object_flow vector_project array_remove_duplicate attribute_range transformuniform promote_attr_to_ui iterative_spread 
 opcf ..
 opcf ..
 
@@ -5678,7 +6881,7 @@ opparm localscheduler  local_envmulti ( 0 )
 opparm -V 1 localscheduler folder0 ( 0 0 0 ) folder5 ( 0 ) maxprocsmenu ( 0 ) maxprocs ( 1 ) pdg_usemaxtasks ( off ) pdg_maxtasks ( 0 ) verbose ( off ) pdg_waitforfailures ( off ) folder4 ( 0 ) pdg_workingdir ( '$HIP' ) hythonbin ( 0 ) hythonbincustomuniversal ( "" ) pdg_workitemdatasource ( 0 ) pdg_compressworkitemdata ( on ) pdg_validateoutputs ( on ) pdg_checkexpectedoutputs ( on ) sepparm2 ( ) pdg_mapmode ( 0 ) pdg_usemapzone ( off ) pdg_mapzone ( '$PDG_PATHMAP_ZONE' ) folder1 ( 0 ) tempdirmenu ( 1 ) tempdirappendpid ( on ) tempdircustom ( '$HOUDINI_TEMP_DIR/$HIPNAME/pdgtemp' ) pdg_deletetempdir ( 0 ) socketcallbacks ( 1 ) pdg_rpcignoreerrors ( 0 ) pdg_rpcmaxerrors ( 5 ) pdg_rpctimeout ( 4 ) pdg_rpcretries ( 2 ) pdg_rpcbackoff ( 2 ) pdg_rpcbatch ( 1 ) pdg_rpcrelease ( on ) folder0_3 ( 0 ) local_single ( off ) local_is_CPU_number_set ( off ) local_CPUs_to_use ( 1 ) folder6 ( 0 ) local_useminfreemem ( 0 ) local_minfreemem ( 0 ) local_minfreemempct ( 0 ) folder2 ( 0 ) local_enabletimeout ( off ) local_maxtime ( 0 ) local_handletimeout ( 0 ) sepparm4 ( ) local_enablemaxmemory ( off ) local_maxmemory ( 0 ) local_handlememory ( 0 ) sepparm5 ( ) local_echandleby ( 0 ) local_echandleall ( on ) local_eccustomcode ( 1 ) sepparm ( ) local_maximumretries ( 3 ) local_addfailcountattr ( off ) local_failcountattr ( failurecount ) folder3 ( 0 ) local_usehoudinimaxthreads ( off ) local_houdinimaxthreads ( 0 ) local_requireswindow ( off ) local_skippackages ( on ) local_envunset ( "" ) local_env_file ( "" ) local_envmulti ( 0 )
 chlock localscheduler -*
 chautoscope localscheduler -*
-opset -d on -r on -h off -f off -y off -t off -l off -s off -u off -F on -c off -e on -b off localscheduler
+opset -d off -r on -h off -f off -y off -t off -l off -s off -u off -F on -c off -e on -b off localscheduler
 opexprlanguage -s hscript localscheduler
 opuserdata -n '___Version___' -v '1' localscheduler
 
@@ -5750,7 +6953,7 @@ opparm localscheduler6  local_envmulti ( 0 )
 opparm -V 1 localscheduler6 folder0 ( 0 0 0 ) folder5 ( 0 ) maxprocsmenu ( 0 ) maxprocs ( 1 ) pdg_usemaxtasks ( off ) pdg_maxtasks ( 0 ) verbose ( off ) pdg_waitforfailures ( off ) folder4 ( 0 ) pdg_workingdir ( '$HIP' ) hythonbin ( 0 ) hythonbincustomuniversal ( "" ) pdg_workitemdatasource ( 0 ) pdg_compressworkitemdata ( on ) pdg_validateoutputs ( on ) pdg_checkexpectedoutputs ( on ) sepparm2 ( ) pdg_mapmode ( 0 ) pdg_usemapzone ( off ) pdg_mapzone ( '$PDG_PATHMAP_ZONE' ) folder1 ( 0 ) tempdirmenu ( 1 ) tempdirappendpid ( on ) tempdircustom ( '$HOUDINI_TEMP_DIR/$HIPNAME/pdgtemp' ) pdg_deletetempdir ( 0 ) socketcallbacks ( 1 ) pdg_rpcignoreerrors ( 0 ) pdg_rpcmaxerrors ( 5 ) pdg_rpctimeout ( 4 ) pdg_rpcretries ( 2 ) pdg_rpcbackoff ( 2 ) pdg_rpcbatch ( 1 ) pdg_rpcrelease ( on ) folder0_3 ( 0 ) local_single ( off ) local_is_CPU_number_set ( off ) local_CPUs_to_use ( 1 ) folder6 ( 0 ) local_useminfreemem ( 0 ) local_minfreemem ( 0 ) local_minfreemempct ( 0 ) folder2 ( 0 ) local_enabletimeout ( off ) local_maxtime ( 0 ) local_handletimeout ( 0 ) sepparm4 ( ) local_enablemaxmemory ( off ) local_maxmemory ( 0 ) local_handlememory ( 0 ) sepparm5 ( ) local_echandleby ( 0 ) local_echandleall ( on ) local_eccustomcode ( 1 ) sepparm ( ) local_maximumretries ( 3 ) local_addfailcountattr ( off ) local_failcountattr ( failurecount ) folder3 ( 0 ) local_usehoudinimaxthreads ( off ) local_houdinimaxthreads ( 0 ) local_requireswindow ( off ) local_skippackages ( on ) local_envunset ( "" ) local_env_file ( "" ) local_envmulti ( 0 )
 chlock localscheduler6 -*
 chautoscope localscheduler6 -*
-opset -d off -r off -h off -f off -y off -t off -l off -s off -u off -F on -c off -e on -b off localscheduler6
+opset -d on -r off -h off -f off -y off -t off -l off -s off -u off -F on -c off -e on -b off localscheduler6
 opexprlanguage -s hscript localscheduler6
 opuserdata -n '___Version___' -v '1' localscheduler6
 oporder -e localscheduler localscheduler1 localscheduler2 localscheduler3 localscheduler4 localscheduler5 localscheduler6 
@@ -5845,14 +7048,6 @@ opcf ..
 opcf attributefunction
 opwire -n sine -0 output0
 opwire -n -i 0 -0 sine
-opcf ..
-opcf attributenormalize
-opwire -n fit -0 output0
-opwire -n -i 0 -0 fit
-opwire -n min -1 fit
-opwire -n max -2 fit
-opwire -n -i 0 -0 min
-opwire -n -i 0 -0 max
 opcf ..
 opcf cluster
 opwire -n color1 -0 output0
@@ -6341,6 +7536,100 @@ opwire -n -i 0 -0 tangentplane
 opwire -n -i 0 -0 onto
 opwire -n tangentplane -0 switch1
 opwire -n onto -1 switch1
+opcf ..
+opcf array_remove_duplicate
+opwire -n -i 0 -0 detail_int
+opwire -n -i 0 -0 detail_float
+opwire -n -i 0 -0 detail_string
+opwire -n -i 0 -0 prim_int
+opwire -n -i 0 -0 prim_float
+opwire -n -i 0 -0 prim_string
+opwire -n -i 0 -0 point_int
+opwire -n -i 0 -0 point_float
+opwire -n -i 0 -0 point_string
+opwire -n switch5 -0 output0
+opwire -n detail_int -0 switch2
+opwire -n detail_float -1 switch2
+opwire -n detail_string -2 switch2
+opwire -n prim_int -0 switch3
+opwire -n prim_float -1 switch3
+opwire -n prim_string -2 switch3
+opwire -n point_int -0 switch4
+opwire -n point_float -1 switch4
+opwire -n point_string -2 switch4
+opwire -n switch2 -0 switch5
+opwire -n switch3 -1 switch5
+opwire -n switch4 -2 switch5
+opcf ..
+opcf attribute_range
+opwire -n switch1 -0 output0
+opwire -n python1 -0 export_point
+opwire -n min -1 export_point
+opwire -n max -2 export_point
+opwire -n python1 -0 min
+opwire -n python1 -0 max
+opwire -n retime1 -0 sample_range
+opwire -n python1 -0 export_prim
+opwire -n min -1 export_prim
+opwire -n max -2 export_prim
+opwire -n switch2 -0 foreach_end1
+opwire -n null1 -0 foreach_begin1
+opwire -n -i 0 -0 null1
+opwire -n foreach_begin1 -0 python1
+opwire -n foreach_count1 -1 python1
+opwire -n null1 -0 retime1
+opwire -n foreach_end1 -0 switch1
+opwire -n foreach_end2 -1 switch1
+opwire -n python2 -0 export_point1
+opwire -n foreach_begin2_metadata1 -1 export_point1
+opwire -n timeshift2 -0 foreach_begin2_metadata1
+opwire -n python2 -0 export_prim1
+opwire -n foreach_begin2_metadata1 -1 export_prim1
+opwire -n sample_range -0 timeshift2
+opwire -n switch3 -0 foreach_end2
+opwire -n null1 -0 foreach_begin2
+opwire -n foreach_begin2 -0 python2
+opwire -n foreach_count2 -1 python2
+opwire -n export_prim -0 switch2
+opwire -n export_point -1 switch2
+opwire -n export_prim1 -0 switch3
+opwire -n export_point1 -1 switch3
+opcf ..
+opcf transformuniform
+opwire -n compile_end1 -0 move_back
+opwire -n foreach_begin2 -0 objectinfo
+opwire -n objectinfo -0 object_trans_scale
+opwire -n foreach_end2 -0 compile_end1
+opwire -n connectivity2 -0 compile_begin1
+opwire -n object_trans_scale -0 foreach_end2
+opwire -n compile_begin1 -0 foreach_begin2
+opwire -n connectivity2 -0 output0
+opcf ..
+opcf iterative_spread
+opwire -n -i 0 -0 attribdelete1
+opwire -n attribdelete1 -0 scatter1
+opwire -n scatter1 -0 attribwrangle1
+opwire -n attribdelete1 -0 scatter2
+opwire -n scatter2 -0 attribtransfer1
+opwire -n attribwrangle1 -1 attribtransfer1
+opwire -n initialise -0 color1
+opwire -n stop_condition -0 foreach_end1
+opwire -n color1 -0 foreach_begin1
+opwire -n attribtransfer1 -0 initialise
+opwire -n foreach_begin1 -0 split1
+opwire -n split1 -0 fetch_chums
+opwire -n -o 1 split1 -1 fetch_chums
+opwire -n reset_seeds -0 core_process
+opwire -n fetch_chums -1 core_process
+opwire -n foreach_begin1 -0 reset_seeds
+opwire -n store_iteration -0 stop_condition
+opwire -n core_process -0 store_iteration
+opwire -n foreach_count1 -1 store_iteration
+opwire -n foreach_end1 -0 frame_fit
+opwire -n attribpromote1 -1 frame_fit
+opwire -n foreach_end1 -0 attribpromote1
+opwire -n frame_fit -0 color2
+opwire -n color2 -0 output0
 opcf ..
 opcf ..
 opcf ..
